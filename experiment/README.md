@@ -1,6 +1,6 @@
 
 # Experimental Reproduction
-Run `main.py` following one of the arguments ('RQ1.1', 'RQ1.2', 'RQ2', 'RQ3.1', 'RQ3.2')
+Run `main.py` following one of the arguments ('RQ1', 'RQ2')
 
 For instance, execute the following command to obtain the results of research question 2 in the paper.
 ```
@@ -30,16 +30,6 @@ OUTPUT:
 
 ## RQ2
 
-Customize: Choose one of representation embeddings for patch under *config.py*.
-* **cc2vec:** an attention-based model upon the AST representation of code method.
-* **bert:** a transformer-based self-supervised model.
-* **string:** raw strings(Levenshtein is used to calculate the distance of pairwise strings).
-
-OUTPUT:
-* **performance:** classification and ranking of the Baseline and BATS on the APR-generated patches. 
-
-## RQ3.1
-
 Compare the state of the art approaches.
 
 * **Static approach:** ML-based approach.
@@ -48,9 +38,30 @@ Compare the state of the art approaches.
 OUTPUT:
 * **performance:** The results of the state of the art.
 
+## RQ3.1
+
+Customize: Choose one of representation embeddings for test case under *config.py*.
+
+* **codebert:** a pre-trained model for programming and natural languages.
+* **graphcodebert:**  a pre-trained model for programming language that considers the inherent structure of code.
+* **unixcoder:** an Unified Cross-Modal Pre-training for Code Representation.
+* **code2vec:** , a neural network model that learns a representation of code changes guided by their accompanying log messages, which represent the semantic intent of the code changes.
+
+Customize: Choose one of representation embeddings for patch under *config.py*.
+
+* **codebert:** 
+* **graphcodebert:** 
+* **unixcoder:** 
+
 ## RQ3.2
 
-Enhance static and dynamic approaches.
+Customize: Choose one of representation embeddings for test case under *evaluate.py* and *word2vector.py*.
+
+* **threshold1** 
+* **threshold2**
+* **cofficient1**
+* **cofficient2**
+
 
 OUTPUT:
-* **performance:** Enhancement of classification of ML-based and patchSim approaches on patch correctness.
+* **performance:** classification and ranking of the Baseline and BATS on the APR-generated patches. 
