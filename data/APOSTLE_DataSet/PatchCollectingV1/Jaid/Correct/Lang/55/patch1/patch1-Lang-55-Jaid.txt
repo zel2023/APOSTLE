@@ -1,0 +1,1 @@
+Add a test to make sure that no one keeps being left in StopWatch after a running state ==

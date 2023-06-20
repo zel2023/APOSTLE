@@ -1,0 +1,1 @@
+Fix jstype annotation matching of non - Record type .

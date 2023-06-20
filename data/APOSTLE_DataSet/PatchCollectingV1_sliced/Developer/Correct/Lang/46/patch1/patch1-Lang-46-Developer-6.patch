@@ -1,0 +1,12 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_46/StringEscapeUtils/Lang_46_StringEscapeUtils_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_46/StringEscapeUtils/Lang_46_StringEscapeUtils_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -175,7 +175,8 @@
+      * @param escapeForwardSlash TODO
+      * @throws IOException if an IOException occurs
+      */
+-    private static void escapeJavaStyleString(Writer out, String str, boolean escapeSingleQuote) throws IOException {
++    private static void escapeJavaStyleString(Writer out, String str, boolean escapeSingleQuote,
++            boolean escapeForwardSlash) throws IOException {
+         if (out == null) {
+             throw new IllegalArgumentException("The Writer must not be null");
+         }

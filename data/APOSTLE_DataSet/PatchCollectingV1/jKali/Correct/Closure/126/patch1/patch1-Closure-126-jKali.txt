@@ -1,0 +1,1 @@
+try minimize exits on finally blocks

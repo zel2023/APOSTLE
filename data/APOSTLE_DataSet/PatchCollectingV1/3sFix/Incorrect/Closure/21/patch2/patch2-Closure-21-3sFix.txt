@@ -1,0 +1,1 @@
+Fix maybeResultUsed for Do not drop side effects of nested closures

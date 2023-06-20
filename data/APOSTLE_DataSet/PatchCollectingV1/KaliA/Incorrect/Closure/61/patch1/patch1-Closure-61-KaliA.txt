@@ -1,0 +1,1 @@
+Allow closure trees to be expanded if they are not equals .

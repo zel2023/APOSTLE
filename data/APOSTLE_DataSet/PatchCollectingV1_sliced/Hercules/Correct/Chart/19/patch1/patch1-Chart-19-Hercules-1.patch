@@ -1,0 +1,11 @@
+--- patch1-Chart-19-Hercules.buggy	2020-11-03 21:12:04.000000000 +0800
++++ patch1-Chart-19-Hercules.fixed	2020-11-07 23:50:44.000000000 +0800
+@@ -695,5 +695,8 @@
+      * @since 1.0.3
+      */
+     public int getDomainAxisIndex(CategoryAxis axis) {
++        if ((axis == null) || (domainAxes == null))
++            throw new java.lang.IllegalArgumentException();
++        
+         return this.domainAxes.indexOf(axis);
+     }

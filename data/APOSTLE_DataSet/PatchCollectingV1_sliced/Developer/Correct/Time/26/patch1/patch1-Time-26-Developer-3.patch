@@ -1,0 +1,19 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Time_26/ZonedChronology/Time_26_ZonedChronology_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Time_26/ZonedChronology/Time_26_ZonedChronology_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -457,14 +457,14 @@
+             } else {
+                 long localInstant = iZone.convertUTCToLocal(instant);
+                 localInstant = iField.addWrapField(localInstant, value);
+-                return iZone.convertLocalToUTC(localInstant, false);
++                return iZone.convertLocalToUTC(localInstant, false, instant);
+             }
+         }
+ 
+         public long set(long instant, int value) {
+             long localInstant = iZone.convertUTCToLocal(instant);
+             localInstant = iField.set(localInstant, value);
+-            long result = iZone.convertLocalToUTC(localInstant, false);
++            long result = iZone.convertLocalToUTC(localInstant, false, instant);
+             if (get(result) != value) {
+                 throw new IllegalFieldValueException(iField.getType(), new Integer(value),
+                     "Illegal instant due to time zone offset transition: " +

@@ -1,0 +1,14 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_32/HashCodeBuilder/Lang_32_HashCodeBuilder_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_32/HashCodeBuilder/Lang_32_HashCodeBuilder_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -519,6 +515,11 @@
+      *            The object to register.
+      */
+     static void register(Object value) {
++        synchronized (HashCodeBuilder.class) {
++            if (getRegistry() == null) {
++                REGISTRY.set(new HashSet<IDKey>());
++            }
++        }
+         getRegistry().add(new IDKey(value));
+     }
+ 

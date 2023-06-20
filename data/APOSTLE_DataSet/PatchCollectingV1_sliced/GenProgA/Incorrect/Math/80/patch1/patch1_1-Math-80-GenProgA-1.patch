@@ -1,0 +1,10 @@
+--- /tmp/GenProg_Defects4J_Math_80/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java	2019-08-01 08:48:56.072067282 -0400
++++ /tmp/GenProg_Defects4J_Math_80/patches_hsqy/Patch_2/patched/org/apache/commons/math/linear/EigenDecompositionImpl.java	2019-08-01 08:56:45.109393141 -0400
+@@ -869,7 +869,6 @@
+             for (int i = 4 * (n0 - 2); i >= 0; i -= 4) {
+                 if (work[i + 2] <= 0) {
+                     i0 = 1 + i / 4;
+-                    break;
+                 }
+                 if (diagMin >= 4 * offDiagMax) {
+                     diagMin    = Math.min(diagMin, work[i + 4]);

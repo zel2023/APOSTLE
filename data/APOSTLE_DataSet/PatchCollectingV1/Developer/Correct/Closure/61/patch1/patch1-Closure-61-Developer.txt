@@ -1,0 +1,1 @@
+Fix regex global references in Closure metadata

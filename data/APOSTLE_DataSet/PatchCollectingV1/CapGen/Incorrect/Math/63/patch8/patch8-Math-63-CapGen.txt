@@ -1,0 +1,1 @@
+Add missing MathUtils . equals ( double )

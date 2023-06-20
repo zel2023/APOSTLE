@@ -1,0 +1,11 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_77/ArrayRealVector/Math_77_ArrayRealVector_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_77/ArrayRealVector/Math_77_ArrayRealVector_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -718,7 +718,7 @@
+     public double getLInfNorm() {
+         double max = 0;
+         for (double a : data) {
+-            max += Math.max(max, Math.abs(a));
++            max = Math.max(max, Math.abs(a));
+         }
+         return max;
+     }

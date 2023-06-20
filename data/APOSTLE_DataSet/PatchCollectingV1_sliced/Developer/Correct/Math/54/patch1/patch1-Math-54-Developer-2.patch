@@ -1,0 +1,14 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_54/Dfp/Math_54_Dfp_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_54/Dfp/Math_54_Dfp_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -2316,7 +2319,10 @@
+ 
+         Dfp y = this;
+         boolean negate = false;
+-        if (lessThan(getZero())) {
++        int cmp0 = compare(this, getZero());
++        if (cmp0 == 0) {
++            return sign < 0 ? -0.0 : +0.0;
++        } else if (cmp0 < 0) {
+             y = negate();
+             negate = true;
+         }

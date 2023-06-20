@@ -1,0 +1,1 @@
+Updated the scope for the closure scope for the given node .

@@ -1,0 +1,11 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Time_13/PeriodFormatterBuilder/Time_13_PeriodFormatterBuilder_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Time_13/PeriodFormatterBuilder/Time_13_PeriodFormatterBuilder_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -1095,7 +1095,7 @@
+             if (iFieldType >= SECONDS_MILLIS) {
+                 // valueLong contains the seconds and millis fields
+                 // the minimum output is 0.000, which is 4 or 5 digits with a negative
+-                sum = Math.max(sum, 4);
++                sum = (valueLong < 0 ? Math.max(sum, 5) : Math.max(sum, 4));
+                 // plus one for the decimal point
+                 sum++;
+                 if (iFieldType == SECONDS_OPTIONAL_MILLIS &&

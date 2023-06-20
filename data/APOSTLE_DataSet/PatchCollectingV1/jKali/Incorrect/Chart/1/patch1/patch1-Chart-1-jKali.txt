@@ -1,0 +1,1 @@
+Allow null dataset in chart

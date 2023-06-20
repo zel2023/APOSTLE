@@ -1,0 +1,1 @@
+Fixed a bug in Lang_45_WordUtils where negative lower value was set

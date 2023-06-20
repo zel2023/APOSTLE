@@ -1,0 +1,1 @@
+StrBuilder ( ) uses char[] instead of char [ ] for the char array .

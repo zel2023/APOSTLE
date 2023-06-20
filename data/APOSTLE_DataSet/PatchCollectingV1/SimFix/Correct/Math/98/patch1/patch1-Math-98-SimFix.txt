@@ -1,0 +1,1 @@
+Fix BigMatrixImpl to work with dense matrix impl .

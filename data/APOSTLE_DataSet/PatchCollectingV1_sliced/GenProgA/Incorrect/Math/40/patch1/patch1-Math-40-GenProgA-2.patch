@@ -1,0 +1,15 @@
+--- /tmp/GenProg_Defects4J_Math_40/src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java	2019-08-01 01:58:07.036907668 -0400
++++ /tmp/GenProg_Defects4J_Math_40/patches_ezc5/Patch_726/patched/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java	2019-08-01 03:20:42.982821893 -0400
+@@ -390,8 +393,10 @@
+     public double solve(int maxEval, UnivariateFunction f, double min,
+                         double max, double startValue,
+                         AllowedSolution allowedSolution) {
+-        this.allowed = allowedSolution;
+-        return super.solve(maxEval, f, min, max, startValue);
++        double x1 = getMax();
++		this.allowed = allowedSolution;
++        verifyInterval(min, max);
++		return super.solve(maxEval, f, min, max, startValue);
+     }
+ 
+ }

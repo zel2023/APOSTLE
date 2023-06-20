@@ -1,0 +1,13 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_64/LevenbergMarquardtOptimizer/Math_64_LevenbergMarquardtOptimizer_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_64/LevenbergMarquardtOptimizer/Math_64_LevenbergMarquardtOptimizer_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -439,10 +457,6 @@
+                        (delta <= parRelativeTolerance * xNorm)) {
+                        return current;
+                    }
+-                } else {
+-                    if (checker.converged(getIterations(), previous, current)) {
+-                        return current;
+-                    }
+                 }
+                 // tests for termination and stringent tolerances
+                 // (2.2204e-16 is the machine epsilon for IEEE754)

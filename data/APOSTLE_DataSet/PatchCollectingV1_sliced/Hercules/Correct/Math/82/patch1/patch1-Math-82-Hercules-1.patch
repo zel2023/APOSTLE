@@ -1,0 +1,11 @@
+--- patch1-Math-82-Hercules.buggy	2020-11-06 19:59:07.000000000 +0800
++++ patch1-Math-82-Hercules.fixed	2020-11-06 20:00:29.000000000 +0800
+@@ -79,7 +79,7 @@
+         for (int i = tableau.getNumObjectiveFunctions(); i < tableau.getHeight(); i++) {
+             final double rhs = tableau.getEntry(i, tableau.getWidth() - 1);
+             final double entry = tableau.getEntry(i, col);
+-            if (MathUtils.compareTo(entry, 0, epsilon) >= 0) {
++            if (MathUtils.compareTo(entry, 0, epsilon) > 0) {
+                 final double ratio = rhs / entry;
+                 if (ratio < minRatio) {
+                     minRatio = ratio;

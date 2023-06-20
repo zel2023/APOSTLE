@@ -1,0 +1,1 @@
+Fix bug in renegation of max abs ( x ) .

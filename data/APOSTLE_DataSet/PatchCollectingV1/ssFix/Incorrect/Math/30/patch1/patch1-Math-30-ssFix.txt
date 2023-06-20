@@ -1,0 +1,1 @@
+Add ( double ) cast to avoid warning ( varU = ( double ) n1n2

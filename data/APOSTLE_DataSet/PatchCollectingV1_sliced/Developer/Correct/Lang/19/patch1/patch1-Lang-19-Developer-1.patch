@@ -1,0 +1,11 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_19/NumericEntityUnescaper/Lang_19_NumericEntityUnescaper_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_19/NumericEntityUnescaper/Lang_19_NumericEntityUnescaper_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -37,7 +37,7 @@
+     public int translate(CharSequence input, int index, Writer out) throws IOException {
+         int seqEnd = input.length();
+         // Uses -2 to ensure there is something after the &#
+-        if(input.charAt(index) == '&' && index < seqEnd - 1 && input.charAt(index + 1) == '#') {
++        if(input.charAt(index) == '&' && index < seqEnd - 2 && input.charAt(index + 1) == '#') {
+             int start = index + 2;
+             boolean isHex = false;
+ 

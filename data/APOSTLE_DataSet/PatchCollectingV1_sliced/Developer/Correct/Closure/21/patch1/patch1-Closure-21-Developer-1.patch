@@ -1,0 +1,11 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_21/CheckSideEffects/Closure_21_CheckSideEffects_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_21/CheckSideEffects/Closure_21_CheckSideEffects_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -98,7 +98,7 @@
+     // Do not try to remove a block or an expr result. We already handle
+     // these cases when we visit the child, and the peephole passes will
+     // fix up the tree in more clever ways when these are removed.
+-    if (n.isExprResult()) {
++    if (n.isExprResult() || n.isBlock()) {
+       return;
+     }
+ 

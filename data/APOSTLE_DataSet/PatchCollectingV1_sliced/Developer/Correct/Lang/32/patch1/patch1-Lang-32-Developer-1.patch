@@ -1,0 +1,16 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_32/HashCodeBuilder/Lang_32_HashCodeBuilder_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_32/HashCodeBuilder/Lang_32_HashCodeBuilder_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -101,12 +101,7 @@
+      * 
+      * @since 2.3
+      */
+-    private static final ThreadLocal<Set<IDKey>> REGISTRY = new ThreadLocal<Set<IDKey>>() {
+-        @Override
+-        protected Set<IDKey> initialValue() {
+-            return new HashSet<IDKey>();
+-        }
+-    };
++    private static final ThreadLocal<Set<IDKey>> REGISTRY = new ThreadLocal<Set<IDKey>>();
+ 
+     /*
+      * N.B. we cannot store the actual objects in a HashSet, as that would use the very hashCode()

@@ -1,0 +1,1 @@
+Fix null - penalty in long precision spotting

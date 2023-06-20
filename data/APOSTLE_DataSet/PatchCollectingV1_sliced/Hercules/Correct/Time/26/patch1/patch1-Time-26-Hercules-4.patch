@@ -1,0 +1,11 @@
+--- patch1-Time-26-Hercules.buggy	2020-11-06 20:14:51.000000000 +0800
++++ patch1-Time-26-Hercules.fixed	2020-11-06 20:17:46.000000000 +0800
+@@ -464,7 +464,7 @@
+         public long set(long instant, int value) {
+             long localInstant = iZone.convertUTCToLocal(instant);
+             localInstant = iField.set(localInstant, value);
+-            long result = iZone.convertLocalToUTC(localInstant, false);
++            long result = iZone.convertLocalToUTC(localInstant, false, instant);
+             if (get(result) != value) {
+                 throw new IllegalFieldValueException(iField.getType(), new Integer(value),
+                     "Illegal instant due to time zone offset transition: " +

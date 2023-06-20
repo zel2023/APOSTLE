@@ -1,0 +1,11 @@
+--- /src/java/org/apache/commons/math/util/MathUtils.java
++++ /src/java/org/apache/commons/math/util/MathUtils.java
+@@ -374,6 +384,8 @@
+         if (n < 0) {
+             throw new IllegalArgumentException("must have n >= 0 for n!");
+         }
++	if (n<(int)20.0){return patch_method(n);}        
++
+         return Math.floor(Math.exp(factorialLog(n)) + 0.5);
+     }
+ 

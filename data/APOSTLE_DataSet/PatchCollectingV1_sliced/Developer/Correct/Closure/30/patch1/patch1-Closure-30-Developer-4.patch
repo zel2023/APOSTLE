@@ -1,0 +1,12 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_30/MustBeReachingVariableDef/Closure_30_MustBeReachingVariableDef_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_30/MustBeReachingVariableDef/Closure_30_MustBeReachingVariableDef_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -427,6 +432,9 @@
+     GraphNode<Node, Branch> n = getCfg().getNode(useNode);
+     FlowState<MustDef> state = n.getAnnotation();
+     Definition def = state.getIn().reachingDef.get(jsScope.getVar(name));
++    if (def.unknownDependencies) {
++      return true;
++    }
+ 
+     for (Var s : def.depends) {
+       if (s.scope != jsScope) {

@@ -1,0 +1,1 @@
+throw exception if abs / max is not greater than threshold

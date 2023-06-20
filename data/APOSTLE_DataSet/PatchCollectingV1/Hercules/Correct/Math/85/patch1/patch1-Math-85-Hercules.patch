@@ -1,0 +1,11 @@
+--- patch1-Math-85-Hercules.buggy	2020-11-06 20:02:44.000000000 +0800
++++ patch1-Math-85-Hercules.fixed	2020-11-06 20:03:29.000000000 +0800
+@@ -195,7 +195,7 @@
+         } while ((fa * fb > 0.0) && (numIterations < maximumIterations) && 
+                 ((a > lowerBound) || (b < upperBound)));
+    
+-        if (fa * fb >= 0.0 ) {
++        if (fa * fb > 0.0) {
+             throw new ConvergenceException(
+                       "number of iterations={0}, maximum iterations={1}, " +
+                       "initial={2}, lower bound={3}, upper bound={4}, final a value={5}, " +

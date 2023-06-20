@@ -1,0 +1,17 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_115/FunctionInjector/Closure_115_FunctionInjector_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_115/FunctionInjector/Closure_115_FunctionInjector_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -694,14 +694,6 @@
+ 
+     Node block = fnNode.getLastChild();
+ 
+-    boolean hasSideEffects = false;
+-    if (block.hasChildren()) {
+-      Preconditions.checkState(block.hasOneChild());
+-      Node stmt = block.getFirstChild();
+-      if (stmt.isReturn()) {
+-        hasSideEffects = NodeUtil.mayHaveSideEffects(stmt.getFirstChild(), compiler);
+-      }
+-    }
+     // CALL NODE: [ NAME, ARG1, ARG2, ... ]
+     Node cArg = callNode.getFirstChild().getNext();
+ 

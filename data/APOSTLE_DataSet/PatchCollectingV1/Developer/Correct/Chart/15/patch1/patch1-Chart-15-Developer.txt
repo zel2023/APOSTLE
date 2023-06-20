@@ -1,0 +1,1 @@
+Fix an NPE if the dataset is null .

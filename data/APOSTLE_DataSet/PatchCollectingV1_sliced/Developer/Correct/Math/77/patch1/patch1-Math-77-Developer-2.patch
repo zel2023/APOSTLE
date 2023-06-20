@@ -1,0 +1,18 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_77/OpenMapRealVector/Math_77_OpenMapRealVector_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_77/OpenMapRealVector/Math_77_OpenMapRealVector_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -495,15 +495,6 @@
+         return max;
+     }
+ 
+-    public double getLInfNorm() {
+-        double max = 0;
+-        Iterator iter = entries.iterator();
+-        while (iter.hasNext()) {
+-            iter.advance();
+-            max += iter.value();
+-        }
+-        return max;
+-    }
+     /**
+      * Optimized method to compute LInfDistance.
+      * @param v The vector to compute from

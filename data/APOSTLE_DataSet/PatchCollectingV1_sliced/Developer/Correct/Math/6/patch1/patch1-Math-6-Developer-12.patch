@@ -1,0 +1,11 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_6/PowellOptimizer/Math_6_PowellOptimizer_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_6/PowellOptimizer/Math_6_PowellOptimizer_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -224,7 +223,7 @@
+             final PointValuePair current = new PointValuePair(x, fVal);
+             if (!stop) { // User-defined stopping criteria.
+                 if (checker != null) {
+-                    stop = checker.converged(iter, previous, current);
++                    stop = checker.converged(getIterations(), previous, current);
+                 }
+             }
+             if (stop) {

@@ -1,0 +1,20 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_30/StringUtils/Lang_30_StringUtils_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_30/StringUtils/Lang_30_StringUtils_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -1573,8 +1592,16 @@
+         int strLen = str.length();
+         for (int i = 0; i < strLen; i++) {
+             char ch = str.charAt(i);
+-            if (searchChars.indexOf(ch) < 0) {
++            boolean chFound = searchChars.indexOf(ch) >= 0;
++            if (i + 1 < strLen && Character.isHighSurrogate(ch)) {
++                char ch2 = str.charAt(i + 1);
++                if (chFound && searchChars.indexOf(ch2) < 0) {
+                     return i;
++                }
++            } else {
++                if (!chFound) {
++                    return i;
++                }
+             }
+         }
+         return INDEX_NOT_FOUND;

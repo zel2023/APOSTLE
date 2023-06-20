@@ -1,0 +1,11 @@
+--- patch1-Math-43-Hercules.buggy	2020-11-06 19:11:06.000000000 +0800
++++ patch1-Math-43-Hercules.fixed	2020-11-06 19:13:08.000000000 +0800
+@@ -161,7 +161,7 @@
+         if (!(varianceImpl instanceof Variance)) {
+             varianceImpl.increment(value);
+         }
+-        if (!(geoMeanImpl instanceof GeometricMean)) {
++        if (!((geoMeanImpl) == geoMean)) {
+             geoMeanImpl.increment(value);
+         }
+         n++;

@@ -1,0 +1,1 @@
+Remove sample from the DiscreteDistribution example .

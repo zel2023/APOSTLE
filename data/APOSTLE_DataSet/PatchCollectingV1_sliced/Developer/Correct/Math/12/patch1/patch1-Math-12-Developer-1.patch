@@ -1,0 +1,10 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_12/BitsStreamGenerator/Math_12_BitsStreamGenerator_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_12/BitsStreamGenerator/Math_12_BitsStreamGenerator_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -16,6 +16,7 @@
+  */
+ package org.apache.commons.math3.random;
+ 
++import java.io.Serializable;
+ 
+ import org.apache.commons.math3.exception.NotStrictlyPositiveException;
+ import org.apache.commons.math3.util.FastMath;

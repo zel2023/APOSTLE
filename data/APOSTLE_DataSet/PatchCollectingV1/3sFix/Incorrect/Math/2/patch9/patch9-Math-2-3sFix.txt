@@ -1,0 +1,1 @@
+Fix astor in prior to using p <= 0

@@ -1,0 +1,19 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_32/HashCodeBuilder/Lang_32_HashCodeBuilder_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_32/HashCodeBuilder/Lang_32_HashCodeBuilder_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -535,7 +536,15 @@
+      * @since 2.3
+      */
+     static void unregister(Object value) {
+-        getRegistry().remove(new IDKey(value));
++        Set<IDKey> s = getRegistry();
++        if (s != null) {
++            s.remove(new IDKey(value));
++            synchronized (HashCodeBuilder.class) {
++                if (s.isEmpty()) {
++                    REGISTRY.remove();
++                }
++            }
++        }
+     }
+ 
+     /**

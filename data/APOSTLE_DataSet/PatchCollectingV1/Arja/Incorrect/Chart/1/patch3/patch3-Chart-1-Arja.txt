@@ -1,0 +1,1 @@
+Fix category item renderer to save row count in case of data series changes

@@ -1,0 +1,1 @@
+StrBuilder copy / paste of a string too long

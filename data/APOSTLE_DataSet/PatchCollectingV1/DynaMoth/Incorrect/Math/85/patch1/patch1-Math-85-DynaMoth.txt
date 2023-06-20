@@ -1,0 +1,1 @@
+Fix a merge conflict in UnivariateRealSolverUtils

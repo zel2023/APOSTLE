@@ -1,0 +1,1 @@
+Remove ' POS ' fallthrough in isStrWhiteSpaceChar case .

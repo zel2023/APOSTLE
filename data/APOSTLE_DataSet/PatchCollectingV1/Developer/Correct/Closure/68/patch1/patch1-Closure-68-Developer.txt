@@ -1,0 +1,1 @@
+Restore look ahead indicator for TypeParameters

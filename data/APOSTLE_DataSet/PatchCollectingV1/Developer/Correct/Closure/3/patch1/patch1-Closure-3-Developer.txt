@@ -1,0 +1,1 @@
+Fix possible ES6 error

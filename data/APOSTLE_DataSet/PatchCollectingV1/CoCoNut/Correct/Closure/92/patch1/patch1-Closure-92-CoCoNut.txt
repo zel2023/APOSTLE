@@ -1,0 +1,1 @@
+Fixing the indexing of the closure ' s namespace .

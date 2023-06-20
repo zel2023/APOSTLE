@@ -1,0 +1,20 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_92/MathUtils/Math_92_MathUtils_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_92/MathUtils/Math_92_MathUtils_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -274,11 +311,17 @@
+          * For values small enough to do exact integer computation,
+          * return the log of the exact value 
+          */
++        if (n < 67) {  
++            return Math.log(binomialCoefficient(n,k));
++        }
+         
+         /*
+          * Return the log of binomialCoefficientDouble for values that will not
+          * overflow binomialCoefficientDouble
+          */
++        if (n < 1030) { 
++            return Math.log(binomialCoefficientDouble(n, k));
++        } 
+         
+         /*
+          * Sum logs for values that could overflow

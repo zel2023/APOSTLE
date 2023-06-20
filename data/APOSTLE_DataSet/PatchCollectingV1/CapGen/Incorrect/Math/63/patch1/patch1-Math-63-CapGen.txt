@@ -1,0 +1,1 @@
+Fix MathUtils . equals ( double , double , int )

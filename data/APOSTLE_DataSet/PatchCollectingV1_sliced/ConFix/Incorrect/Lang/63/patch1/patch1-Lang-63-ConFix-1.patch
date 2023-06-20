@@ -1,0 +1,10 @@
+--- ../result-tf-hash/lang/lang63/buggy/org/apache/commons/lang/time/DurationFormatUtils.java	2019-02-20 00:02:30.370355690 +0000
++++ ../result-tf-hash/lang/lang63/confix/org/apache/commons/lang/time/DurationFormatUtils.java	2019-02-20 00:02:30.370355690 +0000
+@@ -21,6 +21,7 @@
+ import java.util.Calendar;
+ import java.util.Date;
+ import java.util.TimeZone;
++import java.util.Map;
+ 
+ /**
+  * <p>Duration formatting utilities and constants. The following table describes the tokens 

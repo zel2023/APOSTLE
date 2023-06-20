@@ -1,0 +1,1 @@
+Fix a minor increase in the number of iterations since the lowerBound was too high

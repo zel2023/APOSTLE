@@ -1,0 +1,1 @@
+Fix ThreadLocal ' s value check

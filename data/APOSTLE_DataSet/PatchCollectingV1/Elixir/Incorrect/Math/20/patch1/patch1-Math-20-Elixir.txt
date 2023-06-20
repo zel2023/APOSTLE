@@ -1,0 +1,1 @@
+remove maxiterations as it is not compatible with Java 8

@@ -1,0 +1,1 @@
+Do not inline errors in AbstractPeepholeOptimization . error ( )

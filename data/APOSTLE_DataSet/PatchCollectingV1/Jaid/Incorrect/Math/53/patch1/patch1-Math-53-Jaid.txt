@@ -1,0 +1,1 @@
+Add the NaN check , as the other one is also possible , as the numerator + rhs .

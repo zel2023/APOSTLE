@@ -1,0 +1,16 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_76/DeadAssignmentsElimination/Closure_76_DeadAssignmentsElimination_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_76/DeadAssignmentsElimination/Closure_76_DeadAssignmentsElimination_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -369,13 +402,11 @@
+         // Expressions are evaluated left-right, depth first.
+         for (Node child = n.getFirstChild();
+             child != null; child = child.getNext()) {
+-          if (!ControlFlowGraph.isEnteringNewCfgNode(child)) { // Not a FUNCTION
+           VariableLiveness state = isVariableReadBeforeKill(child, variable);
+           if (state != VariableLiveness.MAYBE_LIVE) {
+             return state;
+           }
+         }
+-      }
+     }
+ 
+     return VariableLiveness.MAYBE_LIVE;

@@ -1,0 +1,11 @@
+--- /source/org/jfree/chart/plot/XYPlot.java
++++ /source/org/jfree/chart/plot/XYPlot.java
+@@ -4489,7 +4489,7 @@
+                                 DatasetUtilities.findRangeBounds(d));
+                     }
+                 }
+-                
++                if (r != null) {
+                     Collection c = r.getAnnotations();
+                     Iterator i = c.iterator();
+                     while (i.hasNext()) {

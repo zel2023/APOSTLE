@@ -1,0 +1,1 @@
+Add throw argument for addValue ( )

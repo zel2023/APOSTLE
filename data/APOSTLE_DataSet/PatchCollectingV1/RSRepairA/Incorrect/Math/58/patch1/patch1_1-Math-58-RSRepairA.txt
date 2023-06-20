@@ -1,0 +1,1 @@
+Fix the Newton correction rate over the last 24 hours with the same error , so I ' m

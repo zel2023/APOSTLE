@@ -1,0 +1,10 @@
+--- /source/org/jfree/chart/plot/CategoryPlot.java
++++ /source/org/jfree/chart/plot/CategoryPlot.java
+@@ -2163,6 +2163,7 @@
+             markers = (ArrayList) this.backgroundDomainMarkers.get(new Integer(
+                     index));
+         }
++        	if (markers == null){return false;}
+         boolean removed = markers.remove(marker);
+         if (removed && notify) {
+             fireChangeEvent();

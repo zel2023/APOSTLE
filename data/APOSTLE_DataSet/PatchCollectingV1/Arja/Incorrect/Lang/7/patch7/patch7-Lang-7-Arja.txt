@@ -1,0 +1,1 @@
+Handle hex number format in NumberUtils

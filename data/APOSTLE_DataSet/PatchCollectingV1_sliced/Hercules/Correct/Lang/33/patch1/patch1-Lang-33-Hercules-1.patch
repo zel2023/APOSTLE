@@ -1,0 +1,12 @@
+--- patch1-Lang-33-Hercules.buggys	2020-11-03 23:45:25.000000000 +0800
++++ patch1-Lang-33-Hercules.fixed	2020-11-03 23:50:40.000000000 +0800
+@@ -665,7 +665,8 @@
+ 
+         Class<?>[] convertedClasses = new Class[classes.length];
+         for (int i = 0; i < classes.length; i++) {
+-            convertedClasses[i] = primitiveToWrapper(classes[i]);
++            if ((classes[i] != null) && (classes != null) && (convertedClasses != null))
++                convertedClasses[i] = primitiveToWrapper(classes[i]);
+         }
+         return convertedClasses;
+     }

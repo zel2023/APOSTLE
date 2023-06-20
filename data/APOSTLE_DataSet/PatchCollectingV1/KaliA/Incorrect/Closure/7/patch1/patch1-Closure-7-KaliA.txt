@@ -1,0 +1,1 @@
+Allow restricting of restricted types , fix # 771

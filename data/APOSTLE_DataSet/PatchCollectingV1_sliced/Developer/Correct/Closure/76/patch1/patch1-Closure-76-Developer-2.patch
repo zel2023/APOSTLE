@@ -1,0 +1,12 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_76/DeadAssignmentsElimination/Closure_76_DeadAssignmentsElimination_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_76/DeadAssignmentsElimination/Closure_76_DeadAssignmentsElimination_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -337,6 +351,9 @@
+    */
+   private VariableLiveness isVariableReadBeforeKill(
+       Node n, String variable) {
++    if (ControlFlowGraph.isEnteringNewCfgNode(n)) { // Not a FUNCTION
++      return VariableLiveness.MAYBE_LIVE;
++    }
+ 
+     if (NodeUtil.isName(n) && variable.equals(n.getString())) {
+       if (NodeUtil.isLhs(n, n.getParent())) {

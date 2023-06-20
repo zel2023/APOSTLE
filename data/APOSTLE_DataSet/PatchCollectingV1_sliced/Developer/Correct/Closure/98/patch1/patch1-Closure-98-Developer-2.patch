@@ -1,0 +1,15 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_98/ReferenceCollectingCallback/Closure_98_ReferenceCollectingCallback_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_98/ReferenceCollectingCallback/Closure_98_ReferenceCollectingCallback_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -542,10 +550,12 @@
+     /**
+      * Whether this block denotes a function scope.
+      */
++    private final boolean isFunction;
+ 
+     /**
+      * Whether this block denotes a loop.
+      */
++    private final boolean isLoop;
+ 
+     /**
+      * Creates a new block.

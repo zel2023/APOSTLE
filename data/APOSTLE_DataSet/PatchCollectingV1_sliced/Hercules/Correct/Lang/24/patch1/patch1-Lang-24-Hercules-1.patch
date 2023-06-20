@@ -1,0 +1,11 @@
+--- patch1-Lang-24-Hercules.buggys	2020-11-03 23:40:13.000000000 +0800
++++ patch1-Lang-24-Hercules.fixed	2020-11-03 23:40:56.000000000 +0800
+@@ -1410,7 +1410,7 @@
+             if (chars[i] == 'l'
+                 || chars[i] == 'L') {
+                 // not allowing L with an exponent or decimal point
+-                return foundDigit && !hasExp;
++                return foundDigit && !(hasDecPoint) && (!hasExp);
+             }
+             // last character is illegal
+             return false;

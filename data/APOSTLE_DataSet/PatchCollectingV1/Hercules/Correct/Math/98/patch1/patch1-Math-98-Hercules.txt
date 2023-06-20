@@ -1,0 +1,1 @@
+Fix the array to work with BigDecimal ( or other BigDecimal ) .

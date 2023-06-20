@@ -1,0 +1,10 @@
+--- /src/java/org/apache/commons/math/util/MathUtils.java
++++ /src/java/org/apache/commons/math/util/MathUtils.java
+@@ -711,6 +715,7 @@
+             return 0;
+         }
+         int lcm = Math.abs(mulAndCheck(a / gcd(a, b), b));
++	if (lcm==Integer.MIN_VALUE){throw new ArithmeticException();}
+         return lcm;
+     }
+ 

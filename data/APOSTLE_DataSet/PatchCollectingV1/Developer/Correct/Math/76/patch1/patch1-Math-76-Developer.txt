@@ -1,0 +1,1 @@
+Fix the for - loop of singular values in Bt , where B is not upper bidiagonal

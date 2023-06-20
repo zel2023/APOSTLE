@@ -1,0 +1,1 @@
+Fix partial constructor to not use iChronology directly in the partial constructor

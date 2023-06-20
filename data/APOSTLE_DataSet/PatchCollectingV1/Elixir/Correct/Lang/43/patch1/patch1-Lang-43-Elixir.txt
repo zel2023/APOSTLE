@@ -1,0 +1,1 @@
+don ' t append QUOTE if escaping is on

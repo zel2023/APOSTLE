@@ -1,0 +1,1 @@
+Fixed a bug in Math - 80 - Hercules .

@@ -1,0 +1,11 @@
+--- patch1-Closure-73-Hercules.buggys	2020-11-03 23:17:49.000000000 +0800
++++ patch1-Closure-73-Hercules.fixed	2020-11-03 23:18:40.000000000 +0800
+@@ -1042,7 +1042,7 @@
+             // No charsetEncoder provided - pass straight latin characters
+             // through, and escape the rest.  Doing the explicit character
+             // check is measurably faster than using the CharsetEncoder.
+-            if (c > 0x1f && c <= 0x7f) {
++            if (c > 0x1f && c < 0x7f) {
+               sb.append(c);
+             } else {
+               // Other characters can be misinterpreted by some js parsers,

@@ -1,0 +1,9 @@
+--- /source/org/jfree/chart/plot/CategoryPlot.java
++++ /source/org/jfree/chart/plot/CategoryPlot.java
+@@ -978,6 +981,7 @@
+                 result = p.getRangeAxisIndex(axis);
+             }
+         }
++        	if (axis == null){throw new IllegalArgumentException();}
+         return result;
+     }

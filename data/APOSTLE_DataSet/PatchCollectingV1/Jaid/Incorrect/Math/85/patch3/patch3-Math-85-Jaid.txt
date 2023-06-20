@@ -1,0 +1,1 @@
+Fix a false convergence check in UnivariateRealSolverUtils

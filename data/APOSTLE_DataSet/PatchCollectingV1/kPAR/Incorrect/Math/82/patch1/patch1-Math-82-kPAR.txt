@@ -1,0 +1,1 @@
+Added DEFAULT_EPSILON to the min value of the tableau object .

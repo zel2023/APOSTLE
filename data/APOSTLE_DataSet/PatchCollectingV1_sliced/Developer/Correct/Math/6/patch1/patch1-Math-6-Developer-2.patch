@@ -1,0 +1,11 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_6/NonLinearConjugateGradientOptimizer/Math_6_NonLinearConjugateGradientOptimizer_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_6/NonLinearConjugateGradientOptimizer/Math_6_NonLinearConjugateGradientOptimizer_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -274,7 +273,7 @@
+             steepestDescent = newSteepestDescent;
+ 
+             // Compute conjugate search direction.
+-            if (iter % n == 0 ||
++            if (getIterations() % n == 0 ||
+                 beta < 0) {
+                 // Break conjugation: reset search direction.
+                 searchDirection = steepestDescent.clone();

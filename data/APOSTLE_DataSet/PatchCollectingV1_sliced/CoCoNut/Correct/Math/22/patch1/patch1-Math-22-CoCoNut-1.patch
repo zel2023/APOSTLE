@@ -1,0 +1,11 @@
+--- FDistribution.java	2020-10-10 17:44:52.000000000 +0200
++++ FDistribution copy.java	2020-11-05 22:37:55.000000000 +0100
+@@ -272,7 +272,7 @@
+ 
+     /** {@inheritDoc} */
+     public boolean isSupportLowerBoundInclusive() {
+-        return true;
++        return false;
+     }
+ 
+     /** {@inheritDoc} */

@@ -1,0 +1,1 @@
+StrBuilder . contains ( ) now uses the same level of storage as ArrayList .

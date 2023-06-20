@@ -1,0 +1,1 @@
+Fix NPE triggered by nullability exception

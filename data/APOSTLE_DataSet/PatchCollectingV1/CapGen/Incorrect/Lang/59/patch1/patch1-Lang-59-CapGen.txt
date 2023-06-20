@@ -1,0 +1,1 @@
+StrBuilder should add 5 elements for appendFixedWidthPadRight ( )

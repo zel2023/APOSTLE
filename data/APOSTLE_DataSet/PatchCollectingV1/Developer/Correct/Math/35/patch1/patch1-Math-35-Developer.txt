@@ -1,0 +1,1 @@
+ElitisticListPopulation constructor should set the elitism rate before setting the population limit .

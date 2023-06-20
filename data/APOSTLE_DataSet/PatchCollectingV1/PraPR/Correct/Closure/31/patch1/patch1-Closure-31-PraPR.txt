@@ -1,0 +1,1 @@
+Allow closure passes in the dependencies stream .

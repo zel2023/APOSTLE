@@ -1,0 +1,11 @@
+--- patch1-Closure-92-Hercules.buggys	2020-11-03 23:35:08.000000000 +0800
++++ patch1-Closure-92-Hercules.fixed	2020-11-03 23:35:45.000000000 +0800
+@@ -786,7 +786,7 @@
+         } else {
+           // In this case, the name was implicitly provided by two independent
+           // modules. We need to move this code up to a common module.
+-          int indexOfDot = namespace.indexOf('.');
++          int indexOfDot = namespace.lastIndexOf('.');
+           if (indexOfDot == -1) {
+             // Any old place is fine.
+             compiler.getNodeForCodeInsertion(minimumModule)

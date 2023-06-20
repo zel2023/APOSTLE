@@ -1,0 +1,1 @@
+Fix CombinedEventsManager . evaluateStep ( interpolator )

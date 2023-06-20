@@ -1,0 +1,1 @@
+Keep sample in looping over DiscreteDistribution

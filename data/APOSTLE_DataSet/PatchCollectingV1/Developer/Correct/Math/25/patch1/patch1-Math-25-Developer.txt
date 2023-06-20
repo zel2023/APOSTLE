@@ -1,0 +1,1 @@
+Add a throw if the denominator of Math_25 is zero .

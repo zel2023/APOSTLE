@@ -1,0 +1,1 @@
+Fix direct msampling to benefit from diagD = diag ( x , i )

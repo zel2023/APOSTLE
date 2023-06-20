@@ -1,0 +1,11 @@
+--- AbstractLeastSquaresOptimizer.java	2020-10-10 17:47:57.000000000 +0200
++++ AbstractLeastSquaresOptimizer copy.java	2020-11-05 23:05:22.000000000 +0100
+@@ -255,7 +255,7 @@
+         double chiSquare = 0;
+         for (int i = 0; i < rows; ++i) {
+             final double residual = residuals[i];
+-            chiSquare += residual * residual / residualsWeights[i];
++            chiSquare += residual *residual *residualsWeights [ i ] ;
+         }
+         return chiSquare;
+     }

@@ -1,0 +1,13 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Chart_22/KeyedObjects2D/Chart_22_KeyedObjects2D_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Chart_22/KeyedObjects2D/Chart_22_KeyedObjects2D_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -342,6 +364,10 @@
+      */
+     public void removeRow(Comparable rowKey) {
+         int index = getRowIndex(rowKey);
++        if (index < 0) {
++            throw new UnknownKeyException("Row key (" + rowKey 
++                    + ") not recognised.");
++        }
+         removeRow(index);
+     }
+ 

@@ -1,0 +1,11 @@
+--- patch1-Chart-9-Hercules.buggys	2020-11-03 21:39:26.000000000 +0800
++++ patch1-Chart-9-Hercules.fixed	2020-11-03 21:42:12.000000000 +0800
+@@ -941,7 +941,7 @@
+             endIndex = -(endIndex + 1); // this is first item AFTER end period
+             endIndex = endIndex - 1;    // so this is last item BEFORE end
+         }
+-        if (endIndex < 0) {
++        if (endIndex < 0 || (endIndex < startIndex)) {
+             emptyRange = true;
+         }
+         if (emptyRange) {

@@ -1,0 +1,1 @@
+Fixing possible loop in closure scope

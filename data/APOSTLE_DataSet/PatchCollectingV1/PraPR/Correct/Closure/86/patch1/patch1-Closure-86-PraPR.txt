@@ -1,0 +1,1 @@
+Allow new constructor to be used as a literal value .

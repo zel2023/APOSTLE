@@ -1,0 +1,1 @@
+Fix invalid closing / missing closing paren in ProperFractionFormat

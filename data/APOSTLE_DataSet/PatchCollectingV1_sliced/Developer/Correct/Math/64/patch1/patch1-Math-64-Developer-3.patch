@@ -1,0 +1,11 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_64/LevenbergMarquardtOptimizer/Math_64_LevenbergMarquardtOptimizer_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_64/LevenbergMarquardtOptimizer/Math_64_LevenbergMarquardtOptimizer_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -275,7 +280,7 @@
+             qrDecomposition();
+ 
+             // compute Qt.res
+-            qTy(residuals);
++            qTy(qtf);
+             // now we don't need Q anymore,
+             // so let jacobian contain the R matrix with its diagonal elements
+             for (int k = 0; k < solvedCols; ++k) {

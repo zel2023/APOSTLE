@@ -1,0 +1,1 @@
+Fix the case of a null pointer check in a few places .

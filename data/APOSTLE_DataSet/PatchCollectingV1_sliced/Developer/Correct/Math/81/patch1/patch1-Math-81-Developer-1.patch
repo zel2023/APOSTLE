@@ -1,0 +1,10 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_81/EigenDecompositionImpl/Math_81_EigenDecompositionImpl_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_81/EigenDecompositionImpl/Math_81_EigenDecompositionImpl_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -600,6 +600,7 @@
+         lowerSpectra = Math.min(lowerSpectra, lower);
+         final double upper = dCurrent + eCurrent;
+         work[upperStart + m - 1] = upper;
++        upperSpectra = Math.max(upperSpectra, upper);
+         minPivot = MathUtils.SAFE_MIN * Math.max(1.0, eMax * eMax);
+ 
+     }

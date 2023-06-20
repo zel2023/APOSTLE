@@ -1,0 +1,10 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Chart_25/StatisticalBarRenderer/Chart_25_StatisticalBarRenderer_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Chart_25/StatisticalBarRenderer/Chart_25_StatisticalBarRenderer_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -341,6 +346,7 @@
+             line = new Line2D.Double(lowVal, rectY + rectHeight * 0.25, 
+                                      lowVal, rectY + rectHeight * 0.75);
+             g2.draw(line);
++        }
+         
+         CategoryItemLabelGenerator generator = getItemLabelGenerator(row, 
+                 column);

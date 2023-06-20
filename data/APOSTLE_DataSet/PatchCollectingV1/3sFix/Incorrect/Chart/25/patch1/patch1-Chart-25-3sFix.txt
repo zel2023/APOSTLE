@@ -1,0 +1,1 @@
+Improved return type for null values

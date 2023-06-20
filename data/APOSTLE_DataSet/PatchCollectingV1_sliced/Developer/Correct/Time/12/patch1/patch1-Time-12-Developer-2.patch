@@ -1,0 +1,15 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Time_12/LocalDateTime/Time_12_LocalDateTime_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Time_12/LocalDateTime/Time_12_LocalDateTime_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -233,7 +234,12 @@
+         if (date == null) {
+             throw new IllegalArgumentException("The date must not be null");
+         }
++        if (date.getTime() < 0) {
+             // handle years in era BC
++            GregorianCalendar cal = new GregorianCalendar();
++            cal.setTime(date);
++            return fromCalendarFields(cal);
++        }
+         return new LocalDateTime(
+             date.getYear() + 1900,
+             date.getMonth() + 1,

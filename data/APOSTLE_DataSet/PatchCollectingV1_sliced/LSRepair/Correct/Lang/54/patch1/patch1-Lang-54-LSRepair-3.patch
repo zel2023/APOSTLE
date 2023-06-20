@@ -1,0 +1,10 @@
+--- /src/java/org/apache/commons/lang/LocaleUtils.java
++++ /src/java/org/apache/commons/lang/LocaleUtils.java
+@@ -126,6 +129,7 @@
+         }
+     }
+ 
++
+     //-----------------------------------------------------------------------
+     /**
+      * <p>Obtains the list of locales to search through when performing

@@ -1,0 +1,35 @@
+--- /Users/haoye.tian/Documents/University/data/PatchCollecting/Cardumen/Incorrect/Math/patch1-Math-63-Cardumen.buggy	2020-11-02 19:13:13.000000000 +0100
++++ /Users/haoye.tian/Documents/University/data/PatchCollecting/Cardumen/Incorrect/Math/patch1-Math-63-Cardumen.fixed	2020-11-02 19:13:13.000000000 +0100
+@@ -636,27 +559,12 @@
+      * </ul></p>
+      *
+      * @param n argument
+-     * @return <code>n!</code>
+-     * @throws IllegalArgumentException if preconditions are not met.
+-     */
+-    public static double factorialLog(final int n) {
+-        if (n < 0) {
+-            throw MathRuntimeException.createIllegalArgumentException(
+-                  LocalizedFormats.FACTORIAL_NEGATIVE_PARAMETER,
+-                  n);
+-        }
+-        if (n < 21) {
+-            return FastMath.log(factorial(n));
+-        }
+-        double logSum = 0;
+-        for (int i = 2; i <= n; i++) {
+-            logSum += FastMath.log(i);
+-        }
+-        return logSum;
+-    }
+ 
+-    /**
+-     * <p>
++ 
++ 
++ 
++ 
++ 
+      * Gets the greatest common divisor of the absolute value of two numbers,
+      * using the "binary gcd" method which avoids division and modulo
+      * operations. See Knuth 4.5.2 algorithm B. This algorithm is due to Josef

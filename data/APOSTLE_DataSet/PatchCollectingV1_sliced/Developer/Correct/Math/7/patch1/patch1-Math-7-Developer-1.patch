@@ -1,0 +1,15 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_7/AbstractIntegrator/Math_7_AbstractIntegrator_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_7/AbstractIntegrator/Math_7_AbstractIntegrator_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -343,8 +343,10 @@
+                 final double[] eventY = interpolator.getInterpolatedState().clone();
+ 
+                 // advance all event states to current time
+-                currentEvent.stepAccepted(eventT, eventY);
+-                isLastStep = currentEvent.stop();
++                for (final EventState state : eventsStates) {
++                    state.stepAccepted(eventT, eventY);
++                    isLastStep = isLastStep || state.stop();
++                }
+ 
+                 // handle the first part of the step, up to the event
+                 for (final StepHandler handler : stepHandlers) {

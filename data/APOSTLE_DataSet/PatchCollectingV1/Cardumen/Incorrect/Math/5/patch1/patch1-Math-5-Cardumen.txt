@@ -1,0 +1,1 @@
+Fix NaN in Object . equals ( )

@@ -1,0 +1,12 @@
+--- patch1-Chart-19-Hercules.buggy	2020-11-03 21:12:04.000000000 +0800
++++ patch1-Chart-19-Hercules.fixed	2020-11-07 23:50:44.000000000 +0800
+@@ -3144,6 +3144,9 @@
+         Range result = null;
+         List mappedDatasets = new ArrayList();
+         
++        if ((axis == null) || (rangeAxes == null))
++            throw new java.lang.IllegalArgumentException();
++            
+         int rangeIndex = this.rangeAxes.indexOf(axis);
+         if (rangeIndex >= 0) {
+             mappedDatasets.addAll(datasetsMappedToRangeAxis(rangeIndex));

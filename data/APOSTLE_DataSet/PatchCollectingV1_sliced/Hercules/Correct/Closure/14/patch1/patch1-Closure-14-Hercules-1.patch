@@ -1,0 +1,11 @@
+--- patch1-Closure-14-Hercules.buggys	2020-11-03 21:56:28.000000000 +0800
++++ patch1-Closure-14-Hercules.fixed	2020-11-03 21:58:50.000000000 +0800
+@@ -764,7 +764,7 @@
+         } else if (parent.getLastChild() == node){
+           if (cfa != null) {
+             for (Node finallyNode : cfa.finallyMap.get(parent)) {
+-              cfa.createEdge(fromNode, Branch.UNCOND, finallyNode);
++              cfa.createEdge(fromNode, Branch.ON_EX, finallyNode);
+             }
+           }
+           return computeFollowNode(fromNode, parent, cfa);

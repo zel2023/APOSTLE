@@ -1,0 +1,1 @@
+isDigits ( numeric ) will ignore - > long

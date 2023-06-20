@@ -1,0 +1,10 @@
+--- /source/org/jfree/chart/plot/XYPlot.java
++++ /source/org/jfree/chart/plot/XYPlot.java
+@@ -4500,6 +4500,7 @@
+                     }
+             }
+         }
++        }
+ 
+         Iterator it = includedAnnotations.iterator();
+         while (it.hasNext()) {

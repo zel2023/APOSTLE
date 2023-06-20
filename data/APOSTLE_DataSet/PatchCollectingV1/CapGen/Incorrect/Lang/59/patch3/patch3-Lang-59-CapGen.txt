@@ -1,0 +1,1 @@
+StrBuilder should add 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 +

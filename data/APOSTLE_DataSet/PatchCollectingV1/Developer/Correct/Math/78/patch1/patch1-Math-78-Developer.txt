@@ -1,0 +1,1 @@
+added epsilon step for g ( ta , gb )

@@ -1,0 +1,1 @@
+Switch the default closure implementation back to the record type .

@@ -1,0 +1,11 @@
+--- UniformRealDistribution.java	2020-10-10 17:44:52.000000000 +0200
++++ UniformRealDistribution copy.java	2020-11-05 22:39:40.000000000 +0100
+@@ -181,7 +181,7 @@
+ 
+     /** {@inheritDoc} */
+     public boolean isSupportUpperBoundInclusive() {
+-        return false;
++        return true;
+     }
+ 
+     /**

@@ -1,0 +1,13 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_19/NumericEntityUnescaper/Lang_19_NumericEntityUnescaper_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_19/NumericEntityUnescaper/Lang_19_NumericEntityUnescaper_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -76,8 +81,9 @@
+                 out.write(entityValue);
+             }
+ 
++            boolean semiNext = (end != seqEnd) && (input.charAt(end) == ';');
+ 
+-            return 2 + (end - start) + (isHex ? 1 : 0) + 1;
++            return 2 + (end - start) + (isHex ? 1 : 0) + (semiNext ? 1 : 0);
+         }
+         return 0;
+     }

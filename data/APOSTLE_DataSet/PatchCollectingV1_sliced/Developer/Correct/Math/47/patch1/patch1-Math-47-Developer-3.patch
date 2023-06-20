@@ -1,0 +1,13 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_47/Complex/Math_47_Complex_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_47/Complex/Math_47_Complex_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -253,8 +255,8 @@
+             return NaN;
+         }
+ 
+-        if (divisor.getReal() == 0.0 && divisor.getImaginary() == 0.0) {
+-            return NaN;
++        if (divisor.isZero) {
++            return isZero ? NaN : INF;
+         }
+ 
+         if (divisor.isInfinite() && !isInfinite()) {

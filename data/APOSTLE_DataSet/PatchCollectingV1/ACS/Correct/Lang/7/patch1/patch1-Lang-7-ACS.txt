@@ -1,0 +1,1 @@
+Handle early NPE when NumberUtils . startsWith ( ) is true

@@ -1,0 +1,11 @@
+--- Compiler.java	2020-10-10 17:30:18.000000000 +0200
++++ Compiler copy.java	2020-11-05 21:18:38.000000000 +0100
+@@ -1285,7 +1285,7 @@
+ 
+       // Check if the sources need to be re-ordered.
+       boolean staleInputs = false;
+-      if (options.dependencyOptions.needsManagement() && options.closurePass) {
++      if( options.dependencyOptions.needsManagement( ) ) {
+         for (CompilerInput input : inputs) {
+           // Forward-declare all the provided types, so that they
+           // are not flagged even if they are dropped from the process.

@@ -1,0 +1,14 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Time_23/DateTimeZone/Time_23_DateTimeZone_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Time_23/DateTimeZone/Time_23_DateTimeZone_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -561,6 +561,11 @@
+             // Backwards compatibility with TimeZone.
+             map = new HashMap<String, String>();
+             map.put("GMT", "UTC");
++            map.put("WET", "WET");
++            map.put("CET", "CET");
++            map.put("MET", "CET");
++            map.put("ECT", "CET");
++            map.put("EET", "EET");
+             map.put("MIT", "Pacific/Apia");
+             map.put("HST", "Pacific/Honolulu");  // JDK 1.1 compatible
+             map.put("AST", "America/Anchorage");

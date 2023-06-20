@@ -1,0 +1,1 @@
+EigenDecompositionImpl was trying to handle both heaps .

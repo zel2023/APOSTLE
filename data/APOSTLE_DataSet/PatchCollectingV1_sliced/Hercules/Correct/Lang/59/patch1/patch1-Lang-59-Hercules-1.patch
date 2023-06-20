@@ -1,0 +1,11 @@
+--- patch1-Lang-59-Hercules.buggy	2020-11-06 14:25:04.000000000 +0800
++++ patch1-Lang-59-Hercules.fixed	2020-11-06 14:26:46.000000000 +0800
+@@ -881,7 +881,7 @@
+             String str = (obj == null ? getNullText() : obj.toString());
+             int strLen = str.length();
+             if (strLen >= width) {
+-                str.getChars(0, strLen, buffer, size);
++                str.getChars(0, width, buffer, size);
+             } else {
+                 int padLen = width - strLen;
+                 str.getChars(0, strLen, buffer, size);

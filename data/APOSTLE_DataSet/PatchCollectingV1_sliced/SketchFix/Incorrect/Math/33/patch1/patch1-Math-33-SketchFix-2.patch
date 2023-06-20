@@ -1,0 +1,10 @@
+--- /src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java	
++++ /src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java
+@@ -105,6 +106,7 @@
+                 }
+             }
+         }
++        }
+ 
+         if (minRatioPositions.size() == 0) {
+           return null;

@@ -1,0 +1,1 @@
+allow L with a decimal point

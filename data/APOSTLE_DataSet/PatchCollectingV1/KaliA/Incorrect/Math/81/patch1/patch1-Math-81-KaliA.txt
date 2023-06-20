@@ -1,0 +1,1 @@
+Reverted the inverse divide by zero error in EigenDecompositionImpl . java

@@ -1,0 +1,1 @@
+Allow closure to be defined on non - global fields .

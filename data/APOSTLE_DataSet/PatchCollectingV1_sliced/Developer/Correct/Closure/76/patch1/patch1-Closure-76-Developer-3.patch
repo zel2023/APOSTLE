@@ -1,0 +1,28 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_76/DeadAssignmentsElimination/Closure_76_DeadAssignmentsElimination_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_76/DeadAssignmentsElimination/Closure_76_DeadAssignmentsElimination_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -359,9 +376,25 @@
+       // Conditionals
+       case Token.OR:
+       case Token.AND:
++        VariableLiveness v1 = isVariableReadBeforeKill(
++          n.getFirstChild(), variable);
++        VariableLiveness v2 = isVariableReadBeforeKill(
++          n.getLastChild(), variable);
+         // With a AND/OR the first branch always runs, but the second is
+         // may not.
++        if (v1 != VariableLiveness.MAYBE_LIVE) {
++          return v1;
++        } else if (v2 == VariableLiveness.READ) {
++          return VariableLiveness.READ;
++        } else {
++          return VariableLiveness.MAYBE_LIVE;
++        }
+       case Token.HOOK:
++        VariableLiveness first = isVariableReadBeforeKill(
++            n.getFirstChild(), variable);
++        if (first != VariableLiveness.MAYBE_LIVE) {
++          return first;
++        }
+         return checkHookBranchReadBeforeKill(
+             n.getFirstChild().getNext(), n.getLastChild(), variable);
+ 

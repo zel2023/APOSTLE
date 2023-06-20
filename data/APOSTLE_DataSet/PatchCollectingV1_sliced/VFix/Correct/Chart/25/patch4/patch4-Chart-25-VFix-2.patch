@@ -1,0 +1,10 @@
+--- patch4-Chart-25-VFix.buggy	2020-11-01 20:15:01.000000000 +0800
++++ patch4-Chart-25-VFix.fixed	2020-11-01 20:15:19.000000000 +0800
+@@ -484,6 +485,7 @@
+             line = new Line2D.Double(rectX + rectWidth / 2.0d - 5.0d, lowVal,
+                                      rectX + rectWidth / 2.0d + 5.0d, lowVal);
+             g2.draw(line);
++        }     
+         CategoryItemLabelGenerator generator = getItemLabelGenerator(row, 
+                 column);
+         if (generator != null && isItemLabelVisible(row, column)) {

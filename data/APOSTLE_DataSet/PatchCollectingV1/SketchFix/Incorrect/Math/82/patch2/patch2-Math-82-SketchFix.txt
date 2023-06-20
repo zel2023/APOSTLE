@@ -1,0 +1,1 @@
+Fixed a bug in the SimplexSolver . getEntry ( ) method where the ratio was too high

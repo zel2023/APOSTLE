@@ -1,0 +1,1 @@
+Do not traverse roots of Closure data

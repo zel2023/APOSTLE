@@ -1,0 +1,1 @@
+solve inverse cumulative probability in AbstractIntegerDistribution

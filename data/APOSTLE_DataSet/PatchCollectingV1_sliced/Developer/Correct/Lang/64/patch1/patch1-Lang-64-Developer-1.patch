@@ -1,0 +1,19 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_64/ValuedEnum/Lang_64_ValuedEnum_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_64/ValuedEnum/Lang_64_ValuedEnum_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -180,6 +180,16 @@
+      * @throws NullPointerException if other is <code>null</code>
+      */
+     public int compareTo(Object other) {
++        if (other == this) {
++            return 0;
++        }
++        if (other.getClass() != this.getClass()) {
++            if (other.getClass().getName().equals(this.getClass().getName())) {
++                return iValue - getValueInOtherClassLoader(other);
++            }
++            throw new ClassCastException(
++                    "Different enum class '" + ClassUtils.getShortClassName(other.getClass()) + "'");
++        }
+         return iValue - ((ValuedEnum) other).iValue;
+     }
+ 

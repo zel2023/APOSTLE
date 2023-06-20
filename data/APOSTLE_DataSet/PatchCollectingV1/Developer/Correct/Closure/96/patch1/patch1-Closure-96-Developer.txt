@@ -1,0 +1,1 @@
+Allow var_args parameter access from closure_96

@@ -1,0 +1,19 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_49/MakeDeclaredNamesUnique/Closure_49_MakeDeclaredNamesUnique_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_49/MakeDeclaredNamesUnique/Closure_49_MakeDeclaredNamesUnique_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -170,13 +173,16 @@
+ 
+       case Token.FUNCTION:
+         // Remove the function body scope
++        nameStack.pop();
+         // Remove function recursive name (if any).
+         nameStack.pop();
+         break;
+ 
++      case Token.LP:
+         // Note: The parameters and function body variables live in the
+         // same scope, we introduce the scope when in the "shouldTraverse"
+         // visit of LP, but remove it when when we exit the function above.
++        break;
+ 
+       case Token.CATCH:
+         // Remove catch except name from the stack of names.

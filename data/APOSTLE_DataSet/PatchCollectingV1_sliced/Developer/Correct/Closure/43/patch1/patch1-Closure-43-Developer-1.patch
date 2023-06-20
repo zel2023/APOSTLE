@@ -1,0 +1,10 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_43/TypedScopeCreator/Closure_43_TypedScopeCreator_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_43/TypedScopeCreator/Closure_43_TypedScopeCreator_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -417,6 +417,7 @@
+      * For more information, see
+      * http://code.google.com/p/closure-compiler/issues/detail?id=314
+      */
++    private List<Node> lentObjectLiterals = null;
+ 
+     /**
+      * Type-less stubs.

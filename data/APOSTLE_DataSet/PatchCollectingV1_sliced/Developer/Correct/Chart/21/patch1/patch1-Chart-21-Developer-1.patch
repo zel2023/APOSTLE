@@ -1,0 +1,10 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Chart_21/DefaultBoxAndWhiskerCategoryDataset/Chart_21_DefaultBoxAndWhiskerCategoryDataset_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Chart_21/DefaultBoxAndWhiskerCategoryDataset/Chart_21_DefaultBoxAndWhiskerCategoryDataset_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -154,6 +154,7 @@
+                 && this.minimumRangeValueColumn == c))  {
+             updateBounds();
+         }
++        else {
+         
+             double minval = Double.NaN;
+             if (item.getMinOutlier() != null) {

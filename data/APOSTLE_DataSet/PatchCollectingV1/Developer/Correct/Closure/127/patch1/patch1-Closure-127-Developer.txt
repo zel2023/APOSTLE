@@ -1,0 +1,1 @@
+added inFinally ( ) check for try / catch statement

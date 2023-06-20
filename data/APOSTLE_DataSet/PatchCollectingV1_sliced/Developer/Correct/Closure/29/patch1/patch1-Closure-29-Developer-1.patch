@@ -1,0 +1,10 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_29/InlineObjectLiterals/Closure_29_InlineObjectLiterals_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_29/InlineObjectLiterals/Closure_29_InlineObjectLiterals_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -154,6 +154,7 @@
+      */
+     private boolean isInlinableObject(List<Reference> refs) {
+       boolean ret = false;
++      Set<String> validProperties = Sets.newHashSet();
+       for (Reference ref : refs) {
+         Node name = ref.getNode();
+         Node parent = ref.getParent();

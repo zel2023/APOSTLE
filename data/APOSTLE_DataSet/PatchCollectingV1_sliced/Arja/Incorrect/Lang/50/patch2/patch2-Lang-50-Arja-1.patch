@@ -1,0 +1,10 @@
+--- /src/java/org/apache/commons/lang/time/FastDateFormat.java
++++ /src/java/org/apache/commons/lang/time/FastDateFormat.java
+@@ -288,6 +288,7 @@
+ 
+ 
+         FastDateFormat format = (FastDateFormat) cDateInstanceCache.get(key);
++        key=new Pair(key,locale);
+         if (format == null) {
+             if (locale == null) {
+                 locale = Locale.getDefault();

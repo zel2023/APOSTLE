@@ -1,0 +1,1 @@
+Fix a bug in Math_16_FastMath_t

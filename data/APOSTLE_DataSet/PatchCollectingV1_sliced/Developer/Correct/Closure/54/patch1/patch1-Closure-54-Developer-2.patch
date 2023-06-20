@@ -1,0 +1,22 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_54/FunctionType/Closure_54_FunctionType_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_54/FunctionType/Closure_54_FunctionType_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -363,14 +362,18 @@
+       return false;
+     }
+ 
+-    boolean replacedPrototype = prototype != null;
++    PrototypeObjectType oldPrototype = this.prototype;
++    boolean replacedPrototype = oldPrototype != null;
+ 
+     this.prototype = prototype;
+     this.prototypeSlot = new SimpleSlot("prototype", prototype, true);
+     this.prototype.setOwnerFunction(this);
+ 
++    if (oldPrototype != null) {
+       // Disassociating the old prototype makes this easier to debug--
+       // we don't have to worry about two prototypes running around.
++      oldPrototype.setOwnerFunction(null);
++    }
+ 
+     if (isConstructor() || isInterface()) {
+       FunctionType superClass = getSuperClassConstructor();

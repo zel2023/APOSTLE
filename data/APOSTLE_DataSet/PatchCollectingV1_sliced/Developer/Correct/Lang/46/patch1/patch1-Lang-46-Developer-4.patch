@@ -1,0 +1,11 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_46/StringEscapeUtils/Lang_46_StringEscapeUtils_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_46/StringEscapeUtils/Lang_46_StringEscapeUtils_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -140,7 +140,7 @@
+      * @throws IOException if error occurs on underlying Writer
+      **/
+     public static void escapeJavaScript(Writer out, String str) throws IOException {
+-        escapeJavaStyleString(out, str, true);
++        escapeJavaStyleString(out, str, true, true);
+     }
+ 
+     /**

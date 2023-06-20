@@ -1,0 +1,1 @@
+Add the missing isNaN check

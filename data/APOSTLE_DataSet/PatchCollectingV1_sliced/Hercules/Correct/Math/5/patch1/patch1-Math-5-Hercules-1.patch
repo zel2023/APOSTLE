@@ -1,0 +1,11 @@
+--- patch1-Math-5-Hercules.buggy	2020-11-06 19:30:49.000000000 +0800
++++ patch1-Math-5-Hercules.fixed	2020-11-06 19:32:54.000000000 +0800
+@@ -302,7 +302,7 @@
+         }
+ 
+         if (real == 0.0 && imaginary == 0.0) {
+-            return NaN;
++            return INF;
+         }
+ 
+         if (isInfinite) {

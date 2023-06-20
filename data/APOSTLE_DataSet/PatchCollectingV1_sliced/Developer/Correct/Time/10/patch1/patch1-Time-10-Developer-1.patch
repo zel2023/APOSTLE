@@ -1,0 +1,10 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Time_10/BaseSingleFieldPeriod/Time_10_BaseSingleFieldPeriod_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Time_10/BaseSingleFieldPeriod/Time_10_BaseSingleFieldPeriod_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -49,6 +49,7 @@
+     /** Serialization version. */
+     private static final long serialVersionUID = 9386874258972L;
+     /** The start of 1972. */
++    private static final long START_1972 = 2L * 365L * 86400L * 1000L;
+ 
+     /** The period in the units of this period. */
+     private volatile int iPeriod;

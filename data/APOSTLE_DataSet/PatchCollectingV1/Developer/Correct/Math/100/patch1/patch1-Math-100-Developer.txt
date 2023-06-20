@@ -1,0 +1,1 @@
+Fix NPE in Math_100_AbstractEstimator_t

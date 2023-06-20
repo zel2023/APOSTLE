@@ -1,0 +1,1 @@
+Don ' t compare JSType against native object type .

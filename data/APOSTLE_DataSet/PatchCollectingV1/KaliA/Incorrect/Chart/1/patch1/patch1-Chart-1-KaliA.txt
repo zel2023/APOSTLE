@@ -1,0 +1,1 @@
+Fix null pointer check in Kali_Defects4J_Chart_1 .

@@ -1,0 +1,1 @@
+Handle case when String is empty or null

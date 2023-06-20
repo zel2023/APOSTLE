@@ -1,0 +1,1 @@
+FastDateFormat should not cache null pattern for locale

@@ -1,0 +1,8 @@
+--- /src/main/java/org/apache/commons/lang3/ArrayUtils.java
++++ /src/main/java/org/apache/commons/lang3/ArrayUtils.java
+@@ -4482,4 +4482,4 @@
+         return result;
+     }
+ 
+-}
++}

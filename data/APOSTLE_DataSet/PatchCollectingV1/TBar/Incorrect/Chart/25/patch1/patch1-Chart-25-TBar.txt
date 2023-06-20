@@ -1,0 +1,1 @@
+StatisticalBarRenderer doesn ' t draw statistics on XY axes

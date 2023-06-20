@@ -1,0 +1,1 @@
+Fix double precision thingie in AbstractIntegerDistribution

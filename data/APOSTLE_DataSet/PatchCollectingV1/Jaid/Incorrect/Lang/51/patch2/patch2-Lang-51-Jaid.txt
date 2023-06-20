@@ -1,0 +1,1 @@
+Fixed bug in BooleanUtils where empty string is not the case

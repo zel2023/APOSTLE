@@ -1,0 +1,1 @@
+Fix code change reported by Closure_79_VarCheck_s

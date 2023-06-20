@@ -1,0 +1,11 @@
+--- patch1-Math-58-Hercules.buggy	2020-11-06 19:35:40.000000000 +0800
++++ patch1-Math-58-Hercules.fixed	2020-11-06 19:36:22.000000000 +0800
+@@ -118,7 +118,7 @@
+      */
+     public double[] fit() {
+         final double[] guess = (new ParameterGuesser(getObservations())).guess();
+-        return fit(new Gaussian.Parametric(), guess);
++        return fit(guess);
+     }
+ 
+     /**

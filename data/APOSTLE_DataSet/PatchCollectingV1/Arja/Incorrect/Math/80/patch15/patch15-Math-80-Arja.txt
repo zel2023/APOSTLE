@@ -1,0 +1,1 @@
+EigenDecompositionImpl . flipValues ( ) didn ' t do anything due to local variable

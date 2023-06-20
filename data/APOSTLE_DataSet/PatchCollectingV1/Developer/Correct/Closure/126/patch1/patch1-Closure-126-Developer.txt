@@ -1,0 +1,1 @@
+Remove tryMinimizeExitPoints from Closure_MinimizeExitPoints

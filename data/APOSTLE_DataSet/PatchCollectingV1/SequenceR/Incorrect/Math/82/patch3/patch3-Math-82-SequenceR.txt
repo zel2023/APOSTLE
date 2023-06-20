@@ -1,0 +1,1 @@
+Fix the example for the linear search method ' EEG '

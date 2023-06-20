@@ -1,0 +1,31 @@
+--- /Users/haoye.tian/Documents/University/data/PatchCollecting/Cardumen/Incorrect/Math/patch1-Math-63-Cardumen.buggy	2020-11-02 19:13:13.000000000 +0100
++++ /Users/haoye.tian/Documents/University/data/PatchCollecting/Cardumen/Incorrect/Math/patch1-Math-63-Cardumen.fixed	2020-11-02 19:13:13.000000000 +0100
+@@ -611,23 +545,12 @@
+      * </p>
+      *
+      * @param n argument
+-     * @return <code>n!</code>
+-     * @throws IllegalArgumentException if n < 0
+-     */
+-    public static double factorialDouble(final int n) {
+-        if (n < 0) {
+-            throw MathRuntimeException.createIllegalArgumentException(
+-                  LocalizedFormats.FACTORIAL_NEGATIVE_PARAMETER,
+-                  n);
+-        }
+-        if (n < 21) {
+-            return factorial(n);
+-        }
+-        return FastMath.floor(FastMath.exp(factorialLog(n)) + 0.5);
+-    }
+ 
+-    /**
+-     * Returns the natural logarithm of n!.
++ 
++ 
++ 
++ 
++ 
+      * <p>
+      * <Strong>Preconditions</strong>:
+      * <ul>

@@ -1,0 +1,10 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_53/InlineObjectLiterals/Closure_53_InlineObjectLiterals_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_53/InlineObjectLiterals/Closure_53_InlineObjectLiterals_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -347,6 +350,7 @@
+         }
+         cur.addChildToFront(nodes.get(i));
+         cur.addChildToFront(nodes.get(i + 1));
++      }
+ 
+       Node replace = ref.getParent();
+       replacement.copyInformationFromForTree(replace);

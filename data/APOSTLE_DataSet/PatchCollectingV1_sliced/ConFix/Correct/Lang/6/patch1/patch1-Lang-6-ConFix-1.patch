@@ -1,0 +1,10 @@
+--- ../result-tf-hash/lang/lang6/buggy/org/apache/commons/lang3/text/translate/CharSequenceTranslator.java	2019-02-22 10:24:47.673525009 +0000
++++ ../result-tf-hash/lang/lang6/confix/org/apache/commons/lang3/text/translate/CharSequenceTranslator.java	2019-02-22 10:24:47.661523377 +0000
+@@ -20,6 +20,7 @@
+ import java.io.StringWriter;
+ import java.io.Writer;
+ import java.util.Locale;
++import java.util.Map;
+ 
+ /**
+  * An API for translating text. 

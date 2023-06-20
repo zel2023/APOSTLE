@@ -1,0 +1,10 @@
+--- /source//org/jfree/chart/plot/CategoryPlot.java
++++ /source//org/jfree/chart/plot/CategoryPlot.java
+@@ -2512,6 +2512,7 @@
+                     space = yAxis.reserveSpace(g2, this, plotArea, edge, space);
+                 }
+             }
++            space = new org.jfree.chart.axis.AxisSpace();
+         }
+         return space;
+                                                     

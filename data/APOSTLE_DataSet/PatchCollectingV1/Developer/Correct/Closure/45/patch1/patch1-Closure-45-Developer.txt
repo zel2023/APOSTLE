@@ -1,0 +1,1 @@
+Allow vars to be marked as escaped in closure closures

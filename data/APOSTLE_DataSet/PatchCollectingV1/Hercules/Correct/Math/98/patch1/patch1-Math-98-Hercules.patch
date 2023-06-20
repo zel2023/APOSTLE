@@ -1,0 +1,22 @@
+--- patch2-Math-98-Hercules.buggy	2020-11-06 20:06:36.000000000 +0800
++++ patch2-Math-98-Hercules.fixed	2020-11-06 20:07:40.000000000 +0800
+@@ -988,7 +988,7 @@
+         }
+         final int nRows = this.getRowDimension();
+         final int nCols = this.getColumnDimension();
+-        final BigDecimal[] out = new BigDecimal[v.length];
++        final BigDecimal[] out = new BigDecimal[nRows];
+         for (int row = 0; row < nRows; row++) {
+             BigDecimal sum = ZERO;
+             for (int i = 0; i < nCols; i++) {
+--- patch1-Math-98-Hercules.buggy	2020-11-06 20:04:50.000000000 +0800
++++ patch1-Math-98-Hercules.fixed	2020-11-06 20:05:38.000000000 +0800
+@@ -776,7 +776,7 @@
+         if (v.length != nCols) {
+             throw new IllegalArgumentException("vector has wrong length");
+         }
+-        final double[] out = new double[v.length];
++        final double[] out = new double[nRows];
+         for (int row = 0; row < nRows; row++) {
+             final double[] dataRow = data[row];
+             double sum = 0;

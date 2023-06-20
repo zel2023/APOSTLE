@@ -1,0 +1,10 @@
+--- ../result-tf-hash/math/math78/buggy/org/apache/commons/math/ode/events/EventState.java	2019-02-21 11:38:18.557404260 +0000
++++ ../result-tf-hash/math/math78/confix/org/apache/commons/math/ode/events/EventState.java	2019-02-21 11:38:18.557404260 +0000
+@@ -24,6 +24,7 @@
+ import org.apache.commons.math.analysis.solvers.BrentSolver;
+ import org.apache.commons.math.ode.DerivativeException;
+ import org.apache.commons.math.ode.sampling.StepInterpolator;
++import java.util.Map;
+ 
+ /** This class handles the state for one {@link EventHandler
+  * event handler} during integration steps.

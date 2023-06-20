@@ -1,0 +1,1 @@
+Fix a bug in MultiStartUnivariateRealOptimizer . optimize ( f , goal ,

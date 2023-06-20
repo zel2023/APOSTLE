@@ -1,0 +1,1 @@
+StrBuilder . contains ( ) now returns true if the builder contains the character

@@ -1,0 +1,1 @@
+Use the writer null pointer for CharSequenceTranslator

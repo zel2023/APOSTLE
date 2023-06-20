@@ -1,0 +1,11 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_31/ContinuedFraction/Math_31_ContinuedFraction_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_31/ContinuedFraction/Math_31_ContinuedFraction_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -131,8 +131,6 @@
+ 
+         int n = 1;
+         double dPrev = 0.0;
+-        double p0 = 1.0;
+-        double q1 = 1.0;
+         double cPrev = hPrev;
+         double hN = hPrev;
+ 

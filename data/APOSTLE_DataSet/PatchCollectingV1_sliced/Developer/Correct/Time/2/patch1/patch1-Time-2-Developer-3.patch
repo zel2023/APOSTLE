@@ -1,0 +1,12 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Time_2/Partial/Time_2_Partial_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Time_2/Partial/Time_2_Partial_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -446,6 +446,9 @@
+                         if (compare > 0) {
+                             break;
+                         } else if (compare == 0) {
++                            if (fieldType.getRangeDurationType() == null) {
++                                break;
++                            }
+                             DurationField rangeField = fieldType.getRangeDurationType().getField(iChronology);
+                             DurationField loopRangeField = loopType.getRangeDurationType().getField(iChronology);
+                             if (rangeField.compareTo(loopRangeField) > 0) {

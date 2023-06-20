@@ -1,0 +1,1 @@
+Add true condition to walk pattern

@@ -1,0 +1,1 @@
+Allow property types to be declared in closure constraints

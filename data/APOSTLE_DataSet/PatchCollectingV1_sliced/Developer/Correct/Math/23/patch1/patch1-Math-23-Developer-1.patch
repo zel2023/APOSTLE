@@ -1,0 +1,10 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_23/BrentOptimizer/Math_23_BrentOptimizer_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_23/BrentOptimizer/Math_23_BrentOptimizer_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -148,6 +148,7 @@
+         UnivariatePointValuePair current
+             = new UnivariatePointValuePair(x, isMinim ? fx : -fx);
+         // Best point encountered so far (which is the initial guess).
++        UnivariatePointValuePair best = current;
+ 
+         int iter = 0;
+         while (true) {

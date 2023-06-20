@@ -1,0 +1,1 @@
+Added throw if c2 == 0 . 0 to HarmonicFitter . java

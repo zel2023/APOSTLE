@@ -1,0 +1,11 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_30/StringUtils/Lang_30_StringUtils_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_30/StringUtils/Lang_30_StringUtils_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -1494,7 +1505,7 @@
+      * @return the <code>true</code> if any of the chars are found, <code>false</code> if no match or null input
+      * @since 2.4
+      */
+-    public static boolean containsAny(CharSequence cs, String searchChars) {
++    public static boolean containsAny(String cs, String searchChars) {
+         if (searchChars == null) {
+             return false;
+         }

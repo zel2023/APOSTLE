@@ -1,0 +1,1 @@
+Fix a null pointer check that would trigger an NPE .

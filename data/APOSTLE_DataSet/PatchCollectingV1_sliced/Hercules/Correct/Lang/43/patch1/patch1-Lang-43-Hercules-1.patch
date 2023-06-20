@@ -1,0 +1,10 @@
+--- patch1-Lang-43-Hercules.buggys	2020-11-04 00:01:10.000000000 +0800
++++ patch1-Lang-43-Hercules.fixed	2020-11-04 00:02:00.000000000 +0800
+@@ -419,6 +419,7 @@
+         int start = pos.getIndex();
+         char[] c = pattern.toCharArray();
+         if (escapingOn && c[start] == QUOTE) {
++            next(pos);
+             return appendTo == null ? null : appendTo.append(QUOTE);
+         }
+         int lastHold = start;

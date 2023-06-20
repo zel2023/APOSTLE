@@ -1,0 +1,20 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_110/ScopedAliases/Closure_110_ScopedAliases_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_110/ScopedAliases/Closure_110_ScopedAliases_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -363,12 +364,13 @@
+         } else if (parent.getType() == Token.LP) {
+           // Parameters of the scope function also get a BAD_PARAMETERS
+           // error.
+-        } else if (isVar) {
++        } else if (isVar || isFunctionDecl) {
++          boolean isHoisted = NodeUtil.isHoistedFunctionDeclaration(parent);
+           Node grandparent = parent.getParent();
+-          Node value = n.hasChildren() ?
+-              v.getInitialValue().detachFromParent() :
++          Node value = v.getInitialValue() != null ?
++              v.getInitialValue() :
+               null;
+-          Node varNode = parent;
++          Node varNode = null;
+ 
+           String name = n.getString();
+           int nameCount = scopedAliasNames.count(name);

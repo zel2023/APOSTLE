@@ -1,0 +1,1 @@
+Fix an NPE if data is not loaded

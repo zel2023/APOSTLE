@@ -1,0 +1,11 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_100/AbstractEstimator/Math_100_AbstractEstimator_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_100/AbstractEstimator/Math_100_AbstractEstimator_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -163,7 +163,7 @@
+ 
+         // compute transpose(J).J, avoiding building big intermediate matrices
+         final int rows = problem.getMeasurements().length;
+-        final int cols = problem.getAllParameters().length;
++        final int cols = problem.getUnboundParameters().length;
+         final int max  = cols * rows;
+         double[][] jTj = new double[cols][cols];
+         for (int i = 0; i < cols; ++i) {

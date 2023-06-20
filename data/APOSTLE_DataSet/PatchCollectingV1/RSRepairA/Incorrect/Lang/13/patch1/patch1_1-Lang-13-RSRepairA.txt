@@ -1,0 +1,1 @@
+Fix possible NPE in RSRepairDefects4J_Lang_13

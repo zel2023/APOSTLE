@@ -1,0 +1,12 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_32/HashCodeBuilder/Lang_32_HashCodeBuilder_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_32/HashCodeBuilder/Lang_32_HashCodeBuilder_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -149,7 +144,8 @@
+      * @since 2.3
+      */
+     static boolean isRegistered(Object value) {
+-        return getRegistry().contains(new IDKey(value));
++        Set<IDKey> registry = getRegistry();
++        return registry != null && registry.contains(new IDKey(value));
+     }
+ 
+     /**

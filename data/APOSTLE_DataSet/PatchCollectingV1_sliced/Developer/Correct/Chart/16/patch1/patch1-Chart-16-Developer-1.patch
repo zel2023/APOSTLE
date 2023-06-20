@@ -1,0 +1,13 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Chart_16/DefaultIntervalCategoryDataset/Chart_16_DefaultIntervalCategoryDataset_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Chart_16/DefaultIntervalCategoryDataset/Chart_16_DefaultIntervalCategoryDataset_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -204,8 +204,8 @@
+ 
+             }
+             else {
+-                this.seriesKeys = null;
+-                this.categoryKeys = null;
++                this.seriesKeys = new Comparable[0];
++                this.categoryKeys = new Comparable[0];
+             }
+         }
+ 
