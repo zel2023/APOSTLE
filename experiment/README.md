@@ -43,7 +43,7 @@ OUTPUT:
 
 ## RQ3.2
 
-Customize: Choose one of representation embeddings for test case under *evaluate.py* and *word2vector.py*.
+Customize: Choose different thresholds and cofficients under *evaluate.py* and *word2vector.py*.
 
 * **threshold1:** a threshold used to assess whether the amount of code changes is excessive.
 * **threshold2:** a threshold used to assess whether the code semantics have changed too much.
@@ -54,7 +54,7 @@ OUTPUT:
 * **performance:** the results of APOSTLE with different thresholds and cofficients.
 
 ## RQ3.3
-* **Method1:** For each historical related patch, the Euclidean distance between it and the current patch is calculated and the one with the minimum Euclidean distance is obtained to calculate the similarity.
+* **Method1:** For each historical related patch, the Euclidean distance between it and the current patch is calculated and the one with the minimum Euclidean distance is obtained to calculate the similarity.
 * **Method2:** The test case similarity is used to balance all historical related patches, resulting in a representative patch, which is then used to calculate the similarity with the current patch.
 * **Method3:** The similarity between all historical related patches and the current patch is calculated, and the maximum value is chosen.
 
