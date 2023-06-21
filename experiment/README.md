@@ -38,6 +38,8 @@ Customize: Choose one of representation embeddings for the patch under *config.p
 * **graphcodebert:** 
 * **unixcoder:**
 
+Attention: Preferably use CPU to run the code.
+
 OUTPUT:
 * **performance:** the results of APOSTLE with different pre-trained models used.
 
