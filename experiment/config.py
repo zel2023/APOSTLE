@@ -6,7 +6,7 @@ class Config:
         self.path_patch_root = '../data/defects4j_patch_sliced/'
 
         #  generated patches of APR tools
-        self.path_generated_patch = '../data/BATS_DataSet/PatchCollectingV1_sliced/'
+        self.path_generated_patch = '../data/APOSTLE_DataSet/PatchCollectingV1_sliced/'
         # for Naturalness
 
         #choose the test_w2v to learn the behaviour of test cases
@@ -21,6 +21,12 @@ class Config:
         #self.patch_w2v='graphcodebert'
 
         self.organized_dataset = '../data/organized_dataset_' + self.patch_w2v+'_'+self.test_w2v +'.pickle'
+        
+        self.cof1=0.55
+        self.cof2=0.95
+        self.thre1=700
+        self.thre2=0.2
+
 
 if __name__ == '__main__':
     Config()
