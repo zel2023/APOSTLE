@@ -2,6 +2,8 @@
 # Experimental Reproduction
 Run `main.py` following one of the arguments ('RQ1', 'RQ2')
 
+Attention: Preferably use CPU to run the code.
+
 For instance, execute the following command to obtain the results of research question 2 in the paper.
 ```
 python main.py RQ2
@@ -13,6 +15,9 @@ python main.py RQ2
 OUTPUT: 
 * **performance:** The results of the APOSTLE.
 
+Attention:
+* **BATS:** Becase of the dataset APOSTLE uses is equal to the dataset BATS uses, so you can get the results of the BATS by the code at https://github.com/HaoyeTianCoder/BATS.
+
 ## RQ2
 
 Compare the state of the art approaches.
@@ -22,6 +27,9 @@ Compare the state of the art approaches.
 
 OUTPUT:
 * **performance:** The results of the state-of-the-art.
+
+Attention:
+* **APOSTLE:** The results of the APOSTLE can be got by `python main.py RQ1`.
 
 ## RQ3.1
 
@@ -38,7 +46,7 @@ Customize: Choose one of representation embeddings for the patch under *config.p
 * **graphcodebert:** 
 * **unixcoder:**
 
-Attention: Preferably use CPU to run the code.
+
 
 OUTPUT:
 * **performance:** the results of APOSTLE with different pre-trained models used.
@@ -56,6 +64,7 @@ OUTPUT:
 * **performance:** the results of APOSTLE with different thresholds and cofficients.
 
 ## RQ3.3
+
 * **Method1:** For each historical related patch, the Euclidean distance between it and the current patch is calculated and the one with the minimum Euclidean distance is obtained to calculate the similarity.
 * **Method2:** The test case similarity is used to balance all historical related patches, resulting in a representative patch, which is then used to calculate the similarity with the current patch.
 * **Method3:** The similarity between all historical related patches and the current patch is calculated, and the maximum value is chosen.
