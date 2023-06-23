@@ -6,7 +6,7 @@ Attention: Preferably use CPU to run the code.
 
 ## RQ1
 
-Command:python main.py apostle
+Command:  python main.py apostle
 
 OUTPUT: 
 * **performance:** The results of the APOSTLE.(You can change the parameters under *config.py* to run the code)
@@ -16,7 +16,7 @@ Attention:
 
 ## RQ2
 
-Command:python main.py RQ2
+Command:  python main.py RQ2
 
 Compare the state of the art approaches.
 
@@ -31,7 +31,7 @@ Attention:
 
 ## RQ3.1
 
-Command:python main.py apostle
+Command:  python main.py apostle
 
 Customize: Choose one of representation embeddings for the test case under *config.py*.
 
@@ -51,7 +51,7 @@ OUTPUT:
 
 ## RQ3.2
 
-Command:python main.py apostle
+Command:  python main.py apostle
 
 Customize: Choose different thresholds and cofficients under *config.py*
 
@@ -65,7 +65,7 @@ OUTPUT:
 
 ## RQ3.3
 
-Command:python main.py method1/method2/method3
+Command:  python main.py method1/method2/method3
 
 Customize: Choose different thresholds and cofficients by different argument
 
