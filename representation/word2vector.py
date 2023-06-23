@@ -4,7 +4,6 @@ os.path.abspath(os.path.join('..', './representation'))
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 import torch
 import pickle
-from representation.CC2Vec import lmg_cc2ftr_interface
 from bert_serving.client import BertClient
 # from gensim.models import word2vec, Doc2Vec
 from nltk.tokenize import word_tokenize
@@ -42,17 +41,18 @@ from experiment.unixcoder import UniXcoder
 #        grad_fn=<SelectBackward>)
 
 MODEL_MODEL_LOAD_PATH = '../models/java14_model/saved_model_iter8.release'
-MODEL_CC2Vec = '../representation/CC2Vec/'
 
 
 class Word2vector:
-    def __init__(self, test_w2v=None, patch_w2v=None, path_patch_root=None):
+    def __init__(self, test_w2v=None, patch_w2v=None, path_patch_root=None,thre1=700,thre2=0.2):
         # self.w2v = word2vec
         self.test_w2v = test_w2v
         self.patch_w2v = patch_w2v
         self.path_patch_root = path_patch_root
         self.error = 0
         self.error2 = 0
+        self.thre1=thre1
+        self.thre2=thre2
         self.patch = ""
         # Init and Load the model for test cases
         if self.test_w2v == 'code2vec':
@@ -86,21 +86,8 @@ class Word2vector:
             config.log('------------Done creating graphcodebert model---------------')
             self.c2v = Code2vector(self.test_w2v, self.model, self.tokenizer, 'none')
         # init for patch vector
-        if self.patch_w2v == 'cc2vec':
-            self.dictionary = pickle.load(open(MODEL_CC2Vec + 'dict.pkl', 'rb'))
-        elif self.patch_w2v == 'bert':
-            import ssl
-            try:
-                _create_unverified_https_context = ssl._create_unverified_context
-            except AttributeError:
-                pass
-            else:
-                ssl._create_default_https_context = _create_unverified_https_context
-            # nltk.download('punkt')
-
-            logging.getLogger().info('Waiting for Bert server')
-            self.m = BertClient(check_length=False, check_version=False)
-        elif self.patch_w2v == 'codebert':
+        
+        if self.patch_w2v == 'codebert':
             self.tokenizer = AutoTokenizer.from_pretrained("microsoft/codebert-base")
             self.model = AutoModel.from_pretrained("microsoft/codebert-base")
             ########
@@ -149,16 +136,7 @@ class Word2vector:
             # embedding each patch and combine them together to learn the overall behaviour
             multi_vector = []
             for path_patch_id in path_patch_ids:
-                if self.patch_w2v == 'cc2vec':
-                    learned_vector = lmg_cc2ftr_interface.learned_feature(path_patch_id,
-                                                                          load_model=MODEL_CC2Vec + 'cc2ftr.pt',
-                                                                          dictionary=self.dictionary)
-                    learned_vector = list(learned_vector.flatten())
-                elif self.patch_w2v == 'bert':
-                    learned_vector = self.learned_feature(path_patch_id, self.patch_w2v)
-                elif self.patch_w2v == 'string':
-                    learned_vector = self.extract_text(path_patch_id, )
-                elif self.patch_w2v == 'codebert':
+                if self.patch_w2v == 'codebert':
                     learned_vector = self.learned_feature(path_patch_id, self.patch_w2v)
                     # codebert patch embedding over
                 elif self.patch_w2v == 'unixcoder':
@@ -186,86 +164,11 @@ class Word2vector:
                 raise Exception('null vector')
             return test_vector, patch_vector
 
-    # def convert(self, test_name, data_text):
-    #     if self.test_w2v == 'code2vec':
-    #         test_vector = []
-    #         for i in range(len(data_text)):
-    #             function = data_text[i]
-    #             try:
-    #                 vector = self.c2v.convert(function)
-    #             except Exception as e:
-    #                 print('{} test_name:{} Exception:{}'.format(i, test_name[i], 'Wrong syntax'))
-    #                 continue
-    #             print('{} test_name:{}'.format(i, test_name[i]))
-    #             test_vector.append(vector)
-    #         return test_vector
-    #
-    #     if self.patch_w2v == 'cc2vec':
-    #         patch_vector = []
-    #         for i in range(len(data_text)):
-    #             patch_ids = data_text[i]
-    #             # find path_patch
-    #             if len(patch_ids) == 1 and patch_ids[0].endwith('-one'):
-    #                 project = patch_ids[0].split('_')[0]
-    #                 id = patch_ids[0].split('_')[1].replace('-one','')
-    #                 path_patch = self.path_patch_root + project +'/'+ id + '/'
-    #                 patch_ids = os.listdir(path_patch)
-    #                 path_patch_ids = [path_patch + patch_id for patch_id in patch_ids]
-    #             else:
-    #                 path_patch_ids = []
-    #                 for name in patch_ids:
-    #                     project = name.split('_')[0]
-    #                     id = name.split('_')[1]
-    #                     patch_id = name.split('_')[1] +'_'+ name.split('_')[2] + '.patch'
-    #                     path_patch = self.path_patch_root + project +'/'+ id + '/'
-    #                     path_patch_ids.append(os.path.join(path_patch, patch_id))
-    #
-    #             multi_vector = []
-    #             for path_patch_id in path_patch_ids:
-    #                 learned_vector = lmg_cc2ftr_interface.learned_feature(path_patch_id, load_model=MODEL_CC2Vec+'cc2ftr.pt', dictionary=self.dictionary)
-    #                 multi_vector.append(list(learned_vector.flatten()))
-    #             combined_vector = np.array(multi_vector).mean(axis=0)
-    #             patch_vector.append(combined_vector)
-    #         return patch_vector
-
 
     def convert_single_patch(self, path_patch):
         try:
-            if self.patch_w2v == 'cc2vec':
-                self.error = 0
-                self.error2 = 0
-                multi_vector = []  # sum up vectors of different parts of patch
-                # patch = os.listdir(path_patch)
-                # for part in patch:
-                for root, dirs, files in os.walk(path_patch):
-                    for file in files:
-                        if file.endswith('.patch'):  # 把补丁文件夹下的补丁文件拿出来
-                            p = os.path.join(root, file)  # p的值就是具体的补丁文件路径
-                            # print("p:")
-                            # print(p);
-                            learned_vector = lmg_cc2ftr_interface.learned_feature(p,
-                                                                                  load_model=MODEL_CC2Vec + 'cc2ftr.pt',
-                                                                                  dictionary=self.dictionary)
 
-                            multi_vector.append(list(learned_vector.flatten()))
-                combined_vector = np.array(multi_vector).sum(axis=0)
-
-            elif self.patch_w2v == 'bert':
-                multi_vector = []
-                multi_vector_cross = []
-                patch = os.listdir(path_patch)
-                for part in patch:
-                    p = os.path.join(path_patch, part)
-                    learned_vector = self.learned_feature(p, self.patch_w2v)
-                    learned_vector_cross = self.learned_feature_cross(p, self.patch_w2v)
-
-                    multi_vector.append(learned_vector)
-                    multi_vector_cross.append(learned_vector_cross)
-                combined_vector = np.array(multi_vector).sum(axis=0)
-                combined_vector_cross = np.array(multi_vector_cross).sum(axis=0)
-                return combined_vector, combined_vector_cross
-
-            elif self.patch_w2v == 'codebert':
+            if self.patch_w2v == 'codebert':
                 self.error = 0
                 self.error2 = 0
                 multi_vector = []  # sum up vectors of different parts of patch
@@ -343,7 +246,7 @@ class Word2vector:
             patched_all = self.get_only_change(path_patch, type='patched')
             # self.error=(self.error,abs(len(bugy_all)+len(patched_all)))
             # self.error+=len(bugy_all)+len(patched_all)
-            if (len(bugy_all) + len(patched_all) > 700):
+            if (len(bugy_all) + len(patched_all) > self.thre1):
                 self.error2 = 1
             if (len(bugy_all) > 1023):
                 bugy_all = bugy_all[0:1023]
@@ -376,7 +279,7 @@ class Word2vector:
             patched_vec = np.mean(new_test_vec, axis=0)
 
             dist = distance.euclidean(patched_vec, bug_vec) / (1 + distance.euclidean(patched_vec, bug_vec))
-            if dist > 0.2:  # we use similarity instead of distance
+            if dist > self.thre2:  # we use similarity instead of distance
                 self.error = 1
             embedding = self.subtraction(bug_vec, patched_vec);
 
@@ -385,7 +288,7 @@ class Word2vector:
             bugy_all = self.get_only_change(path_patch, type='buggy')
             patched_all = self.get_only_change(path_patch, type='patched')
 
-            if (len(bugy_all) + len(patched_all) > 700):
+            if (len(bugy_all) + len(patched_all) > self.thre1):
                 self.error = 1
 
             tokens_ids = self.model.tokenize([bugy_all], max_length=512, mode="<encoder-only>")
@@ -421,7 +324,7 @@ class Word2vector:
             bugy_all = self.get_only_change(path_patch, type='buggy')
             patched_all = self.get_only_change(path_patch, type='patched')
 
-            if (len(bugy_all) + len(patched_all) > 700):
+            if (len(bugy_all) + len(patched_all) > self.thre1):
                 self.error2 = 1
 
             if (len(bugy_all) > 1023):
@@ -720,4 +623,5 @@ class Word2vector:
             #     print(Exception)
             #     return 'Error'
             return lines
+
 
