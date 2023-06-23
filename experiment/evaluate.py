@@ -1,4 +1,3 @@
-
 import pickle
 import torch
 import matplotlib.pyplot as plt
@@ -6,7 +5,7 @@ import numpy as np
 import Levenshtein
 import math
 import pandas as pd
-from sklearn.metrics import silhouette_score ,calinski_harabasz_score,davies_bouldin_score
+from sklearn.metrics import silhouette_score, calinski_harabasz_score, davies_bouldin_score
 from scipy.spatial import distance
 from sklearn.preprocessing import StandardScaler, Normalizer, MinMaxScaler
 import os
@@ -24,24 +23,27 @@ from sklearn.model_selection import KFold, StratifiedKFold
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
-from representation.CC2Vec import lmg_cc2ftr_interface
 from sklearn.cluster import KMeans
 import time
 
-
-notRecognizedByBert = ['Correct-Lang-6-patch1', 'Correct-Lang-6-patch1', 'Correct-Lang-6-patch1', 'Correct-Lang-6-patch1', 'Correct-Lang-6-patch1', 'Correct-Lang-6-patch1', 'Correct-Lang-6-patch1', 'Correct-Lang-6-patch1', 'Correct-Lang-6-patch1', 'Correct-Lang-25-patch1', 'Correct-Lang-53-patch1', 'Incorrect-Math-6-patch2', 'Incorrect-Math-6-patch2', 'Incorrect-Math-6-patch1', 'Correct-Math-56-patch1', 'Incorrect-Math-80-patch1', 'Incorrect-Math-104-patch1']
-notRecognizedByCC2Vec = ['Correct-Lang-25-patch1', 'Correct-Lang-53-patch1', 'Correct-Math-56-patch1', 'Incorrect-Math-80-patch1']
+notRecognizedByBert = ['Correct-Lang-6-patch1', 'Correct-Lang-6-patch1', 'Correct-Lang-6-patch1',
+                       'Correct-Lang-6-patch1', 'Correct-Lang-6-patch1', 'Correct-Lang-6-patch1',
+                       'Correct-Lang-6-patch1', 'Correct-Lang-6-patch1', 'Correct-Lang-6-patch1',
+                       'Correct-Lang-25-patch1', 'Correct-Lang-53-patch1', 'Incorrect-Math-6-patch2',
+                       'Incorrect-Math-6-patch2', 'Incorrect-Math-6-patch1', 'Correct-Math-56-patch1',
+                       'Incorrect-Math-80-patch1', 'Incorrect-Math-104-patch1']
+notRecognizedByCC2Vec = ['Correct-Lang-25-patch1', 'Correct-Lang-53-patch1', 'Correct-Math-56-patch1',
+                         'Incorrect-Math-80-patch1']
 notRecognized = notRecognizedByBert + notRecognizedByCC2Vec
 
 MODEL_MODEL_LOAD_PATH = '../models/java14_model/saved_model_iter8.release'
 MODEL_CC2Vec = '../representation/CC2Vec/'
 
 
-
 class evaluation:
-    def __init__(self, patch_w2v, test_w2v,test_data, test_name, test_vector, patch_vector, exception_type):
+    def __init__(self, patch_w2v, test_w2v, test_data, test_name, test_vector, patch_vector, exception_type,thre1,thre2):
         self.patch_w2v = patch_w2v
-        self.test_w2v=test_w2v
+        self.test_w2v = test_w2v
         self.test_data = test_data
 
         self.test_name = test_name
@@ -50,16 +52,17 @@ class evaluation:
         self.patch_vector = patch_vector
         self.exception_type = exception_type
 
-        if patch_w2v == 'cc2vec':
-            self.cc2vec_w2v = Word2vector(patch_w2v=self.patch_w2v, )
-        if patch_w2v == 'codebert':
-            self.codebert_w2v = Word2vector(patch_w2v=self.patch_w2v, )
-        if patch_w2v == 'unixcoder':
-            self.unixcoder_w2v = Word2vector(patch_w2v=self.patch_w2v, )
-        if patch_w2v == 'graphcodebert':
-            self.graphcodebert_w2v = Word2vector(patch_w2v=self.patch_w2v, )
+        self.thre1=thre1
+        self.thre2=thre2
 
-    def sigmoid(self, x):#激活函数
+        if patch_w2v == 'codebert':
+            self.codebert_w2v = Word2vector(patch_w2v=self.patch_w2v, thre1=self.thre1,thre2=self.thre2)
+        if patch_w2v == 'unixcoder':
+            self.unixcoder_w2v = Word2vector(patch_w2v=self.patch_w2v, thre1=self.thre1,thre2=self.thre2)
+        if patch_w2v == 'graphcodebert':
+            self.graphcodebert_w2v = Word2vector(patch_w2v=self.patch_w2v, thre1=self.thre1,thre2=self.thre2)
+
+    def sigmoid(self, x):  # 激活函数
         return 1 / (1 + math.exp(-x))
 
     def find_path_patch(self, path_patch_sliced, project_id):
@@ -198,92 +201,34 @@ class evaluation:
             print('name: {}, exception: {}'.format(path_json, 'null feature or shape error'))
             return []
 
-        # return engineered_vector
-        # return P4J_vector + repair_patterns + repair_patterns2
         return P4J_vector + repair_patterns
 
-    # def getODSFeature(self, p):
-    #     tool = p.split('/')[-5]
-    #     label = p.split('/')[-4]
-    #     project = p.split('/')[-3]
-    #     id = p.split('/')[-2]
-    #
-    #     name = p.split('/')[-1]
-    #     folder1, folder2 = '-'.join([name, project, id]), tool
-    #     all_root = '/'.join(
-    #         [Root_ODS_feature, tool, label, project, id, folder1 + '_' + folder2, folder1, folder2])
-    #     all_path_feature = all_root + '/features_' + name + '-' + project + '-' + id + '.json'
-    #     ods_feature_all = []
-    #
-    #     if os.path.exists(all_path_feature):
-    #         ods_feature_all = self.engineered_features(all_path_feature)
-    #     else:
-    #         tmp = []
-    #         for i in range(9):
-    #             name_concatenated = name.split('-')
-    #             name_concatenated[0] += '#' + str(i)
-    #             name_concatenated = '-'.join(name_concatenated)
-    #             folder1, folder2 = '-'.join([name_concatenated, project, id]), tool
-    #             all_root = '/'.join(
-    #                 [Root_ODS_feature, tool, label, project, id, folder1 + '_' + folder2, folder1, folder2])
-    #             all_path_feature = all_root + '/features_' + name_concatenated + '-' + project + '-' + id + '.json'
-    #             if os.path.exists(all_path_feature):
-    #                 ods_feature = self.engineered_features(all_path_feature)
-    #                 if ods_feature != []:
-    #                     tmp.append(ods_feature)
-    #             else:
-    #                 pass
-    #         if tmp != []:
-    #             ods_feature_all = np.sum(tmp, axis=0).tolist()
-    #     if ods_feature_all == []:
-    #         print('NoODS')
-    #     return ods_feature_all if ods_feature_all != [] else [0 for i in range(182)]
-    def vector4patch(self, available_path_patch, compare=True,):
+
+    def vector4patch(self, available_path_patch, compare=True, ):
         vector_list = []
         vector_ML_list = []
         label_list = []
-        error_list=[]
-        error_list2=[]
-        patch_list=[]
+        error_list = []
+        error_list2 = []
+        patch_list = []
         name_list = []
         patch_id_list = []
         for p in available_path_patch:
             recogName = '-'.join([p.split('/')[-4], p.split('/')[-3], p.split('/')[-2], p.split('/')[-1]])
-            if recogName in notRecognized: # some specific patches can not be recognized
+            if recogName in notRecognized:  # some specific patches can not be recognized
                 continue
 
             # vector
-            json_key = p + '_.json' # pre-saved bert vector of apostle
-            json_key_cross = p + '_cross.json' # pre-saved bert feature in Haoye's ASE2020
-            if self.patch_w2v == 'bert':
-                if os.path.exists(json_key):
-                    with open(json_key, 'r+') as f:
-                        vector_str = json.load(f)
-                        vector = np.array(list(map(float, vector_str)))
-                else:
-                    w2v = Word2vector(patch_w2v='bert', )
-                    vector, vector_ML = w2v.convert_single_patch(p)
-                    vector_json = list(map(str, list(vector)))
-                    vector_json_cross = list(map(str, list(vector)))
-                    with open(json_key, 'w+') as f:
-                        jsonstr = json.dumps(vector_json, )
-                        f.write(jsonstr)
-                    # with open(json_key_cross, 'w+') as f:
-                    #     jsonstr = json.dumps(vector_json_cross, )
-                    #     f.write(jsonstr)
-            elif self.patch_w2v == 'cc2vec':
-                #w2v = Word2vector(patch_w2v=self.patch_w2v, )
-                vector,error,error2,_ = self.cc2vec_w2v.convert_single_patch(p)
-            elif self.patch_w2v == 'string':
-                w2v = Word2vector(patch_w2v=self.patch_w2v, )
-                vector, _ = w2v.convert_single_patch(p)
-            elif self.patch_w2v == 'codebert':
-                #vector, _ = self.codebert_w2v.convert_single_patch(p)
-                vector,error,error2,_ = self.codebert_w2v.convert_single_patch(p)
+            json_key = p + '_.json'  # pre-saved bert vector of apostle
+            json_key_cross = p + '_cross.json'  # pre-saved bert feature in Haoye's ASE2020
+
+            if self.patch_w2v == 'codebert':
+                # vector, _ = self.codebert_w2v.convert_single_patch(p)
+                vector, error, error2, _ = self.codebert_w2v.convert_single_patch(p)
             elif self.patch_w2v == 'unixcoder':
-                vector,error,error2,_ = self.unixcoder_w2v.convert_single_patch(p)
+                vector, error, error2, _ = self.unixcoder_w2v.convert_single_patch(p)
             elif self.patch_w2v == 'graphcodebert':
-                vector,error,error2,_ = self.graphcodebert_w2v.convert_single_patch(p)
+                vector, error, error2, _ = self.graphcodebert_w2v.convert_single_patch(p)
             else:
                 raise
             # if list(vector.astype(float)) == list(np.zeros(240).astype(float)) or list(vector.astype(float)) == list(np.zeros(1024).astype(float)):
@@ -292,7 +237,7 @@ class evaluation:
             vector_list.append(vector)
             error_list.append(error)
             error_list2.append(error2)
-            #patch_list.append(patch)
+            # patch_list.append(patch)
             # compared with Haoye's ASE2020
             if compare:
                 # Bert
@@ -316,7 +261,7 @@ class evaluation:
             patch = p.split('/')[-1]
             # name = tool + '-' + label + '-' + patchid
             # name = tool[:3] + patchid.replace('patch','')
-            name = tool + patch.replace('patch','')
+            name = tool + patch.replace('patch', '')
             name_list.append(name)
 
             # patch id for Naturalness project
@@ -326,10 +271,10 @@ class evaluation:
             dataset = p.split('/')[-7]
             patch_id = patch + '-' + project_id + '_' + tool + '_' + dataset
             patch_id_list.append(patch_id)
-        return patch_id_list, label_list, vector_list, vector_ML_list,error_list,error_list2
+        return patch_id_list, label_list, vector_list, vector_ML_list, error_list, error_list2
 
-#vector4patch_patchsim没用到
-    def vector4patch_patchsim(self, available_path_patch, compare=True,):
+    # vector4patch_patchsim没用到
+    def vector4patch_patchsim(self, available_path_patch, compare=True, ):
         vector_list = []
         vector_ML_list = []
         label_list = []
@@ -339,25 +284,8 @@ class evaluation:
             # vector
             json_key = p + '_.json'
             json_key_cross = p + '_cross.json'
-            if self.patch_w2v == 'bert':
-                if os.path.exists(json_key):
-                    with open(json_key, 'r+') as f:
-                        vector_str = json.load(f)
-                        vector = np.array(list(map(float, vector_str)))
-                else:
-                    w2v = Word2vector(patch_w2v='bert', )
-                    vector, vector_ML = w2v.convert_single_patch(p)
-                    vector_json = list(map(str, list(vector)))
-                    vector_json_cross = list(map(str, list(vector)))
-                    with open(json_key, 'w+') as f:
-                        jsonstr = json.dumps(vector_json, )
-                        f.write(jsonstr)
-                    # with open(json_key_cross, 'w+') as f:
-                    #     jsonstr = json.dumps(vector_json_cross, )
-                    #     f.write(jsonstr)
-            elif self.patch_w2v == 'cc2vec':
-                vector, _ = self.cc2vec_w2v.convert_single_patch(p)
-            elif self.patch_w2v == 'codebert':
+
+            if self.patch_w2v == 'codebert':
                 vector, _ = self.codebert_w2v.convert_single_patch(p)
             elif self.patch_w2v == 'unixcoder':
                 vector, _ = self.unixcoder_w2v.convert_single_patch(p)
@@ -415,27 +343,7 @@ class evaluation:
         dataset_exp = np.delete(self.exception_type, failed_test_index, axis=0)
 
         return dataset_patch
-    def get_correct_patch_list2(self, project_id, model=None):
-        scaler = Normalizer()
 
-        scaler_patch = None
-        # if model == 'string':
-        #     all_patch_vector = self.patch_vector
-        # else:
-        #     scaler_patch = scaler.fit(self.patch_vector)
-        #     all_patch_vector = scaler_patch.transform(self.patch_vector)
-
-        all_patch_vector = []
-        with open('../cc2vec_correct_patch.pickle', 'rb') as f:
-            dict = pickle.load(f)
-        for k in dict.keys():
-            project = k.split('-')[0]
-            id = k.split('-')[1]
-            if project_id != (project+'_'+id):
-                patch_vector = dict[k]
-                all_patch_vector.append(patch_vector)
-
-        return np.array(all_patch_vector)
 
     def get_associated_patch_list(self, failed_test_index, k=5, cut_off=0.0, model=None):
         scaler = Normalizer()
@@ -455,7 +363,7 @@ class evaluation:
         dataset_func = np.delete(self.test_data[3], failed_test_index, axis=0)
         dataset_exp = np.delete(self.exception_type, failed_test_index, axis=0)
 
-        patch_list = [] # the associated patches of similar test cases
+        patch_list = []  # the associated patches of similar test cases
         cut_off_list = []
         closest_score = []
         for i in failed_test_index:
@@ -477,8 +385,9 @@ class evaluation:
                     simi_exp_type = simi_exp_type.split(':')[0]
                 flag = 1 if exp_type == simi_exp_type else 0
 
-                dist = distance.euclidean(simi_test_vec, failed_test_vector) / (1 + distance.euclidean(simi_test_vec, failed_test_vector))
-                score_test.append([j, 1-dist, flag]) # we use similarity instead of distance
+                dist = distance.euclidean(simi_test_vec, failed_test_vector) / (
+                            1 + distance.euclidean(simi_test_vec, failed_test_vector))
+                score_test.append([j, 1 - dist, flag])  # we use similarity instead of distance
             k_index_list = sorted(score_test, key=lambda x: float(x[1]), reverse=True)[:k]
             closest_score.append(k_index_list[0][1])
             # print('the closest test score is {}'.format(k_index_list[0][1]))
@@ -505,8 +414,7 @@ class evaluation:
             cut_off_list.append(cut_offs)
 
             # print('exception type: {}'.format(exp_type.split('.')[-1]))
-        return patch_list, scaler_patch, closest_score,cut_off_list
-
+        return patch_list, scaler_patch, closest_score, cut_off_list
 
     def cluster_getk_test_case(self, failed_test_index, k=5, cut_off=0.0, model=None):
         scaler = Normalizer()
@@ -532,7 +440,7 @@ class evaluation:
         # for i in range(0,len(dataset_test)):
         #     dict[dataset_test[i]]=i
 
-        dataset_copy=dataset_test
+        dataset_copy = dataset_test
 
         km = KMeans(n_clusters=10).fit(dataset_test)
         print(len(dataset_test))
@@ -545,38 +453,38 @@ class evaluation:
                 exp_type = exp_type.split(':')[0]
 
             score_test = []
-            for j in range(0,10):
+            for j in range(0, 10):
                 dist = distance.euclidean(km.cluster_centers_[j], failed_test_vector)
                 dist = 1 - dist / (1 + dist)
                 score_test.append([j, dist])  # we use similarity instead of distance
-            #得到最相似的聚类中心的下标集合center_index
-            maxx=0
-            center_index=-1
-            #print(score_test)
+            # 得到最相似的聚类中心的下标集合center_index
+            maxx = 0
+            center_index = -1
+            # print(score_test)
             for v in score_test:
-                if v[1] >= cut_off and v[1]>maxx:
-                    center_index=v[0]
-                    maxx=v[1]
-            #通过center—_index找到聚类中标签和它一致的所有向量
+                if v[1] >= cut_off and v[1] > maxx:
+                    center_index = v[0]
+                    maxx = v[1]
+            # 通过center—_index找到聚类中标签和它一致的所有向量
 
             if center_index == -1:
                 continue
-            
-            #print("have come hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
-            #k_simi_test = dataframe[(km.labels_ == center_index)]
+
+            # print("have come hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
+            # k_simi_test = dataframe[(km.labels_ == center_index)]
             resSeries = pd.Series(km.labels_)
             k_index = resSeries[resSeries.values == center_index]
             k_index = k_index.index.tolist()
-            #k_index=[]
+            # k_index=[]
 
             # for t in range(0,len(k_simi_test)):
             #     k_index.append(dict[k_simi_test[t]])
             # k_index=np.array(k_index)
-            #print(center_index)
-            
-            #print(k_simi_test)
-            #print(dataset_copy)
-            #for p in k_simi_test:
+            # print(center_index)
+
+            # print(k_simi_test)
+            # print(dataset_copy)
+            # for p in k_simi_test:
             #    for q in range(0,len(dataset_copy)):
             #        if p == dataset_copy[q]:
             #            k_index.append(q)
@@ -597,11 +505,11 @@ class evaluation:
             # print('exception type: {}'.format(exp_type.split('.')[-1]))
         return patch_list, scaler_patch,
 
-
-    def predict_collected_projects(self, path_collected_patch=None, cut_off=0.8, distance_method = distance.cosine, ASE2020=False, patchsim=False,):
-        print('Research Question 2')
+    def predict_collected_projects(self, path_collected_patch=None, cut_off=0.8, distance_method=distance.cosine,
+                                   ASE2020=False, patchsim=False, method=2,cof1=0.55,cof2=0.95,):
+        print('Evaluate the performance of APOSTLE')
         projects = {'Chart': 26, 'Lang': 65, 'Math': 106, 'Time': 27}
-        #projects = {'Chart': 26, 'Lang': 65, 'Time': 27, 'Closure': 176, 'Math': 106, 'Cli': 40, 'Codec': 18, 'Compress': 47, 'Collections': 28,  'JacksonCore': 26, 'JacksonDatabind': 112, 'JacksonXml': 6, 'Jsoup': 93, 'Csv': 16, 'Gson': 18, 'JxPath': 22, 'Mockito': 38}
+        # projects = {'Chart': 26, 'Lang': 65, 'Time': 27, 'Closure': 176, 'Math': 106, 'Cli': 40, 'Codec': 18, 'Compress': 47, 'Collections': 28,  'JacksonCore': 26, 'JacksonDatabind': 112, 'JacksonXml': 6, 'Jsoup': 93, 'Csv': 16, 'Gson': 18, 'JxPath': 22, 'Mockito': 38}
         y_preds, y_trues = [], []
         y_preds_baseline, y_trues = [], []
         MAP, MRR, number_patch_MAP = [], [], 0
@@ -609,20 +517,21 @@ class evaluation:
         recommend_list_project = []
         x_train, y_train, x_test, y_test = [], [], [], []
         box_projecs_co, box_projecs_inco, projects_name = [], [], []
-        mean_stand_dict = {0.0: [443, 816], 0.5: ['', ''], 0.6: [273, 246], 0.7: [231, 273], 0.8: [180, 235], 0.9: [130, 130]}
+        mean_stand_dict = {0.0: [443, 816], 0.5: ['', ''], 0.6: [273, 246], 0.7: [231, 273], 0.8: [180, 235],
+                           0.9: [130, 130]}
         print('test case similarity cut-off: {}'.format(cut_off))
         test_case_similarity_list, patch1278_list_short = [], []
         patch_available_distribution = {}
         patch1278_list = []
         APOSTLE_RESULT_dict = {}
-        cnt1=0
-        cnt2=0
-        all_name=[]
-        yes,no=0,0
-        item1,item2=[],[]
-        sco1,sco2=[],[]
-        len_dis1,len_dis2=[],[]
-        p1,p2=[],[]
+        cnt1 = 0
+        cnt2 = 0
+        all_name = []
+        yes, no = 0, 0
+        item1, item2 = [], []
+        sco1, sco2 = [], []
+        len_dis1, len_dis2 = [], []
+        p1, p2 = [], []
         for project, number in projects.items():
             print('Testing {}'.format(project))
             for id in range(1, number + 1):
@@ -632,7 +541,8 @@ class evaluation:
                 # if project_id != 'Chart_26':
                 #     continue
                 # extract failed test index according to bug_id
-                failed_test_index = [i for i in range(len(self.test_name)) if self.test_name[i].startswith(project_id+'-')]
+                failed_test_index = [i for i in range(len(self.test_name)) if
+                                     self.test_name[i].startswith(project_id + '-')]
                 if failed_test_index == []:
                     print('Couldnt find any failed test case for this bugid: {}'.format(project_id))
                     # print('{} patches skipped'.format(len(available_path_patch)))
@@ -650,7 +560,8 @@ class evaluation:
                 # if patchsim:
                 #     name_list, label_list, generated_patch_list, vector_ML_list = self.vector4patch_patchsim(available_path_patch, compare=ASE2020,)
                 # else:
-                patch_id_list, label_list, generated_patch_list, vector_ML_list,error_list,error_list2= self.vector4patch(available_path_patch, compare=ASE2020,)
+                patch_id_list, label_list, generated_patch_list, vector_ML_list, error_list, error_list2 = self.vector4patch(
+                    available_path_patch, compare=ASE2020, )
 
                 # # depulicate
                 # index_to_delete = []
@@ -678,10 +589,10 @@ class evaluation:
                 projects_name.append(project)
 
                 # access the associated patch list(patch search space) of similar failed test cases
-                associated_patch_list, scaler_patch, closest_score,cut_off_list = self.get_associated_patch_list(failed_test_index, k=5, cut_off=cut_off, model=self.patch_w2v)
-                
-                #第四种改动：part3聚类ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-                #associated_patch_list, scaler_patch = self.cluster_getk_test_case(failed_test_index, k=5, cut_off=0.5, model=self.patch_w2v)
+                associated_patch_list, scaler_patch, closest_score, cut_off_list = self.get_associated_patch_list(
+                    failed_test_index, k=5, cut_off=cut_off, model=self.patch_w2v)
+
+                # associated_patch_list, scaler_patch = self.cluster_getk_test_case(failed_test_index, k=5, cut_off=0.5, model=self.patch_w2v)
                 # baseline
                 correct_patches_baseline = self.get_correct_patch_list(failed_test_index, model=self.patch_w2v)
                 if associated_patch_list == []:
@@ -691,105 +602,66 @@ class evaluation:
                     if ASE2020 and vector_ML_list != []:
                         for i in range(len(label_list)):
                             # if list(vector_list[i].astype(float)) != list(np.zeros(240).astype(float)):
-                                x_train.append(vector_ML_list[i])
-                                y_train.append(label_list[i])
+                            x_train.append(vector_ML_list[i])
+                            y_train.append(label_list[i])
                     continue
                 recommend_list, recommend_list_baseline = [], []
                 # calculate the center of associated patches(repository)
-                centers = self.dynamic_threshold2(associated_patch_list,cut_off_list,distance_method=distance_method, sumup='mean')
-                #print("centers")
-                #print(centers)
-                
+                centers = self.dynamic_threshold2(associated_patch_list, cut_off_list, distance_method=distance_method,
+                                                  sumup='mean')
+                # print("centers")
+                # print(centers)
+
                 centers_baseline = [correct_patches_baseline.mean(axis=0)]
                 for i in range(len(patch_id_list)):
                     # name = name_list[i]
                     name = patch_id_list[i]
                     tested_patch = generated_patch_list[i]
-                    y_true = label_list[i]#p1'
-                    y_pred_prob=0
-                    y_pred=0
+                    y_true = label_list[i]  # p1'
+                    y_pred_prob = 0
+                    y_pred = 0
                     all_name.append(name)
                     # y_pred = self.predict_label(centers, threshold_list, vector_new_patch, scaler_patch)
                     # y_pred_prob = self.predict_prob(centers, threshold_list, vector_new_patch, scaler_patch)
-                    #第一种改动方法：穷举
-                    #for j in range(1, len(associated_patch_list)):
-                    #             y_pred_prob1, y_pred1 = self.predict_recom(associated_patch_list[j], tested_patch, scaler_patch, mean_stand_dict[cut_off], distance_method=distance_method,)
-                    #             if y_pred_prob1>y_pred_prob:
-                    #                  y_pred_prob=y_pred_prob1
-                    #             if y_pred1>y_pred:
-                    #                  y_pred=y_pred1
-                    #第二种改动方法：先求离当前补丁euclidean距离最近的历史正确补丁，再用该补丁计算相似度
-                    #print(associated_patch_list[0])
-                    #print(tested_patch)
-                    #dis_min = distance.euclidean(associated_patch_list[0][0], tested_patch)
-                    #vec = associated_patch_list[0]
 
-                    #for j in range(1, len(associated_patch_list)):
-                    #    dis = distance.euclidean(associated_patch_list[j][0], tested_patch)
-                    #    if dis < dis_min:
-                    #        dis_max = dis
-                    #        vec = associated_patch_list[j]
-                    #y_pred_prob, y_pred = self.predict_recom(vec, tested_patch, scaler_patch,mean_stand_dict[cut_off],distance_method=distance_method, )
-                    
-                    #第三种改变方式：聚类
-                    #if len(associated_patch_list) == 1:
-                    #  center = associated_patch_list[0].mean(axis=0)
-                    #else:
+                    # METHOD3
+                    if method == 3:
+                         for j in range(1, len(associated_patch_list)):
+                                     y_pred_prob1, y_pred1 = self.predict_recom(associated_patch_list[j], tested_patch, scaler_patch, mean_stand_dict[cut_off], distance_method=distance_method,)
+                                     if y_pred_prob1>y_pred_prob:
+                                          y_pred_prob=y_pred_prob1
+                                     if y_pred1>y_pred:
+                                          y_pred=y_pred1
+                    # METHOD1
+                    elif method == 1:
+                        dis_min = distance.euclidean(associated_patch_list[0][0], tested_patch)
+                        vec = associated_patch_list[0]
 
-                    #  patches = associated_patch_list[0]
+                        for j in range(1, len(associated_patch_list)):
+                           dis = distance.euclidean(associated_patch_list[j][0], tested_patch)
+                           if dis < dis_min:
+                               dis_max = dis
+                               vec = associated_patch_list[j]
+                        y_pred_prob, y_pred = self.predict_recom(vec, tested_patch, scaler_patch,mean_stand_dict[cut_off],distance_method=distance_method, )
+                    #METHOD2
+                    elif method == 2:
+                        y_pred_prob, y_pred = self.predict_recom(centers, tested_patch, scaler_patch,
+                                                                 mean_stand_dict[cut_off],
+                                                                 distance_method=distance_method, )
+                        if error_list2[i] == 1:
+                            y_pred_prob *= cof1
 
-                    #  for t in range(1, len(associated_patch_list)):
-                    #      patches = np.concatenate((patches, associated_patch_list[t]), axis=0)
-                          
-                    #  km = KMeans(n_clusters=2).fit(patches)
-                    #  center=[]
-                    #  score_max=0
-                    #  for j in range(0,1):
-                    #    dist = distance.euclidean(km.cluster_centers_[j], tested_patch)
-                    #    score = 1 - dist / (1 + dist)
-                    #    if score>score_max:
-                    #      score_max=score
-                    #      center=km.cluster_centers_[j]
-                    #centers=[center]
-                    #print(centers[0])
-                    
+                        if error_list[i] == 1:
+                            y_pred_prob *= cof2
+                        if (y_pred_prob > 0.5):
+                            y_pred = 1
+                        else:
+                            y_pred = 0
+                    y_pred_prob_baseline, y_pred_baseline = self.predict_recom(centers_baseline, tested_patch,
+                                                                               scaler_patch, mean_stand_dict[cut_off],
+                                                                               distance_method=distance_method, )
 
-                    y_pred_prob, y_pred = self.predict_recom(centers, tested_patch, scaler_patch, mean_stand_dict[cut_off], distance_method=distance_method, )
-                    if error_list2[i]==1:
-                        y_pred_prob*=0.55
-                        
-                    #if y_pred_prob<0.95:
-                    if error_list[i]==1:
-                    #if error_list[i]>=0:
-                          #y_pred_prob*=error_list[i]
-                          y_pred_prob*=0.95
-                    if(y_pred_prob>0.5):
-                      y_pred=1
-                    else:
-                      y_pred=0
-                    y_pred_prob_baseline, y_pred_baseline = self.predict_recom(centers_baseline, tested_patch, scaler_patch, mean_stand_dict[cut_off], distance_method=distance_method,)
-                    if y_true!=y_pred:
-                      if y_true==1:
-                        print("正确的被识别为错误的")
-                        cnt1=cnt1+1
-                        #p1.append(patch_list[i])
-                        sco1.append(y_pred_prob)
-                        len_dis1.append(error_list[i])
-                        item1.append('{}_{}_{}'.format(project, id,i))
-                      else:
-                        print("错误的被识别为正确的")
-                        cnt2=cnt2+1
-                        sco2.append(y_pred_prob)
-                        #p2.append(patch_list[i])
-                        len_dis2.append(error_list[i])
-                        item2.append('{}_{}_{}'.format(project, id,i))
-                      print("相似性得分")
-                      print(y_pred_prob)
-                    if y_true==1:
-                      yes=yes+1
-                    else:
-                      no=no+1
-                    #for Naturalness project
+                    # for Naturalness project
                     APOSTLE_RESULT_dict[name.lower()] = y_pred
 
                     if not math.isnan(y_pred_prob):
@@ -801,7 +673,7 @@ class evaluation:
                         y_trues.append(y_true)
 
                         # the current patches addressing this bug. The highest test case similarity we can find for test case of this bug is in 'test_case_similarity_list'
-                        #test_case_similarity_list.append(max(closest_score))
+                        # test_case_similarity_list.append(max(closest_score))
 
                         # ML prediction for comparison
                         if ASE2020:
@@ -824,13 +696,15 @@ class evaluation:
                         patchname_complete = '-'.join([patchname, project, str(id), tool, str(y_true)])
                         patch1278_list.append(patchname_complete)
 
-                if not (not 1 in label_list or not 0 in label_list) and recommend_list != []: # ensure there are correct and incorrect patches in recommended list
+                if not (
+                        not 1 in label_list or not 0 in label_list) and recommend_list != []:  # ensure there are correct and incorrect patches in recommended list
                     AP, RR = self.evaluate_recommend_list(recommend_list)
                     if AP != None and RR != None:
                         MAP.append(AP)
                         MRR.append(RR)
                         number_patch_MAP += len(recommend_list)
-                if not (not 1 in label_list or not 0 in label_list) and recommend_list_baseline != []: # ensure there are correct and incorrect patches in recommended list
+                if not (
+                        not 1 in label_list or not 0 in label_list) and recommend_list_baseline != []:  # ensure there are correct and incorrect patches in recommended list
                     AP, RR = self.evaluate_recommend_list(recommend_list_baseline)
                     if AP != None and RR != None:
                         MAP_baseline.append(AP)
@@ -848,27 +722,9 @@ class evaluation:
 
         if y_trues == [] or not 1 in y_trues or not 0 in y_trues:
             return
-        print("len")
-        print(len(all_name))
-        print(all_name)
 
-        #print("in all","true:",yes,"false",no)
-        #print("正确的被识别为错误的")
-        #print(item1)
-        #print(cnt1)
-        #print(len_dis1)
-        #print(sco1)
-        #for p in p1:
-        #  print(p)
-        
-        #print("错误的被识别为正确的")
-        #print(item2)
-        #print(cnt2)
-        #print(len_dis2)
-        #print(sco2)
-        #for p in p2:
-        #  print(p)
-        # evaluation based on a few metrics
+
+
 
         # 1. independently
         if not ASE2020 and not patchsim:
@@ -886,10 +742,14 @@ class evaluation:
         if ASE2020 and cut_off > 0.0:
             print('------')
             print('Evaluating ASE2020 Performance')
-            MlPrediction(x_train, y_train, x_test, y_test, y_pred_apostle=y_preds, test_case_similarity_list=test_case_similarity_list, algorithm='lr', comparison=ASE2020, cutoff=cut_off).predict()
-            MlPrediction(x_train, y_train, x_test, y_test, y_pred_apostle=y_preds, test_case_similarity_list=test_case_similarity_list, algorithm='rf', comparison=ASE2020, cutoff=cut_off).predict()
+            MlPrediction(x_train, y_train, x_test, y_test, y_pred_apostle=y_preds,
+                         test_case_similarity_list=test_case_similarity_list, algorithm='lr', comparison=ASE2020,
+                         cutoff=cut_off).predict()
+            MlPrediction(x_train, y_train, x_test, y_test, y_pred_apostle=y_preds,
+                         test_case_similarity_list=test_case_similarity_list, algorithm='rf', comparison=ASE2020,
+                         cutoff=cut_off).predict()
 
-        with open('./patch'+str(len(patch1278_list))+'.txt', 'w+') as f:
+        with open('./patch' + str(len(patch1278_list)) + '.txt', 'w+') as f:
             for p in patch1278_list:
                 f.write(p + '\n')
 
@@ -911,7 +771,7 @@ class evaluation:
                         apostle_cnt += 1
                     else:
                         y_combine.append(float(prediction_ps))
-            print('apostle_cnt: {}, PatchSim_cnt: {}'.format(apostle_cnt, len(y_combine)-apostle_cnt))
+            print('apostle_cnt: {}, PatchSim_cnt: {}'.format(apostle_cnt, len(y_combine) - apostle_cnt))
             self.evaluation_metrics(y_combine_trues, y_patchsim)
             print('----------')
             self.evaluation_metrics(y_combine_trues, y_combine)
@@ -937,8 +797,10 @@ class evaluation:
         '''
         self.statistics_box(box_projecs_co, box_projecs_inco, projects_name)
 
-    def predict_new_patch(self, project_id, cut_off=0.8, patch_vector=None, distance_method=distance.cosine, threshold=0.5):
-        mean_stand_dict = {0.0: [443, 816], 0.5: ['', ''], 0.6: [273, 246], 0.7: [231, 273], 0.8: [180, 235], 0.9: [130, 130]}
+    def predict_new_patch(self, project_id, cut_off=0.8, patch_vector=None, distance_method=distance.cosine,
+                          threshold=0.5):
+        mean_stand_dict = {0.0: [443, 816], 0.5: ['', ''], 0.6: [273, 246], 0.7: [231, 273], 0.8: [180, 235],
+                           0.9: [130, 130]}
 
         print('----------------')
         # extract failed test index according to bug_id
@@ -958,7 +820,7 @@ class evaluation:
                                                                                             model=self.patch_w2v)
         if associated_patch_list == []:
             print('############################################')
-            print ('Sorry, there is no any test case satisfying with the requirement of test case similarity cut-off.')
+            print('Sorry, there is no any test case satisfying with the requirement of test case similarity cut-off.')
             print('Please try to decrease the cut-off.')
             return
 
@@ -966,7 +828,8 @@ class evaluation:
         centers = self.dynamic_threshold2(associated_patch_list, distance_method=distance_method, sumup='mean')
 
         tested_patch = patch_vector
-        y_pred_prob, _ = self.predict_recom(centers, tested_patch, scaler_patch, mean_stand_dict[cut_off], distance_method=distance_method, )
+        y_pred_prob, _ = self.predict_recom(centers, tested_patch, scaler_patch, mean_stand_dict[cut_off],
+                                            distance_method=distance_method, )
         print('############################################')
         y_pred = 1 if y_pred_prob >= threshold else 0
         if y_pred == 1:
@@ -1127,7 +990,7 @@ class evaluation:
     #
 
     def predict(self, patch_list, new_patch, scaler_patch):
-        if self.patch_w2v != 'string':###############codebert
+        if self.patch_w2v != 'string':  ###############codebert
             new_patch = scaler_patch.transform(new_patch.reshape((1, -1)))
         dist_final = []
         # patch list includes multiple patches for multi failed test cases
@@ -1166,15 +1029,15 @@ class evaluation:
             center = np.array(patches).mean(axis=0)
             dist_mean = np.array([distance.cosine(p, center) for p in patches]).mean()
             # dist_mean = np.array([distance.cosine(p, center) for p in patches]).max()
-            score_mean = 1-dist_mean
+            score_mean = 1 - dist_mean
 
             centers.append(center)
             threshold_list.append(score_mean)
         return centers, threshold_list
 
-    def dynamic_threshold2(self, patch_list,cut_off_list,distance_method=distance.euclidean, sumup='mean'):
+    def dynamic_threshold2(self, patch_list, cut_off_list, distance_method=distance.euclidean, sumup='mean'):
         # patch_list: [[top-5 patches for failed test case 1], [top-5 patches failed test case 2], [top-5 patches failed test case 3]]
-        if self.patch_w2v != 'string':#################codevert
+        if self.patch_w2v != 'string':  #################codevert
             if len(patch_list) == 1:
                 center = patch_list[0].mean(axis=0)
                 # if sumup == 'mean':
@@ -1182,8 +1045,8 @@ class evaluation:
                 # elif sumup == 'max':
                 #     dist_mean = np.array([distance_method(p, center) for p in patch_list[0]]).max()
             else:
-                sum=0
-                #print(len(cut_off_list))
+                sum = 0
+                # print(len(cut_off_list))
                 for i in range(len(cut_off_list)):
                     # aa = cut_off_list[i]
                     # bb = [(aa[i - 1], i) for i in range(1, len(aa) + 1)]
@@ -1194,30 +1057,30 @@ class evaluation:
                     # print(cut_off_list[i])
 
                     for j in range(len(cut_off_list[i])):
-                        cut_off_list[i][j]-=0.8
+                        cut_off_list[i][j] -= 0.8
                         sum += cut_off_list[i][j]
                     for j in range(len(cut_off_list[i])):
                         cut_off_list[i][j] /= sum
-                        #print(cut_off_list[i][j])
+                        # print(cut_off_list[i][j])
                     sum = 0
-                patches = np.zeros((1,768))
+                patches = np.zeros((1, 768))
                 for i in range(0, len(patch_list)):
-                    #print(len(cut_off_list[i]))
+                    # print(len(cut_off_list[i]))
                     for j in range(len(cut_off_list[i])):
                         # print(cut_off_list[i][j])
                         # print(patch_list[i][j])
                         patches += cut_off_list[i][j] * patch_list[i][j]
                 return patches
-                #patches = np.concatenate((patches, patch_list[i]), axis=0)
-                #center = patches.mean(axis=0)
-                                 
+                # patches = np.concatenate((patches, patch_list[i]), axis=0)
+                # center = patches.mean(axis=0)
+
         else:
             return patch_list
 
         return [center]
 
     def predict_label(self, centers, threshold_list, new_patch, scaler_patch, ):
-        if self.patch_w2v != 'string':###########codebert
+        if self.patch_w2v != 'string':  ###########codebert
             new_patch = scaler_patch.transform(new_patch.reshape((1, -1)))
 
         vote_list = []
@@ -1239,7 +1102,7 @@ class evaluation:
             return 0
 
     def predict_prob(self, centers, threshold_list, new_patch, scaler_patch, distance_method=distance.euclidean):
-        if self.patch_w2v != 'string':###########codebert
+        if self.patch_w2v != 'string':  ###########codebert
             new_patch = scaler_patch.transform(new_patch.reshape((1, -1)))
 
         center = centers[0]
@@ -1248,7 +1111,7 @@ class evaluation:
 
         # normalize range
         if distance_method == distance.euclidean:
-            dist_new = dist_new / (1+dist_new)
+            dist_new = dist_new / (1 + dist_new)
             score_prob_new = 1 - dist_new
 
         elif distance_method == distance.cosine:
@@ -1258,16 +1121,16 @@ class evaluation:
         return score_prob_new
 
     def predict_recom(self, centers, new_patch, scaler_patch, mean_stand=None, distance_method=distance.euclidean):
-        if self.patch_w2v != 'string':####codebert
+        if self.patch_w2v != 'string':  ####codebert
             new_patch = scaler_patch.transform(new_patch.reshape((1, -1)))
             center = centers[0]
-            
+
             dist_new = distance_method(new_patch, center)
             # dist_new = 1-distance_method(new_patch, center)[0][1] # pearson
 
             # normalize range
             # score_prob_new = self.sigmoid(1 - dist_new)
-            dist_new = dist_new / (1+dist_new)
+            dist_new = dist_new / (1 + dist_new)
             score_prob_new = 1 - dist_new
 
             # if score_prob_new >= score_mean:
@@ -1288,7 +1151,7 @@ class evaluation:
             dist_new = np.array(dist_new).mean()
 
             # (dist_new-mean)/stand
-            dist_new = (dist_new-mean_stand[0])/mean_stand[1]
+            dist_new = (dist_new - mean_stand[0]) / mean_stand[1]
             try:
                 score_prob_new = self.sigmoid(-dist_new)
             except:
@@ -1304,10 +1167,7 @@ class evaluation:
     def evaluation_metrics(self, y_trues, y_pred_probs):
         fpr, tpr, thresholds = roc_curve(y_true=y_trues, y_score=y_pred_probs, pos_label=1)
         auc_ = auc(fpr, tpr)
-        print("y_pred_probs len:")
-        print(len(y_pred_probs))
-        print("indeed")
-        print(y_pred_probs)
+
         y_preds = [1 if p >= 0.5 else 0 for p in y_pred_probs]
 
         acc = accuracy_score(y_true=y_trues, y_pred=y_preds)
@@ -1321,7 +1181,8 @@ class evaluation:
 
         result = '***------------***\n'
         result += 'Evaluating AUC, F1, +Recall, -Recall\n'
-        result += 'Test data size: {}, Correct: {}, Incorrect: {}\n'.format(len(y_trues), y_trues.count(1), y_trues.count(0))
+        result += 'Test data size: {}, Correct: {}, Incorrect: {}\n'.format(len(y_trues), y_trues.count(1),
+                                                                            y_trues.count(0))
         result += 'Accuracy: %f -- Precision: %f -- +Recall: %f -- F1: %f \n' % (acc, prc, rc, f1)
         result += 'AUC: {:.3f}, +Recall: {:.3f}, -Recall: {:.3f}'.format(auc_, recall_p, recall_n)
         # return , auc_
@@ -1337,7 +1198,9 @@ class evaluation:
         scaler_patch = scaler.fit(self.patch_vector)
         all_patch_vector = scaler_patch.transform(self.patch_vector)
 
-        projects = {'Chart': 26, 'Lang': 65, 'Time': 27, 'Closure': 176, 'Math': 106, 'Cli': 40, 'Codec': 18, 'Compress': 47, 'Collections': 28,  'JacksonCore': 26, 'JacksonDatabind': 112, 'JacksonXml': 6, 'Jsoup': 93, 'Csv': 16, 'Gson': 18, 'JxPath': 22, 'Mockito': 38}
+        projects = {'Chart': 26, 'Lang': 65, 'Time': 27, 'Closure': 176, 'Math': 106, 'Cli': 40, 'Codec': 18,
+                    'Compress': 47, 'Collections': 28, 'JacksonCore': 26, 'JacksonDatabind': 112, 'JacksonXml': 6,
+                    'Jsoup': 93, 'Csv': 16, 'Gson': 18, 'JxPath': 22, 'Mockito': 38}
         # projects = {'Chart': 26, 'Lang': 65, 'Time': 27, 'Math': 106, }
         all_closest_score = []
         box_plot = []
@@ -1364,9 +1227,10 @@ class evaluation:
                     if j == i:
                         continue
                     # option 1: whether skip current project-id
-                    if option1 and self.test_name[j].startswith(project+'_'+id+'-'):
+                    if option1 and self.test_name[j].startswith(project + '_' + id + '-'):
                         continue
-                    dist = distance.euclidean(this_test, all_test_vector[j])/(1 + distance.euclidean(this_test, all_test_vector[j]))
+                    dist = distance.euclidean(this_test, all_test_vector[j]) / (
+                                1 + distance.euclidean(this_test, all_test_vector[j]))
                     if dist < dist_min:
                         dist_min = dist
                         dist_min_index = j
@@ -1378,7 +1242,8 @@ class evaluation:
                     print('the closest test: {}'.format(self.test_name[dist_min_index]))
                     closest_patch = all_patch_vector[dist_min_index]
                     # distance_patch = distance.euclidean(closest_patch, this_patch)/(1 + distance.euclidean(closest_patch, this_patch))
-                    distance_patch = distance.cosine(closest_patch, this_patch)/(1 + distance.cosine(closest_patch, this_patch))
+                    distance_patch = distance.cosine(closest_patch, this_patch) / (
+                                1 + distance.cosine(closest_patch, this_patch))
                     score_patch = 1 - distance_patch
                     if math.isnan(score_patch):
                         continue
@@ -1390,19 +1255,19 @@ class evaluation:
                     if p == i:
                         continue
                     # dist = distance.euclidean(this_patch, all_patch_vector[p]) / (1 + distance.euclidean(this_patch, all_patch_vector[p]))
-                    dist = distance.cosine(this_patch, all_patch_vector[p]) / (1 + distance.cosine(this_patch, all_patch_vector[p]))
+                    dist = distance.cosine(this_patch, all_patch_vector[p]) / (
+                                1 + distance.cosine(this_patch, all_patch_vector[p]))
                     simi_patch = 1 - dist
                     if math.isnan(simi_patch):
                         continue
                     simi_patch_average.append(simi_patch)
                 box_plot.append([project, 'N', np.array(simi_patch_average).mean()])
 
-
-
     def evaluate_recommend_list(self, recommend_list):
         # recommend_list: [name, y_pred, y_true, y_pred_prob]
-        recommend_list = pd.DataFrame(sorted(recommend_list, key=lambda x: x[3], reverse=True), columns=['name', 'y_pred', 'y_true', 'y_pred_prob']) # rank by prediction probability
-
+        recommend_list = pd.DataFrame(sorted(recommend_list, key=lambda x: x[3], reverse=True),
+                                      columns=['name', 'y_pred', 'y_true',
+                                               'y_pred_prob'])  # rank by prediction probability
 
         number_correct = 0.0
         precision_all = 0.0
@@ -1473,12 +1338,6 @@ class evaluation:
         w2v = Word2vector(test_w2v=None, patch_w2v=w2v, path_patch_root=path_patch_snippet)
         patch_vector, _ = w2v.convert_single_patch(path_patch_snippet)
         return patch_vector
-
-
-
-
-
-
 
 
 
