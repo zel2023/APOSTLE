@@ -169,8 +169,6 @@ class Word2vector:
         try:
 
             if self.patch_w2v == 'codebert':
-                self.error = 0
-                self.error2 = 0
                 multi_vector = []  # sum up vectors of different parts of patch
                 # patch = os.listdir(path_patch)
                 # for part in patch:
@@ -289,7 +287,7 @@ class Word2vector:
             patched_all = self.get_only_change(path_patch, type='patched')
 
             if (len(bugy_all) + len(patched_all) > self.thre1):
-                self.error = 1
+                self.error2 = 1
 
             tokens_ids = self.model.tokenize([bugy_all], max_length=512, mode="<encoder-only>")
             source_ids = torch.tensor(tokens_ids).to(self.device)
@@ -315,7 +313,7 @@ class Word2vector:
             patched_vec = np.mean(new_test_vec, axis=0)
 
             dist = distance.euclidean(patched_vec, bug_vec) / (1 + distance.euclidean(patched_vec, bug_vec))
-            if dist > 0.2:  # we use similarity instead of distance
+            if dist > self.thre2:  # we use similarity instead of distance
                 self.error = 1
             embedding = self.subtraction(bug_vec, patched_vec)
 
@@ -350,7 +348,7 @@ class Word2vector:
             patched_vec = vector.detach().numpy()
 
             dist = distance.euclidean(patched_vec, bug_vec) / (1 + distance.euclidean(patched_vec, bug_vec))
-            if 1 - dist < 0.8:  # we use similarity instead of distance
+            if dist > self.thre2:  # we use similarity instead of distance
                 self.error = 1
 
             embedding = self.subtraction(bug_vec, patched_vec)
