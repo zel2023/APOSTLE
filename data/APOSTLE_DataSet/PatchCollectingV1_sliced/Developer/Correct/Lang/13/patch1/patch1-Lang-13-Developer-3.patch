@@ -1,0 +1,18 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_13/SerializationUtils/Lang_13_SerializationUtils_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_13/SerializationUtils/Lang_13_SerializationUtils_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -265,7 +276,15 @@
+             try {
+                 return Class.forName(name, false, classLoader);
+             } catch (ClassNotFoundException ex) {
++                try {
+                     return Class.forName(name, false, Thread.currentThread().getContextClassLoader());
++                } catch (ClassNotFoundException cnfe) {
++                    Class<?> cls = primitiveTypes.get(name);
++                    if (cls != null)
++                        return cls;
++                    else
++                        throw cnfe;
++                }
+             }
+         }
+ 

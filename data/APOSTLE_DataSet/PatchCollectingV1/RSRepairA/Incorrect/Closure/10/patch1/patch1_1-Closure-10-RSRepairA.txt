@@ -1,0 +1,1 @@
+Fix HOOK pattern in closure situations .

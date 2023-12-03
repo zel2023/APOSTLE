@@ -1,0 +1,1 @@
+don ' t remove unused vars if we don ' t remove globals

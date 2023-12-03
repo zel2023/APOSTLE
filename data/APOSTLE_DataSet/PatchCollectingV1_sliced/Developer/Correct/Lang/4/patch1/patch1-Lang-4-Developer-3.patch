@@ -1,0 +1,11 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_4/LookupTranslator/Lang_4_LookupTranslator_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_4/LookupTranslator/Lang_4_LookupTranslator_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -74,7 +74,7 @@
+         // descend so as to get a greedy algorithm
+         for (int i = max; i >= shortest; i--) {
+             final CharSequence subSeq = input.subSequence(index, index + i);
+-            final CharSequence result = lookupMap.get(subSeq);
++            final CharSequence result = lookupMap.get(subSeq.toString());
+             if (result != null) {
+                 out.write(result.toString());
+                 return i;

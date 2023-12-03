@@ -1,0 +1,16 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_64/LevenbergMarquardtOptimizer/Math_64_LevenbergMarquardtOptimizer_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_64/LevenbergMarquardtOptimizer/Math_64_LevenbergMarquardtOptimizer_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -341,9 +348,12 @@
+                 double[] tmpVec = residuals;
+                 residuals = oldRes;
+                 oldRes    = tmpVec;
++                tmpVec    = objective;
++                objective = oldObj;
++                oldObj    = tmpVec;
+ 
+                 // determine the Levenberg-Marquardt parameter
+-                determineLMParameter(oldRes, delta, diag, work1, work2, work3);
++                determineLMParameter(qtf, delta, diag, work1, work2, work3);
+ 
+                 // compute the new point and the norm of the evolution direction
+                 double lmNorm = 0;

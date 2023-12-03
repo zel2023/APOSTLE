@@ -1,0 +1,1 @@
+Allow user to specify which technologies apply to a background range marker

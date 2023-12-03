@@ -1,0 +1,11 @@
+--- GaussianFitter.java	2020-10-10 17:47:33.000000000 +0200
++++ GaussianFitter copy.java	2020-11-05 22:58:22.000000000 +0100
+@@ -118,7 +118,7 @@
+      */
+     public double[] fit() {
+         final double[] guess = (new ParameterGuesser(getObservations())).guess();
+-        return fit(new Gaussian.Parametric(), guess);
++        return fit( guess ) ;
+     }
+ 
+     /**

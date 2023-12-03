@@ -1,0 +1,1 @@
+AllowImmutableValue check for value types .

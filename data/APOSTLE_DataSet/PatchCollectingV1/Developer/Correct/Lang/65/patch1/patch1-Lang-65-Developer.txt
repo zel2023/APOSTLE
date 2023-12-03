@@ -1,0 +1,1 @@
+Fixed for Persian and Urdu language maps # 1896

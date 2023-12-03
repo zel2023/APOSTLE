@@ -1,0 +1,10 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_28/SimplexSolver/Math_28_SimplexSolver_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_28/SimplexSolver/Math_28_SimplexSolver_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -135,6 +137,7 @@
+             // Additional heuristic: if we did not get a solution after half of maxIterations
+             //                       revert to the simple case of just returning the top-most row
+             // This heuristic is based on empirical data gathered while investigating MATH-828.
++            if (getIterations() < getMaxIterations() / 2) {
+                 Integer minRow = null;
+                 int minIndex = tableau.getWidth();
+                 for (Integer row : minRatioPositions) {

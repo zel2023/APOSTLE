@@ -1,0 +1,11 @@
+--- FastMath.java	2020-10-10 17:47:38.000000000 +0200
++++ FastMath copy.java	2020-11-05 23:01:53.000000000 +0100
+@@ -3479,7 +3479,7 @@
+      * @return b if a is lesser or equal to b, a otherwise
+      */
+     public static float max(final float a, final float b) {
+-        return (a <= b) ? b : (Float.isNaN(a + b) ? Float.NaN : b);
++        return( a <= b ) ? b :( Float.isNaN( a + b ) ? Float.NaN : a ) ;
+     }
+ 
+     /** Compute the maximum of two values

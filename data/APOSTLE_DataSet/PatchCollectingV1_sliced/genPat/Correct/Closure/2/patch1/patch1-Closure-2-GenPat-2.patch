@@ -1,0 +1,10 @@
+--- TypeCheck.java	2020-10-10 17:29:17.000000000 +0200
++++ TypeCheck copy.java	2020-11-06 20:04:35.000000000 +0100
+@@ -1585,6 +1586,7 @@
+       }
+       currentProperties.put(name, interfaceType);
+     }
++    }
+     for (ObjectType iType : interfaceType.getCtorExtendedInterfaces()) {
+       checkInterfaceConflictProperties(t, n, functionName, properties,
+           currentProperties, iType);

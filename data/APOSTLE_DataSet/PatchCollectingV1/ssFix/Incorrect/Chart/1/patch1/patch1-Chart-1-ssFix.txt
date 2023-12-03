@@ -1,0 +1,1 @@
+Fix CategoryItemRenderer . getDataset ( ) to return the first result

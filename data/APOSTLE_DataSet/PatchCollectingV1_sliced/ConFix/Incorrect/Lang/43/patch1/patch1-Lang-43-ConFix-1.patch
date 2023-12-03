@@ -1,0 +1,10 @@
+--- ../result-tf-hash/lang/lang43/buggy/org/apache/commons/lang/text/ExtendedMessageFormat.java	2019-02-20 00:02:30.194356658 +0000
++++ ../result-tf-hash/lang/lang43/confix/org/apache/commons/lang/text/ExtendedMessageFormat.java	2019-02-20 00:02:30.178356746 +0000
+@@ -26,6 +26,7 @@
+ import java.util.Map;
+ 
+ import org.apache.commons.lang.Validate;
++import java.net.InetAddress;
+ 
+ /**
+  * Extends <code>java.text.MessageFormat</code> to allow pluggable/additional formatting

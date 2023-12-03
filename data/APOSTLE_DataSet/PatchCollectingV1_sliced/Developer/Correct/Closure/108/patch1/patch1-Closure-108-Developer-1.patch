@@ -1,0 +1,10 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_108/ScopedAliases/Closure_108_ScopedAliases_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_108/ScopedAliases/Closure_108_ScopedAliases_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -256,6 +256,7 @@
+     private final Map<String, Var> aliases = Maps.newHashMap();
+ 
+     // Also temporary and cleared for each scope.
++    private final Set<Node> injectedDecls = Sets.newHashSet();
+ 
+     // Suppose you create an alias.
+     // var x = goog.x;

@@ -1,0 +1,11 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_37/NodeTraversal/Closure_37_NodeTraversal_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_37/NodeTraversal/Closure_37_NodeTraversal_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -538,7 +538,7 @@
+ 
+     // Body
+     Preconditions.checkState(body.getNext() == null &&
+-            body.isBlock());
++            body.isBlock(), body);
+     traverseBranch(body, n);
+ 
+     popScope();

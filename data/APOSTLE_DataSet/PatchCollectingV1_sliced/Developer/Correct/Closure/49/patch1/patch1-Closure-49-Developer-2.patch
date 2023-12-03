@@ -1,0 +1,25 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_49/MakeDeclaredNamesUnique/Closure_49_MakeDeclaredNamesUnique_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_49/MakeDeclaredNamesUnique/Closure_49_MakeDeclaredNamesUnique_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -127,11 +119,22 @@
+             renamer.addDeclaredName(name);
+           }
+ 
++          nameStack.push(renamer);
++        }
++        break;
+ 
++      case Token.LP: {
++          Renamer renamer = nameStack.peek().forChildScope();
+ 
+           // Add the function parameters
++          for (Node c = n.getFirstChild(); c != null; c = c.getNext()) {
++            String name = c.getString();
++            renamer.addDeclaredName(name);
++          }
+ 
+           // Add the function body declarations
++          Node functionBody = n.getNext();
++          findDeclaredNames(functionBody, null, renamer);
+ 
+           nameStack.push(renamer);
+         }

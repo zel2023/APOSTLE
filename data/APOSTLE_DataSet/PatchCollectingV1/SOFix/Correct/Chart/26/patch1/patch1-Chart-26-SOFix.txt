@@ -1,0 +1,1 @@
+Add label entity to the axis label collection

@@ -1,0 +1,1 @@
+Fix possible duplicated parse of EOF

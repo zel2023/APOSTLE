@@ -1,0 +1,10 @@
+--- ../result-tf-hash/math/math44/buggy/org/apache/commons/math/ode/events/EventState.java	2019-02-21 11:38:18.473403906 +0000
++++ ../result-tf-hash/math/math44/confix/org/apache/commons/math/ode/events/EventState.java	2019-02-21 11:38:18.473403906 +0000
+@@ -27,6 +27,7 @@
+ import org.apache.commons.math.ode.events.EventHandler;
+ import org.apache.commons.math.ode.sampling.StepInterpolator;
+ import org.apache.commons.math.util.FastMath;
++import java.io.DataInputStream;
+ 
+ /** This class handles the state for one {@link EventHandler
+  * event handler} during integration steps.

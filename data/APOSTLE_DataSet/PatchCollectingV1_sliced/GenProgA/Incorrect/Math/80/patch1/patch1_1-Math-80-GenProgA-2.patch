@@ -1,0 +1,12 @@
+--- /tmp/GenProg_Defects4J_Math_80/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java	2019-08-01 08:48:56.072067282 -0400
++++ /tmp/GenProg_Defects4J_Math_80/patches_hsqy/Patch_2/patched/org/apache/commons/math/linear/EigenDecompositionImpl.java	2019-08-01 08:56:45.109393141 -0400
+@@ -1090,7 +1089,8 @@
+                     work[4 * deflatedEnd - 3 - pingPong] = 0.0;
+                     dMin = 0.0;
+                     updateSigma(tau);
+-                    return deflatedEnd;
++                    final int upperStart = 5 * main.length;
++					return deflatedEnd;
+                 } else if (dMin < 0.0) {
+                     // tau too big. Select new tau and try again.
+                     if (tType < -22) {

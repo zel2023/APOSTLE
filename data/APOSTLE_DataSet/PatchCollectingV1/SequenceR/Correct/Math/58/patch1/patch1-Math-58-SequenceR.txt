@@ -1,0 +1,1 @@
+GaussianFitter . fit ( ) now uses 1 . 18 . 0 ( and is using

@@ -1,0 +1,1 @@
+Don ' t inline closure passes when compiling dependency fields .

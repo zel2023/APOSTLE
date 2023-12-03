@@ -1,0 +1,11 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_90/Frequency/Math_90_Frequency_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_90/Frequency/Math_90_Frequency_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -107,6 +107,8 @@
+      */
+     @Deprecated
+     public void addValue(Object v) {
++        addValue((Comparable<?>) v);
++    }
+     
+     /**
+      * Adds 1 to the frequency count for v.

@@ -1,0 +1,10 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_28/SimplexSolver/Math_28_SimplexSolver_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_28/SimplexSolver/Math_28_SimplexSolver_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -149,6 +152,7 @@
+                     }
+                 }
+                 return minRow;
++            }
+         }
+         return minRatioPositions.get(0);
+     }

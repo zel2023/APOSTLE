@@ -1,0 +1,11 @@
+--- NodeUtil.java	2020-10-10 17:34:25.000000000 +0200
++++ NodeUtil copy.java	2020-11-05 21:40:20.000000000 +0100
+@@ -2462,7 +2462,7 @@
+         // TODO(nicksantos): This needs to be changed so that it
+         // returns true iff we're sure the value was never aliased from inside
+         // the constructor (similar to callHasLocalResult)
+-        return true;
++        return false;
+       case Token.FUNCTION:
+       case Token.REGEXP:
+       case Token.ARRAYLIT:

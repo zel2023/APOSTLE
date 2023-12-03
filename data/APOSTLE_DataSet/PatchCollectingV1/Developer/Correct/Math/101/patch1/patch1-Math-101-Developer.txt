@@ -1,0 +1,1 @@
+fix a bug in the source string to make it work reliably outside the source string

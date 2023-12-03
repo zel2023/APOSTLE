@@ -1,0 +1,1 @@
+Don ' t count surrogate pairs as we don ' t understand code points at the beginning of a

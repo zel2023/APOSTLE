@@ -1,0 +1,10 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_110/ScopedAliases/Closure_110_ScopedAliases_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_110/ScopedAliases/Closure_110_ScopedAliases_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -355,6 +355,7 @@
+         Node n = v.getNode();
+         Node parent = n.getParent();
+         boolean isVar = parent.isVar();
++        boolean isFunctionDecl = NodeUtil.isFunctionDeclaration(parent);
+         if (isVar && n.getFirstChild() != null && n.getFirstChild().isQualifiedName()) {
+           recordAlias(v);
+         } else if (v.isBleedingFunction()) {

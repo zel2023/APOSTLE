@@ -1,0 +1,21 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_117/TypeValidator/Closure_117_TypeValidator_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_117/TypeValidator/Closure_117_TypeValidator_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -753,18 +765,6 @@
+       }
+     }
+ 
+-    JSType type = getJSType(n);
+-    if (dereference) {
+-      ObjectType dereferenced = type.dereference();
+-      if (dereferenced != null) {
+-        type = dereferenced;
+-      }
+-    }
+-    if (type.isFunctionPrototypeType() ||
+-        (type.toObjectType() != null &&
+-         type.toObjectType().getConstructor() != null)) {
+-      return type.toString();
+-    }
+     String qualifiedName = n.getQualifiedName();
+     if (qualifiedName != null) {
+       return qualifiedName;

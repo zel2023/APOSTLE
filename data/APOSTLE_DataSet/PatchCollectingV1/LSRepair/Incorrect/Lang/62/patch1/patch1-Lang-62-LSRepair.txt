@@ -1,0 +1,1 @@
+Don ' t ignore entity values in HTML entities , since they are never unescaped

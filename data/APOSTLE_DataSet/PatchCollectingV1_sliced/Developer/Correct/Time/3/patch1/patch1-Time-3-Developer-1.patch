@@ -1,0 +1,12 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Time_3/MutableDateTime/Time_3_MutableDateTime_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Time_3/MutableDateTime/Time_3_MutableDateTime_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -636,7 +636,9 @@
+         if (type == null) {
+             throw new IllegalArgumentException("Field must not be null");
+         }
++        if (amount != 0) {
+             setMillis(type.getField(getChronology()).add(getMillis(), amount));
++        }
+     }
+ 
+     //-----------------------------------------------------------------------

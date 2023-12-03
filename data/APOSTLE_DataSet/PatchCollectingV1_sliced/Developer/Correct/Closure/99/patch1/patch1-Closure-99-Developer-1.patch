@@ -1,0 +1,10 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_99/CheckGlobalThis/Closure_99_CheckGlobalThis_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_99/CheckGlobalThis/Closure_99_CheckGlobalThis_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -89,6 +89,7 @@
+       JSDocInfo jsDoc = getFunctionJsDocInfo(n);
+       if (jsDoc != null &&
+           (jsDoc.isConstructor() ||
++           jsDoc.isInterface() ||
+            jsDoc.hasThisType() ||
+            jsDoc.isOverride())) {
+         return false;

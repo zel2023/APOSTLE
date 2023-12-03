@@ -1,0 +1,1 @@
+StrBuilder . appendFixedWidthPadRight ( ) will reset the array

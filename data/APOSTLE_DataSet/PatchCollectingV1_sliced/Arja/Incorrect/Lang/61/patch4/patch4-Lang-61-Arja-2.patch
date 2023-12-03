@@ -1,0 +1,13 @@
+--- /src/java/org/apache/commons/lang/text/StrBuilder.java
++++ /src/java/org/apache/commons/lang/text/StrBuilder.java
+@@ -1766,9 +1770,7 @@
+         if (strLen == 1) {
+             return indexOf(str.charAt(0), startIndex);
+         }
+-        if (strLen == 0) {
+-            return startIndex;
+-        }
++        ensureCapacity(size + 4);
+         if (strLen > size) {
+             return -1;
+         }

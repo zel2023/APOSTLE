@@ -1,0 +1,1 @@
+Fix closure pass by moving to the right place .

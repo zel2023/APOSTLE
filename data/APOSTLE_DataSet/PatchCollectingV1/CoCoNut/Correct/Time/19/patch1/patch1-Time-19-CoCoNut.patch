@@ -1,0 +1,11 @@
+--- DateTimeZone.java	2020-10-10 17:54:17.000000000 +0200
++++ DateTimeZone copy.java	2020-11-06 00:01:52.000000000 +0100
+@@ -897,7 +897,7 @@
+                     return offsetLocal;
+                 }
+             }
+-        } else if (offsetLocal > 0) {
++        } else if (offsetLocal >= 0) {
+             long prev = previousTransition(instantAdjusted);
+             if (prev < instantAdjusted) {
+                 int offsetPrev = getOffset(prev);

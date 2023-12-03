@@ -1,0 +1,12 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_110/ScopedAliases/Closure_110_ScopedAliases_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_110/ScopedAliases/Closure_110_ScopedAliases_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -380,7 +382,9 @@
+ 
+           // First, we need to free up the function expression (EXPR)
+           // to be used in another expression.
++          if (isFunctionDecl) {
+             // Replace "function NAME() { ... }" with "var NAME;".
++            Node existingName = v.getNameNode();
+ 
+             // We can't keep the local name on the function expression,
+             // because IE is buggy and will leak the name into the global

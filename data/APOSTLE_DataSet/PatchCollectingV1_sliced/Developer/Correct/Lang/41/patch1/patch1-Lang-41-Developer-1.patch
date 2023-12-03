@@ -1,0 +1,26 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_41/ClassUtils/Lang_41_ClassUtils_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_41/ClassUtils/Lang_41_ClassUtils_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -188,10 +188,23 @@
+             return StringUtils.EMPTY;
+         }
+ 
++        StringBuffer arrayPrefix = new StringBuffer();
+ 
+         // Handle array encoding
++        if (className.startsWith("[")) {
++            while (className.charAt(0) == '[') {
++                className = className.substring(1);
++                arrayPrefix.append("[]");
++            }
+             // Strip Object type encoding
++            if (className.charAt(0) == 'L' && className.charAt(className.length() - 1) == ';') {
++                className = className.substring(1, className.length() - 1);
++            }
++        }
+ 
++        if (reverseAbbreviationMap.containsKey(className)) {
++            className = reverseAbbreviationMap.get(className);
++        }
+ 
+         int lastDotIdx = className.lastIndexOf(PACKAGE_SEPARATOR_CHAR);
+         int innerIdx = className.indexOf(

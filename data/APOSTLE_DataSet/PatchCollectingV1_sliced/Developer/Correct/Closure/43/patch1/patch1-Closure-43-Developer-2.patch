@@ -1,0 +1,16 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_43/TypedScopeCreator/Closure_43_TypedScopeCreator_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_43/TypedScopeCreator/Closure_43_TypedScopeCreator_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -544,6 +545,13 @@
+       }
+ 
+       // Analyze any @lends object literals in this statement.
++      if (n.getParent() != null && NodeUtil.isStatement(n) &&
++          lentObjectLiterals != null) {
++        for (Node objLit : lentObjectLiterals) {
++          defineObjectLiteral(objLit);
++        }
++        lentObjectLiterals.clear();
++      }
+     }
+ 
+     private void attachLiteralTypes(NodeTraversal t, Node n) {

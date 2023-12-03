@@ -1,0 +1,1 @@
+Remove redundant top border feature from border arranger

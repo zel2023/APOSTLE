@@ -1,0 +1,1 @@
+Fix the case for the objective function row being invalid after correction

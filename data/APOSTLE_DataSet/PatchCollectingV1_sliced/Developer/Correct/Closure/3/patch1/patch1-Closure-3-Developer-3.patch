@@ -1,0 +1,15 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_3/FlowSensitiveInlineVariables/Closure_3_FlowSensitiveInlineVariables_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_3/FlowSensitiveInlineVariables/Closure_3_FlowSensitiveInlineVariables_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -372,6 +372,12 @@
+                   case Token.REGEXP:
+                   case Token.NEW:
+                     return true;
++                  case Token.NAME:
++                    Var var = scope.getOwnSlot(input.getString());
++                    if (var != null
++                        && var.getParentNode().isCatch()) {
++                      return true;
++                    }
+                 }
+                 return false;
+               }

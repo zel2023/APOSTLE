@@ -1,0 +1,1 @@
+StrBuilder doesn ' t have the capacity anymore

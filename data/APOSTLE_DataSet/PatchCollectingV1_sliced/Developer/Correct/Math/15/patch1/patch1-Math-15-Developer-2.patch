@@ -1,0 +1,11 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_15/FastMath/Math_15_FastMath_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_15/FastMath/Math_15_FastMath_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -1538,7 +1539,7 @@
+         /* Handle special case x<0 */
+         if (x < 0) {
+             // y is an even integer in this case
+-            if (y >= TWO_POWER_52 || y <= -TWO_POWER_52) {
++            if (y >= TWO_POWER_53 || y <= -TWO_POWER_53) {
+                 return pow(-x, y);
+             }
+ 

@@ -1,0 +1,10 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_23/ExtendedMessageFormat/Lang_23_ExtendedMessageFormat_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_23/ExtendedMessageFormat/Lang_23_ExtendedMessageFormat_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -70,6 +70,7 @@
+  */
+ public class ExtendedMessageFormat extends MessageFormat {
+     private static final long serialVersionUID = -2362048321261811743L;
++    private static final int HASH_SEED = 31;
+ 
+     private static final String DUMMY_PATTERN = "";
+     private static final String ESCAPED_QUOTE = "''";

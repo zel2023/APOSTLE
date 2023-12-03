@@ -1,0 +1,1 @@
+Allow property types to be inferred from boolean to string .

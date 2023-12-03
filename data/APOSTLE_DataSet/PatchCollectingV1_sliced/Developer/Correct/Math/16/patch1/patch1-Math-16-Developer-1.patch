@@ -1,0 +1,10 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_16/FastMath/Math_16_FastMath_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_16/FastMath/Math_16_FastMath_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -79,6 +79,7 @@
+  */
+ public class FastMath {
+     /** StrictMath.log(Double.MAX_VALUE): {@value} */
++    private static final double LOG_MAX_VALUE = StrictMath.log(Double.MAX_VALUE);
+ 
+     /** Archimede's constant PI, ratio of circle circumference to diameter. */
+     public static final double PI = 105414357.0 / 33554432.0 + 1.984187159361080883e-9;

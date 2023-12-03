@@ -1,0 +1,17 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_30/StringUtils/Lang_30_StringUtils_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_30/StringUtils/Lang_30_StringUtils_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -1452,9 +1460,12 @@
+             char ch = cs.charAt(i);
+             for (int j = 0; j < searchLength; j++) {
+                 if (searchChars[j] == ch) {
+-                    if (i < csLast && j < searchLast && ch >= Character.MIN_HIGH_SURROGATE && ch <= Character.MAX_HIGH_SURROGATE) {
++                    if (Character.isHighSurrogate(ch)) {
++                        if (j == searchLast) {
+                             // missing low surrogate, fine, like String.indexOf(String)
+-                        if (searchChars[j + 1] == cs.charAt(i + 1)) {
++                            return true;
++                        }
++                        if (i < csLast && searchChars[j + 1] == cs.charAt(i + 1)) {
+                             return true;
+                         }
+                     } else {

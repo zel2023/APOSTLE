@@ -1,0 +1,1 @@
+Allow false to be true case when comparison is desired

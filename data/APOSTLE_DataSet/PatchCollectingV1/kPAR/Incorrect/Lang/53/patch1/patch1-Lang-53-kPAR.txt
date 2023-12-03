@@ -1,0 +1,1 @@
+Don ' t round if ( ! round || millisecs < 500 )

@@ -1,0 +1,10 @@
+--- /source/org/jfree/chart/plot/XYPlot.java
++++ /source/org/jfree/chart/plot/XYPlot.java
+@@ -2526,6 +2529,7 @@
+             markers = (ArrayList) this.backgroundRangeMarkers.get(new Integer(
+                     index));
+         }
++        if (markers == null){return false;}        
+         boolean removed = markers.remove(marker);
+         if (removed && notify) {
+             fireChangeEvent();

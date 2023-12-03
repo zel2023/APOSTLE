@@ -1,0 +1,1 @@
+Fix category item label generator on initial refresh .

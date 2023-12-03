@@ -1,0 +1,32 @@
+--- /Users/haoye.tian/Documents/University/data/PatchCollecting/Cardumen/Incorrect/Math/patch1-Math-63-Cardumen.buggy	2020-11-02 19:13:13.000000000 +0100
++++ /Users/haoye.tian/Documents/University/data/PatchCollecting/Cardumen/Incorrect/Math/patch1-Math-63-Cardumen.fixed	2020-11-02 19:13:13.000000000 +0100
+@@ -578,24 +524,12 @@
+      * @param n argument
+      * @return <code>n!</code>
+      * @throws ArithmeticException if the result is too large to be represented
+-     *         by a long integer.
+-     * @throws IllegalArgumentException if n < 0
+-     */
+-    public static long factorial(final int n) {
+-        if (n < 0) {
+-            throw MathRuntimeException.createIllegalArgumentException(
+-                  LocalizedFormats.FACTORIAL_NEGATIVE_PARAMETER,
+-                  n);
+-        }
+-        if (n > 20) {
+-            throw new ArithmeticException(
+-                    "factorial value is too large to fit in a long");
+-        }
+-        return FACTORIALS[n];
+-    }
+ 
+-    /**
+-     * Returns n!. Shorthand for <code>n</code> <a
++ 
++ 
++ 
++ 
++ 
+      * href="http://mathworld.wolfram.com/Factorial.html"> Factorial</a>, the
+      * product of the numbers <code>1,...,n</code> as a <code>double</code>.
+      * <p>

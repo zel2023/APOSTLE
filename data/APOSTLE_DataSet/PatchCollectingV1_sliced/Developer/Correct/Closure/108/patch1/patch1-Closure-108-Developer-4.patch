@@ -1,0 +1,11 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_108/ScopedAliases/Closure_108_ScopedAliases_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_108/ScopedAliases/Closure_108_ScopedAliases_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -578,7 +581,7 @@
+         // When we inject declarations, we duplicate jsdoc. Make sure
+         // we only process that jsdoc once.
+         JSDocInfo info = n.getJSDocInfo();
+-        if (info != null) {
++        if (info != null && !injectedDecls.contains(n)) {
+           for (Node node : info.getTypeNodes()) {
+             fixTypeNode(node);
+           }

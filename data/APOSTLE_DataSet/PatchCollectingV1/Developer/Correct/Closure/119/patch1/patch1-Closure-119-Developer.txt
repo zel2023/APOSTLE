@@ -1,0 +1,1 @@
+Handle catch / error in Closure data

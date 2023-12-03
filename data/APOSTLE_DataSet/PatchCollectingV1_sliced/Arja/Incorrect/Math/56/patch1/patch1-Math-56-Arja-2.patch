@@ -1,0 +1,11 @@
+--- /src/main/java/org/apache/commons/math/util/MultidimensionalCounter.java
++++ /src/main/java/org/apache/commons/math/util/MultidimensionalCounter.java
+@@ -278,7 +282,7 @@
+      * @return the total size of the unidimensional counter.
+      */
+     public int getSize() {
+-        return totalSize;
++    			return 0;
+     }
+     /**
+      * Get the number of multidimensional counter slots in each dimension.

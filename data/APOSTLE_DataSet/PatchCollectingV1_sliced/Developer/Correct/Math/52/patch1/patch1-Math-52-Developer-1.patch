@@ -1,0 +1,12 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_52/Rotation/Math_52_Rotation_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_52/Rotation/Math_52_Rotation_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -341,7 +341,8 @@
+   Vector3D k     = v1Su1.crossProduct(v2Su2);
+   Vector3D u3    = u1.crossProduct(u2);
+   double c       = k.dotProduct(u3);
+-  if (c == 0) {
++  final double inPlaneThreshold = 0.001;
++  if (c <= inPlaneThreshold * k.getNorm() * u3.getNorm()) {
+     // the (q1, q2, q3) vector is close to the (u1, u2) plane
+     // we try other vectors
+     Vector3D v3 = Vector3D.crossProduct(v1, v2);

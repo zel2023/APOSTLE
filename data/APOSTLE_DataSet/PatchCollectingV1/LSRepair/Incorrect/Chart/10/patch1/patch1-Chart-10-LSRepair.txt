@@ -1,0 +1,1 @@
+added System . exit ( 0 ) to method generateToolTipFragment

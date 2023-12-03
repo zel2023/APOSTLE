@@ -1,0 +1,11 @@
+--- patch1-Closure-4-Hercules.buggys	2020-11-03 21:50:44.000000000 +0800
++++ patch1-Closure-4-Hercules.fixed	2020-11-03 21:52:28.000000000 +0800
+@@ -199,7 +199,7 @@
+     }
+ 
+     resolveViaProperties(t, enclosing);
+-    if (detectInheritanceCycle()) {
++    if (detectImplicitPrototypeCycle()) {
+       handleTypeCycle(t);
+     }
+ 

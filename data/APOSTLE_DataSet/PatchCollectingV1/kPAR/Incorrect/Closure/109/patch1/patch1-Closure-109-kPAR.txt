@@ -1,0 +1,1 @@
+Add parseAndRecordTypeNode to the right type AST .

@@ -1,0 +1,13 @@
+--- /src/java/org/apache/commons/lang/text/StrBuilder.java
++++ /src/java/org/apache/commons/lang/text/StrBuilder.java
+@@ -1769,9 +1774,7 @@
+         if (strLen == 0) {
+             return startIndex;
+         }
+-        if (strLen > size) {
+-            return -1;
+-        }
++        ensureCapacity(size + 4);
+         char[] thisBuf = buffer;
+         int len = thisBuf.length - strLen;
+         outer:

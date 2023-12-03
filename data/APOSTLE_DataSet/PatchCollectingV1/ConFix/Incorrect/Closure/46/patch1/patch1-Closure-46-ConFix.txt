@@ -1,0 +1,1 @@
+Fix record type resolve bug

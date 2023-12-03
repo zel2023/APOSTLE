@@ -1,0 +1,10 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_29/InlineObjectLiterals/Closure_29_InlineObjectLiterals_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_29/InlineObjectLiterals/Closure_29_InlineObjectLiterals_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -213,6 +222,7 @@
+             return false;
+           }
+ 
++          validProperties.add(child.getString());
+ 
+           Node childVal = child.getFirstChild();
+           // Check if childVal is the parent of any of the passed in

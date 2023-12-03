@@ -1,0 +1,1 @@
+Fix CategoryPlot to ignore too small widths

@@ -1,0 +1,1 @@
+Fix unrolling of operators in Closure_34

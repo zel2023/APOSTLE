@@ -1,0 +1,11 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_6/GaussNewtonOptimizer/Math_6_GaussNewtonOptimizer_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_6/GaussNewtonOptimizer/Math_6_GaussNewtonOptimizer_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -157,7 +156,7 @@
+ 
+             // Check convergence.
+             if (previous != null) {
+-                converged = checker.converged(iter, previous, current);
++                converged = checker.converged(getIterations(), previous, current);
+                 if (converged) {
+                     setCost(computeCost(currentResiduals));
+                     return current;

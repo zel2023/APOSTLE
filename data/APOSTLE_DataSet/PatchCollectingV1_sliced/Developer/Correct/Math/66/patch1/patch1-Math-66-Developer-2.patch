@@ -1,0 +1,21 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_66/BrentOptimizer/Math_66_BrentOptimizer_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_66/BrentOptimizer/Math_66_BrentOptimizer_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -54,17 +54,10 @@
+      */
+     protected double doOptimize()
+         throws MaxIterationsExceededException, FunctionEvaluationException {
+-        throw new UnsupportedOperationException();
+-    }
+-    public double optimize(final UnivariateRealFunction f, final GoalType goalType, final double min, final double max, final double startValue) throws MaxIterationsExceededException, FunctionEvaluationException {
+-        clearResult();
+         return localMin(getGoalType() == GoalType.MINIMIZE,
+-                        f, goalType, min, startValue, max,
++                        getMin(), getStartValue(), getMax(),
+                         getRelativeAccuracy(), getAbsoluteAccuracy());
+     }
+-    public double optimize(final UnivariateRealFunction f, final GoalType goalType, final double min, final double max) throws MaxIterationsExceededException, FunctionEvaluationException {
+-        return optimize(f, goalType, min, max, min + GOLDEN_SECTION * (max - min));
+-    }
+ 
+     /**
+      * Find the minimum of the function within the interval {@code (lo, hi)}.

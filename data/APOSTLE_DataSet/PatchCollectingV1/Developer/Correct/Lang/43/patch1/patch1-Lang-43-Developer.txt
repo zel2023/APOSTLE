@@ -1,0 +1,1 @@
+don ' t put backslash at the end of a string in the pattern

@@ -1,0 +1,1 @@
+Handle isDigits ( string ) with patch 1 - Lang - 58 - Hercules . fixed

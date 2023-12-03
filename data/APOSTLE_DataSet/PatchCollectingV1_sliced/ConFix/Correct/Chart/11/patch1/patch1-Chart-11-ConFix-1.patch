@@ -1,0 +1,10 @@
+--- ../result-tf-hash/chart/chart11/buggy/org/jfree/chart/util/ShapeUtilities.java	2019-02-21 11:23:58.129767849 +0000
++++ ../result-tf-hash/chart/chart11/confix/org/jfree/chart/util/ShapeUtilities.java	2019-02-21 11:23:58.117767800 +0000
+@@ -72,6 +72,7 @@
+ import java.awt.geom.Point2D;
+ import java.awt.geom.Rectangle2D;
+ import java.util.Arrays;
++import java.util.Map;
+ 
+ /**
+  * Utility methods for {@link Shape} objects.

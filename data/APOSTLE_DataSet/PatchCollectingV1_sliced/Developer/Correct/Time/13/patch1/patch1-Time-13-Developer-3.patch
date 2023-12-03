@@ -1,0 +1,12 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Time_13/PeriodFormatterBuilder/Time_13_PeriodFormatterBuilder_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Time_13/PeriodFormatterBuilder/Time_13_PeriodFormatterBuilder_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -1139,6 +1140,9 @@
+             if (iFieldType >= SECONDS_MILLIS) {
+                 int dp = (int) (Math.abs(valueLong) % DateTimeConstants.MILLIS_PER_SECOND);
+                 if (iFieldType == SECONDS_MILLIS || dp > 0) {
++                    if (valueLong < 0 && valueLong > -DateTimeConstants.MILLIS_PER_SECOND) {
++                        buf.insert(bufLen, '-');
++                    }
+                     buf.append('.');
+                     FormatUtils.appendPaddedInteger(buf, dp, 3);
+                 }

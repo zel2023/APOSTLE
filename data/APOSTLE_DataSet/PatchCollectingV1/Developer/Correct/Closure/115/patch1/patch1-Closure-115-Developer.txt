@@ -1,0 +1,1 @@
+disable side effects check for function arguments

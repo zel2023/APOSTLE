@@ -1,0 +1,1 @@
+Allow closure nodes to be reduced by properties

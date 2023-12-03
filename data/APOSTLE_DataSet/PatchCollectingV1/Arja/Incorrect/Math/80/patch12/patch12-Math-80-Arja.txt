@@ -1,0 +1,1 @@
+EigenDecompositionImpl . minValueOf ( double , double , double ) added missing min

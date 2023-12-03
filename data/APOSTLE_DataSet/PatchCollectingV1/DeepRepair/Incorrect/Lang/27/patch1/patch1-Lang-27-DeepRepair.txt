@@ -1,0 +1,1 @@
+Remove expPos from mant string .

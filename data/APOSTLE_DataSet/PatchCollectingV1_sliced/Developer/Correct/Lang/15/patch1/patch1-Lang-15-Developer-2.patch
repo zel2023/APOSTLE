@@ -1,0 +1,11 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_15/TypeUtils/Lang_15_TypeUtils_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_15/TypeUtils/Lang_15_TypeUtils_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -672,7 +672,7 @@
+                 : new HashMap<TypeVariable<?>, Type>(subtypeVarAssigns);
+ 
+         // has target class been reached?
+-        if (cls.getTypeParameters().length > 0 || toClass.equals(cls)) {
++        if (toClass.equals(cls)) {
+             return typeVarAssigns;
+         }
+ 

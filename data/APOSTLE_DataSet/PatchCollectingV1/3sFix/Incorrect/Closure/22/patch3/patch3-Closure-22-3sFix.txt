@@ -1,0 +1,1 @@
+Fix the case of no - op in a closure check .

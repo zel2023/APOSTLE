@@ -1,0 +1,21 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_63/DurationFormatUtils/Lang_63_DurationFormatUtils_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_63/DurationFormatUtils/Lang_63_DurationFormatUtils_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -429,18 +424,6 @@
+         }
+         return buffer.toString();
+     }
+-    static int reduceAndCorrect(Calendar start, Calendar end, int field, int difference) {
+-        end.add( field, -1 * difference );
+-        int endValue = end.get(field);
+-        int startValue = start.get(field);
+-        if (endValue < startValue) {
+-            int newdiff = startValue - endValue;
+-            end.add( field, newdiff );
+-            return newdiff;
+-        } else {
+-            return 0;
+-        }
+-    }
+ 
+     static final Object y = "y";
+     static final Object M = "M";

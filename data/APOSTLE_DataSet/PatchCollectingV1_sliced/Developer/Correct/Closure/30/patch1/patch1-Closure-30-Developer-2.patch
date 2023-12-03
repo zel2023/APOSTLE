@@ -1,0 +1,10 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_30/MustBeReachingVariableDef/Closure_30_MustBeReachingVariableDef_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_30/MustBeReachingVariableDef/Closure_30_MustBeReachingVariableDef_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -68,6 +68,7 @@
+   private static class Definition {
+     final Node node;
+     final Set<Var> depends = Sets.newHashSet();
++    private boolean unknownDependencies = false;
+ 
+     Definition(Node node) {
+       this.node = node;

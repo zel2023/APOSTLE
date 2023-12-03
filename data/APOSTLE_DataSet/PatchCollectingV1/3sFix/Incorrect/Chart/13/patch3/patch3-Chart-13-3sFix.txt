@@ -1,0 +1,1 @@
+Fix width issue for border_arrangement .

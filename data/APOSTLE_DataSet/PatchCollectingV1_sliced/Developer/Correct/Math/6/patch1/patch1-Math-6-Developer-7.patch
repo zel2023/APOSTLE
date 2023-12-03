@@ -1,0 +1,15 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_6/LevenbergMarquardtOptimizer/Math_6_LevenbergMarquardtOptimizer_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_6/LevenbergMarquardtOptimizer/Math_6_LevenbergMarquardtOptimizer_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -319,10 +319,10 @@
+         // Outer loop.
+         lmPar = 0;
+         boolean firstIteration = true;
+-        int iter = 0;
+         final ConvergenceChecker<PointVectorValuePair> checker = getConvergenceChecker();
+         while (true) {
+-            ++iter;
++            incrementIterationCount();
++
+             final PointVectorValuePair previous = current;
+ 
+             // QR decomposition of the jacobian matrix

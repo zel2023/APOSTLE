@@ -1,0 +1,12 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_65/DateUtils/Lang_65_DateUtils_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_65/DateUtils/Lang_65_DateUtils_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -621,6 +621,9 @@
+             throw new ArithmeticException("Calendar value too large for accurate calculations");
+         }
+         
++        if (field == Calendar.MILLISECOND) {
++            return;
++        }
+ 
+         // ----------------- Fix for LANG-59 ---------------------- START ---------------
+         // see http://issues.apache.org/jira/browse/LANG-59

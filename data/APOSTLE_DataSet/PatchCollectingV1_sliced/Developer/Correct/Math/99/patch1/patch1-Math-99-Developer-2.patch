@@ -1,0 +1,12 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_99/MathUtils/Math_99_MathUtils_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_99/MathUtils/Math_99_MathUtils_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -711,6 +716,9 @@
+             return 0;
+         }
+         int lcm = Math.abs(mulAndCheck(a / gcd(a, b), b));
++        if (lcm == Integer.MIN_VALUE){
++            throw new ArithmeticException("overflow: lcm is 2^31");
++        }
+         return lcm;
+     }
+ 

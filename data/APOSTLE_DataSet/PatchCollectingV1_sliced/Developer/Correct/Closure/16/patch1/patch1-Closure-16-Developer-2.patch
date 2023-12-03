@@ -1,0 +1,11 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_16/ScopedAliases/Closure_16_ScopedAliases_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_16/ScopedAliases/Closure_16_ScopedAliases_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -465,7 +471,7 @@
+         Var aliasVar = aliases.get(baseName);
+         if (aliasVar != null) {
+           Node aliasedNode = aliasVar.getInitialValue();
+-          aliasUsages.add(new AliasedTypeNode(typeNode, aliasedNode.getQualifiedName() + name.substring(endIndex)));
++          aliasUsages.add(new AliasedTypeNode(typeNode, aliasedNode, baseName));
+         }
+       }
+ 

@@ -1,0 +1,1 @@
+Prevent null pattern exception from being cached .

@@ -1,0 +1,1 @@
+Allow 0 . 9 . 0 - > - X in Strings

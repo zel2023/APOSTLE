@@ -1,0 +1,1 @@
+closure compiler doesn ' t likeImmutableValue ( ) for inline code

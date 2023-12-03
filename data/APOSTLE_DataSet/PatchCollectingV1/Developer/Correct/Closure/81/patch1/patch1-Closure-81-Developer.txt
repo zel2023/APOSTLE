@@ -1,0 +1,1 @@
+reported an error about the missing function type in the source code

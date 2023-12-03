@@ -1,0 +1,11 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_39/PrototypeObjectType/Closure_39_PrototypeObjectType_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_39/PrototypeObjectType/Closure_39_PrototypeObjectType_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -391,7 +391,7 @@
+       prettyPrint = true;
+       return sb.toString();
+     } else {
+-      return "{...}";
++      return forAnnotations ? "?" : "{...}";
+     }
+   }
+ 

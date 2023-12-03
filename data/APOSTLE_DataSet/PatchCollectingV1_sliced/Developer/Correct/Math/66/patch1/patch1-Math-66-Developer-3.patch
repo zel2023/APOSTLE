@@ -1,0 +1,11 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_66/BrentOptimizer/Math_66_BrentOptimizer_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_66/BrentOptimizer/Math_66_BrentOptimizer_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -91,8 +84,6 @@
+      * the function.
+      */
+     private double localMin(boolean isMinim,
+-                            UnivariateRealFunction f,
+-                            GoalType goalType,
+                             double lo, double mid, double hi,
+                             double eps, double t)
+         throws MaxIterationsExceededException, FunctionEvaluationException {

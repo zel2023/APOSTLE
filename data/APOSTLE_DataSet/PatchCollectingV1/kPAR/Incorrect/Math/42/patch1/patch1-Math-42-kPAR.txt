@@ -1,0 +1,1 @@
+Fix hash code for SimplexTableau class

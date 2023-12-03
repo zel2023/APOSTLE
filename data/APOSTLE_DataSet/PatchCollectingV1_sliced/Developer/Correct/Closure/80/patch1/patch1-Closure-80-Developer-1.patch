@@ -1,0 +1,10 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_80/NodeUtil/Closure_80_NodeUtil_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_80/NodeUtil/Closure_80_NodeUtil_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -1259,6 +1259,7 @@
+       // Inversion
+       case Token.NOT:
+       // delete operator returns a boolean.
++      case Token.DELPROP:
+         return true;
+       default:
+         return false;

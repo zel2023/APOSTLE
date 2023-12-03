@@ -1,0 +1,21 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_66/BrentOptimizer/Math_66_BrentOptimizer_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_66/BrentOptimizer/Math_66_BrentOptimizer_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -116,15 +107,14 @@
+         double w = x;
+         double d = 0;
+         double e = 0;
+-        double fx = computeObjectiveValue(f, x);
+-        if (goalType == GoalType.MAXIMIZE) {
++        double fx = computeObjectiveValue(x);
++        if (!isMinim) {
+             fx = -fx;
+         }
+         double fv = fx;
+         double fw = fx;
+ 
+-        int count = 0;
+-        while (count < maximalIterationCount) {
++        while (true) {
+             double m = 0.5 * (a + b);
+             final double tol1 = eps * Math.abs(x) + t;
+             final double tol2 = 2 * tol1;

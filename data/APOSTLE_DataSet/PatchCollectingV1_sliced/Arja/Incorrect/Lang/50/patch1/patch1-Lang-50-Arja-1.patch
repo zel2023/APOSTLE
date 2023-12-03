@@ -1,0 +1,11 @@
+--- /src/java/org/apache/commons/lang/time/FastDateFormat.java
++++ /src/java/org/apache/commons/lang/time/FastDateFormat.java
+@@ -231,7 +231,7 @@
+      * @since 2.1
+      */
+     public static FastDateFormat getDateInstance(int style) {
+-        return getDateInstance(style, null, null);
++    	return getInstance(getDefaultPattern(),null,null);
+     }
+ 
+     /**

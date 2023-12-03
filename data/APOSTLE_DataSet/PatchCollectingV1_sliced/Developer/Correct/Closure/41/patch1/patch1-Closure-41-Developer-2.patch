@@ -1,0 +1,15 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_41/FunctionTypeBuilder/Closure_41_FunctionTypeBuilder_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_41/FunctionTypeBuilder/Closure_41_FunctionTypeBuilder_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -480,6 +483,12 @@
+     }
+ 
+     // Copy over any old parameters that aren't in the param list.
++    if (!isVarArgs) {
++      while (oldParameterType != null && !isVarArgs) {
++        builder.newParameterFromNode(oldParameterType);
++        oldParameterType = oldParameterType.getNext();
++      }
++    }
+ 
+     if (templateTypeName != null && !foundTemplateType) {
+       reportError(TEMPLATE_TYPE_EXPECTED, fnName);

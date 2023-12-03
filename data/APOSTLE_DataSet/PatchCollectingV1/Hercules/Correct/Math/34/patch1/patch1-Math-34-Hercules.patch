@@ -1,0 +1,10 @@
+--- patch1-Math-34-Hercules.buggy	2020-11-06 18:15:36.000000000 +0800
++++ patch1-Math-34-Hercules.fixed	2020-11-06 18:16:04.000000000 +0800
+@@ -206,6 +206,6 @@
+      * @return chromosome iterator
+      */
+     public Iterator<Chromosome> iterator() {
+-        return chromosomes.iterator();
++        return getChromosomes().iterator();
+     }
+ }

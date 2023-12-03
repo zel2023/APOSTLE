@@ -1,0 +1,1 @@
+Allow null check in closure trees

@@ -1,0 +1,1 @@
+Add more ensureCapacity ( ) for string builder

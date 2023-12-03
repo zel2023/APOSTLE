@@ -1,0 +1,10 @@
+--- /src/main/java/org/apache/commons/lang3/ArrayUtils.java
++++ /src/main/java/org/apache/commons/lang3/ArrayUtils.java
+@@ -3297,6 +3297,7 @@
+         @SuppressWarnings("unchecked") // type must be T
+         T[] newArray = (T[]) copyArrayGrow1(array, type);
+         newArray[newArray.length - 1] = element;
++    	if (element == null){throw new IllegalArgumentException();}
+         return newArray;
+     }
+ 

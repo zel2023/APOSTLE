@@ -1,0 +1,13 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_60/NodeUtil/Closure_60_NodeUtil_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_60/NodeUtil/Closure_60_NodeUtil_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -133,7 +135,10 @@
+         return TernaryValue.FALSE;
+ 
+       case Token.VOID:
++        if (!mayHaveSideEffects(n.getFirstChild())) {
+           return TernaryValue.FALSE;
++        }
++        break;
+ 
+       case Token.NAME:
+         String name = n.getString();

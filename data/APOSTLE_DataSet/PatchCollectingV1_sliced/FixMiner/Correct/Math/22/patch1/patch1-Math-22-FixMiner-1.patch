@@ -1,0 +1,12 @@
+--- a/src/main/java/org/apache/commons/math3/distribution/UniformRealDistribution.java
++++ b/src/main/java/org/apache/commons/math3/distribution/UniformRealDistribution.java
+@@ -181,7 +181,7 @@ public class UniformRealDistribution extends AbstractRealDistribution {
+ 
+     /** {@inheritDoc} */
+     public boolean isSupportUpperBoundInclusive() {
+-        return false;
++        return true;
+     }
+ 
+     /**diff --git a/src/main/java/org/apache/commons/math3/distribution/FDistribution.java b/src/main/java/org/apache/commons/math3/distribution/FDistribution.java
+index 8b0993c..e301e2e 100644

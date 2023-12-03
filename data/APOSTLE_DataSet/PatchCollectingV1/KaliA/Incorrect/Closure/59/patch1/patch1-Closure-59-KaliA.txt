@@ -1,0 +1,1 @@
+Allow changes through to pass through to fix stones

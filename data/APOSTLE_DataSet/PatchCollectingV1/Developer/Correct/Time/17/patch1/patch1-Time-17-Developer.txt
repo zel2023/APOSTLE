@@ -1,0 +1,1 @@
+Fix broken HIVE - 593 integration test

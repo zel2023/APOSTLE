@@ -1,0 +1,1 @@
+Allow ' + ' after the closing parenthesis in closure - scoped code

@@ -1,0 +1,1 @@
+Fix partial constructor to work with joda - time

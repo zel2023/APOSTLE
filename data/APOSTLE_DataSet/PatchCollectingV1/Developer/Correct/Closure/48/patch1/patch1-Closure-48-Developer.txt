@@ -1,0 +1,1 @@
+Fix inferred flag for functions in unscoped qualified name .

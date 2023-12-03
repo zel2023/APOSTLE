@@ -1,0 +1,1 @@
+Added throw exception if object is null

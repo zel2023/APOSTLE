@@ -1,0 +1,1 @@
+Fix swapped - in case of closing - > closing

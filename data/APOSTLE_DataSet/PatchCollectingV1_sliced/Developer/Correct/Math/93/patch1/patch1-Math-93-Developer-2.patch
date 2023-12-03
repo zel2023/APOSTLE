@@ -1,0 +1,12 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_93/MathUtils/Math_93_MathUtils_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_93/MathUtils/Math_93_MathUtils_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -374,6 +376,9 @@
+         if (n < 0) {
+             throw new IllegalArgumentException("must have n >= 0 for n!");
+         }
++        if (n < 21) {
++            return factorial(n);
++        }
+         return Math.floor(Math.exp(factorialLog(n)) + 0.5);
+     }
+ 

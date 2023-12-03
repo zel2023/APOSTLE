@@ -1,0 +1,1 @@
+StatisticalBarRenderer was throwing an error if the axes are not horizontal

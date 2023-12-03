@@ -1,0 +1,13 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Chart_25/StatisticalBarRenderer/Chart_25_StatisticalBarRenderer_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Chart_25/StatisticalBarRenderer/Chart_25_StatisticalBarRenderer_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -456,7 +465,9 @@
+         }
+ 
+         // standard deviation lines
+-            double valueDelta = dataset.getStdDevValue(row, column).doubleValue();
++        Number n = dataset.getStdDevValue(row, column);
++        if (n != null) {
++            double valueDelta = n.doubleValue();
+             double highVal = rangeAxis.valueToJava2D(meanValue.doubleValue() 
+                     + valueDelta, dataArea, yAxisLocation);
+             double lowVal = rangeAxis.valueToJava2D(meanValue.doubleValue() 

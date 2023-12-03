@@ -1,0 +1,10 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_26/ProcessCommonJSModules/Closure_26_ProcessCommonJSModules_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_26/ProcessCommonJSModules/Closure_26_ProcessCommonJSModules_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -125,6 +125,7 @@
+       AbstractPostOrderCallback {
+ 
+     private int scriptNodeCount = 0;
++    private Set<String> modulesWithExports = Sets.newHashSet();
+ 
+     @Override
+     public void visit(NodeTraversal t, Node n, Node parent) {

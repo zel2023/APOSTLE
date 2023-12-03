@@ -1,0 +1,11 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_50/PeepholeReplaceKnownMethods/Closure_50_PeepholeReplaceKnownMethods_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_50/PeepholeReplaceKnownMethods/Closure_50_PeepholeReplaceKnownMethods_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -373,7 +373,7 @@
+ 
+     Node right = callTarget.getNext();
+     if (right != null) {
+-      if (!NodeUtil.isImmutableValue(right)) {
++      if (right.getNext() != null || !NodeUtil.isImmutableValue(right)) {
+         return n;
+       }
+     }

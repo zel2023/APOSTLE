@@ -1,0 +1,11 @@
+--- patch1-Chart-8-Hercules.buggy	2020-11-03 21:30:58.000000000 +0800
++++ patch1-Chart-8-Hercules.fixed	2020-11-07 23:40:20.000000000 +0800
+@@ -172,7 +172,7 @@
+      */
+     public Week(Date time, TimeZone zone) {
+         // defer argument checking...
+-        this(time, RegularTimePeriod.DEFAULT_TIME_ZONE, Locale.getDefault());
++        this(time, zone, Locale.getDefault());
+     }
+ 
+     /**

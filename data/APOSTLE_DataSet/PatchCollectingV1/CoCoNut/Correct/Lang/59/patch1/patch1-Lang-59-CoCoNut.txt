@@ -1,0 +1,1 @@
+StrBuilder copy ( ) uses string copy ( ) for the copy constructor

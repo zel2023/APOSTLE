@@ -1,0 +1,1 @@
+Fixing bracketing in Math_97_BrentSolver_t

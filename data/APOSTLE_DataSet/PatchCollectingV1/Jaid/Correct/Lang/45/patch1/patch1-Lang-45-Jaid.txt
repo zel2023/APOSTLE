@@ -1,0 +1,1 @@
+Fixed misc problems caused by the use of substringBefore and substringAfter methods in WordUtils

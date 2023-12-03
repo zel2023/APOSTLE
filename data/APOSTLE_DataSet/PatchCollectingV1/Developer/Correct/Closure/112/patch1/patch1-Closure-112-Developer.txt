@@ -1,0 +1,1 @@
+Allow template types to be included in inferred by default

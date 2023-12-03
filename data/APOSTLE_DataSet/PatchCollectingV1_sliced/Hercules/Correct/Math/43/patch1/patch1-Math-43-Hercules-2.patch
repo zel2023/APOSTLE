@@ -1,0 +1,11 @@
+--- patch1-Math-43-Hercules.buggy	2020-11-06 19:11:06.000000000 +0800
++++ patch1-Math-43-Hercules.fixed	2020-11-06 19:13:08.000000000 +0800
+@@ -155,7 +155,7 @@
+         secondMoment.increment(value);
+         // If mean, variance or geomean have been overridden,
+         // need to increment these
+-        if (!(meanImpl instanceof Mean)) {
++        if (!((meanImpl) == mean)) {
+             meanImpl.increment(value);
+         }
+         if (!(varianceImpl instanceof Variance)) {

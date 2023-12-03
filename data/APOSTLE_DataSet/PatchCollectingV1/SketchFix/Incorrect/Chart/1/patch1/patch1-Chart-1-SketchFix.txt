@@ -1,0 +1,1 @@
+Improved nullability in CategoryItemRenderer

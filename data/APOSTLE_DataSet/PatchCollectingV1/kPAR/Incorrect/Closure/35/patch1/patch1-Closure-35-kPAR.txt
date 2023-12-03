@@ -1,0 +1,1 @@
+Make TypeInference . collapseUnion a union type .

@@ -1,0 +1,13 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_68/JsDocInfoParser/Closure_68_JsDocInfoParser_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_68/JsDocInfoParser/Closure_68_JsDocInfoParser_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -865,9 +865,9 @@
+                         }
+                         break;
+                     }
++                  }
+ 
+                   token = eatTokensUntilEOL();
+-                  }
+                   continue retry;
+               }
+             }

@@ -1,0 +1,1 @@
+Allow comments to be reported as valid JSDoc comments .

@@ -1,0 +1,1 @@
+Remove stray ' if ' in name . getRefs ( )

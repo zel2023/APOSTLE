@@ -1,0 +1,1 @@
+changed default value of initialStep to 1 . 0 if false

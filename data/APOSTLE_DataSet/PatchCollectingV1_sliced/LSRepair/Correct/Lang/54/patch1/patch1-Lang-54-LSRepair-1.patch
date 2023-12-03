@@ -1,0 +1,11 @@
+--- /src/java/org/apache/commons/lang/LocaleUtils.java
++++ /src/java/org/apache/commons/lang/LocaleUtils.java
+@@ -91,7 +91,7 @@
+      * @return a Locale, null if null input
+      * @throws IllegalArgumentException if the string is an invalid format
+      */
+-    public static Locale toLocale(String str) {
++public static Locale toLocale(String str) {
+         if (str == null) {
+             return null;
+         }

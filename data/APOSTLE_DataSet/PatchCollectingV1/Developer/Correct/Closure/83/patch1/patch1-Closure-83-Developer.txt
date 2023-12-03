@@ -1,0 +1,1 @@
+Fixed try catch block for parseArguments

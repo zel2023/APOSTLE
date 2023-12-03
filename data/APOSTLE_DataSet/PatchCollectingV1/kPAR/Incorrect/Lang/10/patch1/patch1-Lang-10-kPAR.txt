@@ -1,0 +1,1 @@
+FastDateParser ignores backslash which prevents me from processing the date value as literals

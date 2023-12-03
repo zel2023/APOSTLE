@@ -1,0 +1,10 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_6/TypeValidator/Closure_6_TypeValidator_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_6/TypeValidator/Closure_6_TypeValidator_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -382,7 +379,6 @@
+           "assignment to property " + propName + " of " +
+           getReadableJSTypeName(owner, true),
+           rightType, leftType);
+-      }
+       return false;
+     }
+     return true;

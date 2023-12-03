@@ -1,0 +1,19 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_98/ReferenceCollectingCallback/Closure_98_ReferenceCollectingCallback_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_98/ReferenceCollectingCallback/Closure_98_ReferenceCollectingCallback_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -558,7 +568,16 @@
+       // only named functions may be hoisted.
+       this.isHoisted = NodeUtil.isHoistedFunctionDeclaration(root);
+ 
++      this.isFunction = root.getType() == Token.FUNCTION;
+ 
++      if (root.getParent() != null) {
++        int pType = root.getParent().getType();
++        this.isLoop = pType == Token.DO ||
++            pType == Token.WHILE ||
++            pType == Token.FOR;
++      } else {
++        this.isLoop = false;
++      }
+     }
+ 
+     BasicBlock getParent() {

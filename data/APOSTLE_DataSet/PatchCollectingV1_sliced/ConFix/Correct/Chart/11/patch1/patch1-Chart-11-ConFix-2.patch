@@ -1,0 +1,11 @@
+--- ../result-tf-hash/chart/chart11/buggy/org/jfree/chart/util/ShapeUtilities.java	2019-02-21 11:23:58.129767849 +0000
++++ ../result-tf-hash/chart/chart11/confix/org/jfree/chart/util/ShapeUtilities.java	2019-02-21 11:23:58.117767800 +0000
+@@ -271,7 +272,7 @@
+         if (p1.getWindingRule() != p2.getWindingRule()) {
+             return false;
+         }
+-        PathIterator iterator1 = p1.getPathIterator(null);
++        PathIterator iterator1 = p2.getPathIterator(null);
+         PathIterator iterator2 = p1.getPathIterator(null);
+         double[] d1 = new double[6];
+         double[] d2 = new double[6];

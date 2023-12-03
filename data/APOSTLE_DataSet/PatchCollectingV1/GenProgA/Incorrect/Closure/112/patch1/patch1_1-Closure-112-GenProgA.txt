@@ -1,0 +1,1 @@
+Remove hard coded resolve of template types in closure context

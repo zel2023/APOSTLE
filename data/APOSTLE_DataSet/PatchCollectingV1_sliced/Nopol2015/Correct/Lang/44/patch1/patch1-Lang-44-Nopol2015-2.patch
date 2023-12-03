@@ -1,0 +1,10 @@
+--- /src/java/org/apache/commons/lang/NumberUtils.java
++++ /src/java/org/apache/commons/lang/NumberUtils.java
+@@ -202,6 +203,7 @@
+ 
+                     }
+                     throw new NumberFormatException(val + " is not a valid number.");
++                	}
+                 case 'f' :
+                 case 'F' :
+                     try {

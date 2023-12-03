@@ -1,0 +1,1 @@
+Fixing the function infusion of side effects in JS stylesheet

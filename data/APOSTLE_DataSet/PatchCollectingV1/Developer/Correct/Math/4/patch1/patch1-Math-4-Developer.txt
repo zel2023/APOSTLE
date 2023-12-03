@@ -1,0 +1,1 @@
+Fixed NPE in Math_4_SubLine_t

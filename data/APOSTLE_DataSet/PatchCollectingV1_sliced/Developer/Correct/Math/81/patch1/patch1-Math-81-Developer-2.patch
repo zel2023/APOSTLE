@@ -1,0 +1,13 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_81/EigenDecompositionImpl/Math_81_EigenDecompositionImpl_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_81/EigenDecompositionImpl/Math_81_EigenDecompositionImpl_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -902,8 +903,8 @@
+                     diagMax    = work[4 * i0];
+                     offDiagMin = work[4 * i0 + 2];
+                     double previousEMin = work[4 * i0 + 3];
+-                    for (int i = 4 * i0; i < 4 * n0 - 11; i += 4) {
+-                        if ((work[i + 3] <= TOLERANCE_2 * work[i]) &&
++                    for (int i = 4 * i0; i < 4 * n0 - 16; i += 4) {
++                        if ((work[i + 3] <= TOLERANCE_2 * work[i]) ||
+                             (work[i + 2] <= TOLERANCE_2 * sigma)) {
+                             // insert a split
+                             work[i + 2]  = -sigma;

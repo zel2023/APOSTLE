@@ -1,0 +1,1 @@
+StrBuilder should add the right size , but not the left .

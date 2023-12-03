@@ -1,0 +1,1 @@
+EigenDecompositionImpl . flipRows ( ) didn ' t do anything due to local variable

@@ -1,0 +1,1 @@
+Allow looping in JS files

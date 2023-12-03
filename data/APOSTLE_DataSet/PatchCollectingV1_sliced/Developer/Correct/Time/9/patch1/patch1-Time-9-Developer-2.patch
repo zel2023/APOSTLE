@@ -1,0 +1,12 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Time_9/DateTimeZone/Time_9_DateTimeZone_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Time_9/DateTimeZone/Time_9_DateTimeZone_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -280,6 +283,9 @@
+      * @return the DateTimeZone object for the offset
+      */
+     public static DateTimeZone forOffsetMillis(int millisOffset) {
++        if (millisOffset < -MAX_MILLIS || millisOffset > MAX_MILLIS) {
++            throw new IllegalArgumentException("Millis out of range: " + millisOffset);
++        }
+         String id = printOffset(millisOffset);
+         return fixedOffsetZone(id, millisOffset);
+     }

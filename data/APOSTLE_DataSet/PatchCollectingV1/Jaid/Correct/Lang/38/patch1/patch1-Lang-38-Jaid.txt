@@ -1,0 +1,1 @@
+Reset the calendar time to GMT on Sunday .

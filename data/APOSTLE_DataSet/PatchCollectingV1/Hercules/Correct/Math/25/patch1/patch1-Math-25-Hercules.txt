@@ -1,0 +1,1 @@
+Add a throw if the pair of arguments are not compatible with 1 . 0 .

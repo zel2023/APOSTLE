@@ -1,0 +1,1 @@
+Fixed null pointer check in WordUtils

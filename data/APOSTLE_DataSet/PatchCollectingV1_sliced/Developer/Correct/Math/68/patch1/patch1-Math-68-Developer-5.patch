@@ -1,0 +1,24 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_68/LevenbergMarquardtOptimizer/Math_68_LevenbergMarquardtOptimizer_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_68/LevenbergMarquardtOptimizer/Math_68_LevenbergMarquardtOptimizer_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -410,14 +414,20 @@
+                 }
+ 
+                 // tests for convergence.
++                if (checker != null) {
+                     // we use the vectorial convergence checker
++                    if (checker.converged(getIterations(), previous, current)) {
++                        return current;                        
++                    }
++                } else {
+                     // we use the Levenberg-Marquardt specific convergence parameters
+                     if (((Math.abs(actRed) <= costRelativeTolerance) &&
+                          (preRed <= costRelativeTolerance) &&
+                          (ratio <= 2.0)) ||
+                         (delta <= parRelativeTolerance * xNorm)) {
+-                        return new VectorialPointValuePair(point, objective);
++                        return current;
+                     }
++                }
+ 
+                 // tests for termination and stringent tolerances
+                 // (2.2204e-16 is the machine epsilon for IEEE754)

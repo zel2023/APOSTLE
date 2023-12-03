@@ -1,0 +1,10 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_5/LocaleUtils/Lang_5_LocaleUtils_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_5/LocaleUtils/Lang_5_LocaleUtils_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -125,6 +145,7 @@
+                 throw new IllegalArgumentException("Invalid locale format: " + str);
+             }
+             return new Locale(str.substring(0, 2), str.substring(3, 5), str.substring(6));
++        }
+     }
+ 
+     //-----------------------------------------------------------------------

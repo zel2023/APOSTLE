@@ -1,0 +1,1 @@
+ElitisticListPopulation constructor should throw exception if elitismRate is > 1 . 0

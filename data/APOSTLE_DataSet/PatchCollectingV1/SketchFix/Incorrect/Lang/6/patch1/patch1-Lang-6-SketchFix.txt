@@ -1,0 +1,1 @@
+Don ' t reverse the changes since we ' re about to manipulate the codepoint count

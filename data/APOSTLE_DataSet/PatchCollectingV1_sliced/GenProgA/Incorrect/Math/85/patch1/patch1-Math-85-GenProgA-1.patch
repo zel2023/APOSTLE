@@ -1,0 +1,12 @@
+--- /tmp/GenProg_Defects4J_Math_85/src/java/org/apache/commons/math/analysis/solvers/UnivariateRealSolverUtils.java	2019-08-01 09:58:40.065705381 -0400
++++ /tmp/GenProg_Defects4J_Math_85/patches_j3jy/Patch_40/patched/org/apache/commons/math/analysis/solvers/UnivariateRealSolverUtils.java	2019-08-01 10:07:16.324917859 -0400
+@@ -187,7 +187,8 @@
+     
+         do {
+             a = Math.max(a - 1.0, lowerBound);
+-            b = Math.min(b + 1.0, upperBound);
++            int i = 0;
++			b = Math.min(b + 1.0, upperBound);
+             fa = function.value(a);
+             
+             fb = function.value(b);

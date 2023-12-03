@@ -1,0 +1,1 @@
+"Revert "" Enable check for globalThis level """

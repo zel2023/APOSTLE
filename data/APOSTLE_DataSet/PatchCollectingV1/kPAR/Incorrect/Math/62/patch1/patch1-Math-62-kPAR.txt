@@ -1,0 +1,1 @@
+Fix a bug in MultiStartUnivariateRealOptimizer from side effects of adding additional bounds

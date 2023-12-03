@@ -1,0 +1,1 @@
+Fix Precision . equals ( dN , 0 . 0 , small ) .

@@ -1,0 +1,1 @@
+Fixed help for snapshotconverter

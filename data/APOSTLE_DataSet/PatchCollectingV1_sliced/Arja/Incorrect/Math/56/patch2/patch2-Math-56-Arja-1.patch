@@ -1,0 +1,14 @@
+--- /src/main/java/org/apache/commons/math/util/MultidimensionalCounter.java
++++ /src/main/java/org/apache/commons/math/util/MultidimensionalCounter.java
+@@ -90,11 +90,6 @@
+          * {@inheritDoc}
+          */
+         public boolean hasNext() {
+-            for (int i = 0; i < dimension; i++) {
+-                if (counter[i] != size[i] - 1) {
+-                    return true;
+-                }
+-            }
+             return false;
+         }
+ 

@@ -1,0 +1,10 @@
+--- /src/java/org/apache/commons/math/analysis/solvers/UnivariateRealSolverUtils.java
++++ /src/java/org/apache/commons/math/analysis/solvers/UnivariateRealSolverUtils.java
+@@ -203,6 +204,7 @@
+                       numIterations, maximumIterations, initial,
+                       lowerBound, upperBound, a, b, fa, fb);
+         }
++        }
+         
+         return new double[]{a, b};
+     }

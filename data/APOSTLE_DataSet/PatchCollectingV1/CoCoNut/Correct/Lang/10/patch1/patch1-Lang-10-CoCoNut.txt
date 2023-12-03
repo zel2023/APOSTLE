@@ -1,0 +1,1 @@
+FastDateParser copy ( ) didn ' t ignore whitespace in date parsing

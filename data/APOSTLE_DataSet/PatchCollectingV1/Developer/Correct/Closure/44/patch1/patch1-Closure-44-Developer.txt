@@ -1,0 +1,1 @@
+Allow forward slash in regexps

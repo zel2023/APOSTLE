@@ -1,0 +1,1 @@
+fixed too high epsilon delay in java 1 . 0 Math

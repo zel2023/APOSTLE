@@ -1,0 +1,1 @@
+Fix source map offset for v3 source map entries .

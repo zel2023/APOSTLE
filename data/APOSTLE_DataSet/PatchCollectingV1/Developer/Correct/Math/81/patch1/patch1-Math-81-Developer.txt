@@ -1,0 +1,1 @@
+fix a possible NPE in EigenDecompositionImpl , added a fix

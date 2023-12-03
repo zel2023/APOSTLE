@@ -1,0 +1,1 @@
+Fix removeRow ( ) where the column key was not found .

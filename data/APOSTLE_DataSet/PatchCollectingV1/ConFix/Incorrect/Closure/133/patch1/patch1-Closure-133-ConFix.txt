@@ -1,0 +1,1 @@
+Allow non - type annotations .

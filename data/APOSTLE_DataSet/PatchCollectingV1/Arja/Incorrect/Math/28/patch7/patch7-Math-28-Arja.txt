@@ -1,0 +1,1 @@
+Add incrementIterationsCounter ( ) to the minRow so it can be used for sorting

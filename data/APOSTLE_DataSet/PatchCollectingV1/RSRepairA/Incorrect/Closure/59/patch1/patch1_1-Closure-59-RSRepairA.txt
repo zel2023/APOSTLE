@@ -1,0 +1,1 @@
+Remove old definition of checkGlobalThisLevel from options . checkSuspiciousCode

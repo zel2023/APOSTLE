@@ -1,0 +1,10 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_47/Complex/Math_47_Complex_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_47/Complex/Math_47_Complex_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -102,6 +103,7 @@
+         isNaN = Double.isNaN(real) || Double.isNaN(imaginary);
+         isInfinite = !isNaN &&
+             (Double.isInfinite(real) || Double.isInfinite(imaginary));
++        isZero = real == 0 && imaginary == 0;
+     }
+ 
+     /**

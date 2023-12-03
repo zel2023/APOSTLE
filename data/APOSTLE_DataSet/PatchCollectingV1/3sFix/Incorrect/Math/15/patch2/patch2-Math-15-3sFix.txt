@@ -1,0 +1,1 @@
+Fix output of Math . pow ( x , y )

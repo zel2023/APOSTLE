@@ -1,0 +1,1 @@
+Fix the case for the column equals to the others ( ie , j = i ) .

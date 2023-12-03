@@ -1,0 +1,12 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_110/Node/Closure_110_Node_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_110/Node/Closure_110_Node_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -551,6 +551,9 @@
+       return null;
+     }
+     Node n = first;
++    if (n == null) {
++      throw new RuntimeException("node is not a child");
++    }
+ 
+     while (n.next != child) {
+       n = n.next;

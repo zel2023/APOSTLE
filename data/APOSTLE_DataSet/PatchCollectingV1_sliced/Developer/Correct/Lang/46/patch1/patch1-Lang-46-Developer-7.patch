@@ -1,0 +1,12 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_46/StringEscapeUtils/Lang_46_StringEscapeUtils_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_46/StringEscapeUtils/Lang_46_StringEscapeUtils_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -241,7 +242,9 @@
+                         out.write('\\');
+                         break;
+                     case '/' :
++                        if (escapeForwardSlash) {
+                             out.write('\\');
++                        }
+                         out.write('/');
+                         break;
+                     default :

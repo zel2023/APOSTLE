@@ -1,0 +1,1 @@
+Allow closure to override local variable name

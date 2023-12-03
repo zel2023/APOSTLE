@@ -1,0 +1,13 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_47/SourceMapConsumerV3/Closure_47_SourceMapConsumerV3_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_47/SourceMapConsumerV3/Closure_47_SourceMapConsumerV3_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -486,8 +486,8 @@
+       // Adjust the line/column here to be start at 1.
+       Builder x = OriginalMapping.newBuilder()
+         .setOriginalFile(sources[entry.getSourceFileId()])
+-        .setLineNumber(entry.getSourceLine())
+-        .setColumnPosition(entry.getSourceColumn());
++        .setLineNumber(entry.getSourceLine() + 1)
++        .setColumnPosition(entry.getSourceColumn() + 1);
+       if (entry.getNameId() != UNMAPPED) {
+         x.setIdentifier(names[entry.getNameId()]);
+       }

@@ -1,0 +1,1 @@
+Fixed weekdays for string output

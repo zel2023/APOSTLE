@@ -1,0 +1,11 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_68/LevenbergMarquardtOptimizer/Math_68_LevenbergMarquardtOptimizer_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_68/LevenbergMarquardtOptimizer/Math_68_LevenbergMarquardtOptimizer_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -300,7 +303,7 @@
+             }
+             if (maxCosine <= orthoTolerance) {
+                 // convergence has been reached
+-                return new VectorialPointValuePair(point, objective);
++                return current;
+             }
+ 
+             // rescale if necessary

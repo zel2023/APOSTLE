@@ -1,0 +1,1 @@
+Fix swapped arrows in closure scope

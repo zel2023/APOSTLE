@@ -1,0 +1,18 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_46/StringEscapeUtils/Lang_46_StringEscapeUtils_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_46/StringEscapeUtils/Lang_46_StringEscapeUtils_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -151,13 +151,13 @@
+      * @param escapeForwardSlash TODO
+      * @return the escaped string
+      */
+-    private static String escapeJavaStyleString(String str, boolean escapeSingleQuotes) {
++    private static String escapeJavaStyleString(String str, boolean escapeSingleQuotes, boolean escapeForwardSlash) {
+         if (str == null) {
+             return null;
+         }
+         try {
+             StringWriter writer = new StringWriter(str.length() * 2);
+-            escapeJavaStyleString(writer, str, escapeSingleQuotes);
++            escapeJavaStyleString(writer, str, escapeSingleQuotes, escapeForwardSlash);
+             return writer.toString();
+         } catch (IOException ioe) {
+             // this should never ever happen while writing to a StringWriter

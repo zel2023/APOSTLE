@@ -1,0 +1,13 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_66/BrentOptimizer/Math_66_BrentOptimizer_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_66/BrentOptimizer/Math_66_BrentOptimizer_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -197,8 +187,8 @@
+                     u = x + d;
+                 }
+ 
+-                double fu = computeObjectiveValue(f, u);
+-                if (goalType == GoalType.MAXIMIZE) {
++                double fu = computeObjectiveValue(u);
++                if (!isMinim) {
+                     fu = -fu;
+                 }
+ 

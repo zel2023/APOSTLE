@@ -1,0 +1,11 @@
+--- patch1-Lang-26-Hercules.buggys	2020-11-03 23:42:17.000000000 +0800
++++ patch1-Lang-26-Hercules.fixed	2020-11-03 23:43:52.000000000 +0800
+@@ -817,7 +817,7 @@
+      * @return the formatted string
+      */
+     public String format(Date date) {
+-        Calendar c = new GregorianCalendar(mTimeZone);
++        Calendar c = new GregorianCalendar(mTimeZone , mLocale);
+         c.setTime(date);
+         return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();
+     }

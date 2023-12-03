@@ -1,0 +1,1 @@
+Do not remove injectedDecls as we process the same kind of code when creating the alias .

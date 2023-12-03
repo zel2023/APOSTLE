@@ -1,0 +1,11 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_75/NodeUtil/Closure_75_NodeUtil_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_75/NodeUtil/Closure_75_NodeUtil_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -372,7 +375,7 @@
+   static TernaryValue isStrWhiteSpaceChar(int c) {
+     switch (c) {
+       case '\u000B': // <VT>
+-        return TernaryValue.TRUE;
++        return TernaryValue.UNKNOWN;  // IE says "no", EcmaScript says "yes"
+       case ' ': // <SP>
+       case '\n': // <LF>
+       case '\r': // <CR>

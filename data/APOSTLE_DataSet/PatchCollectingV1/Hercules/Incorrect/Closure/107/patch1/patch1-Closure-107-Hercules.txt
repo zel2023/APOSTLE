@@ -1,0 +1,1 @@
+HHH - 9733 - Set typeBasedOptimizationOptions ( ) to the right level so it

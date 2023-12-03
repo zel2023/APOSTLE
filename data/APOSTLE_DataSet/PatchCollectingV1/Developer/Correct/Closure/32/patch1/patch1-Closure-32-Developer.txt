@@ -1,0 +1,1 @@
+Reset lineStartChar after the * - 1 or * the * - 1 case .

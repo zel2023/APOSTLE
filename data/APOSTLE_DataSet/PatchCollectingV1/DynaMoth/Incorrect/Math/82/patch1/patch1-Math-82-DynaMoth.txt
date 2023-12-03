@@ -1,0 +1,1 @@
+Added a false to minValue so it is not lost

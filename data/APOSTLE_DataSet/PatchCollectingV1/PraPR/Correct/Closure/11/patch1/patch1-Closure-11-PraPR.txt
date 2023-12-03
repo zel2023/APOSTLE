@@ -1,0 +1,1 @@
+Fix TypeCheck . ILLEGAL_PROPERTY_ACCESS check

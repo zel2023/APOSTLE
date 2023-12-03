@@ -1,0 +1,1 @@
+don ' t increment entity name in String entities

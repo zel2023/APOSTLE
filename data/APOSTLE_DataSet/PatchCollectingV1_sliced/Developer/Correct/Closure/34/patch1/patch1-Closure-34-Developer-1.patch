@@ -1,0 +1,13 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_34/CodeGenerator/Closure_34_CodeGenerator_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_34/CodeGenerator/Closure_34_CodeGenerator_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -119,9 +119,7 @@
+         cc.addOp(opstr, true);
+         addExpr(last, p, rhsContext);
+       } else {
+-        addExpr(first, p, context);
+-        cc.addOp(opstr, true);
+-        addExpr(last, p + 1, rhsContext);
++        unrollBinaryOperator(n, type, opstr, context, rhsContext, p, p + 1);
+       }
+       return;
+     }

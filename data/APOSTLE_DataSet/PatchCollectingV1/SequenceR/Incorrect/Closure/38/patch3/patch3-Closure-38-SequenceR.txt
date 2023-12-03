@@ -1,0 +1,1 @@
+Fix negative zero presence in JSON

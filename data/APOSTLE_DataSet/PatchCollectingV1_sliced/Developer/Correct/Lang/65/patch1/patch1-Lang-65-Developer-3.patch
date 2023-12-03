@@ -1,0 +1,12 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_65/DateUtils/Lang_65_DateUtils_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_65/DateUtils/Lang_65_DateUtils_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -706,7 +734,9 @@
+                 roundUp = offset > ((max - min) / 2);
+             }
+             //We need to remove this field
++            if (offset != 0) {
+                 val.set(fields[i][0], val.get(fields[i][0]) - offset);
++            }
+         }
+         throw new IllegalArgumentException("The field " + field + " is not supported");
+ 

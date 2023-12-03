@@ -1,0 +1,1 @@
+Allow closure to be expanded if a node equals to another node .

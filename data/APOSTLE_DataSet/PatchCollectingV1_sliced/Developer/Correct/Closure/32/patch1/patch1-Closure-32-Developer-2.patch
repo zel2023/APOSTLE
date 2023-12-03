@@ -1,0 +1,10 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_32/JsDocInfoParser/Closure_32_JsDocInfoParser_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_32/JsDocInfoParser/Closure_32_JsDocInfoParser_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -1379,6 +1381,7 @@
+           }
+ 
+           ignoreStar = true;
++          lineStartChar = 0;
+           token = next();
+           continue;
+ 

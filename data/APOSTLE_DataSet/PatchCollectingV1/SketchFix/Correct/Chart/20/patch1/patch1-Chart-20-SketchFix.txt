@@ -1,0 +1,1 @@
+Fix ValueMarker constructor to ignore the outline paint for now .

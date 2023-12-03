@@ -1,0 +1,1 @@
+Fixed bug in Closure ' s excerpt patch ( charno = sourceExpert . length ( ) )

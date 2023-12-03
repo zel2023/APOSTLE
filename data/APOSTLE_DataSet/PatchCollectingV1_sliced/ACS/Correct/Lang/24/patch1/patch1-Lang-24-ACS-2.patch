@@ -1,0 +1,8 @@
+--- /src/main/java/org/apache/commons/lang3/math/NumberUtils.java
++++ /src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+@@ -1420,4 +1420,4 @@
+         return !allowSigns && foundDigit;
+     }
+     
+-}
++}

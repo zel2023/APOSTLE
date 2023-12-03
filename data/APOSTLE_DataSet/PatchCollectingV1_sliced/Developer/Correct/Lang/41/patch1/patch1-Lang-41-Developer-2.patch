@@ -1,0 +1,11 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_41/ClassUtils/Lang_41_ClassUtils_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Lang_41/ClassUtils/Lang_41_ClassUtils_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -200,7 +213,7 @@
+         if (innerIdx != -1) {
+             out = out.replace(INNER_CLASS_SEPARATOR_CHAR, PACKAGE_SEPARATOR_CHAR);
+         }
+-        return out;
++        return out + arrayPrefix;
+     }
+ 
+     // Package name

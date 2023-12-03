@@ -1,0 +1,1 @@
+Fixed a bug in Closure_74 where NOT nodes were being reorganised as literals .

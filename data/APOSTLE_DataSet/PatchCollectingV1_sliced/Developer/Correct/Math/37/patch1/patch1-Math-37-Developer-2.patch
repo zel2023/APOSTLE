@@ -1,0 +1,19 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_37/Complex/Math_37_Complex_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Math_37/Complex/Math_37_Complex_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -1060,9 +1066,15 @@
+      * @since 1.2
+      */
+     public Complex tanh() {
+-        if (isNaN) {
++        if (isNaN || Double.isInfinite(imaginary)) {
+             return NaN;
+         }
++        if (real > 20.0) {
++            return createComplex(1.0, 0.0);
++        }
++        if (real < -20.0) {
++            return createComplex(-1.0, 0.0);
++        }
+         double real2 = 2.0 * real;
+         double imaginary2 = 2.0 * imaginary;
+         double d = FastMath.cosh(real2) + FastMath.cos(imaginary2);

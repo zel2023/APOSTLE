@@ -1,0 +1,1 @@
+expanded buffer to include str . length ( ) + 4 .

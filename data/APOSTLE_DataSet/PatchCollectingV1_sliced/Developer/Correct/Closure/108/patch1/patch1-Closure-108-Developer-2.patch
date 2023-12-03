@@ -1,0 +1,10 @@
+--- /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_108/ScopedAliases/Closure_108_ScopedAliases_s.java	2020-08-13 10:38:48.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/Closure/human-closure/Closure_108/ScopedAliases/Closure_108_ScopedAliases_t.java	2020-08-13 10:38:48.000000000 +0200
+@@ -313,6 +314,7 @@
+ 
+       if (t.getScopeDepth() == 2) {
+         renameNamespaceShadows(t);
++        injectedDecls.clear();
+         aliases.clear();
+         forbiddenLocals.clear();
+         transformation = null;

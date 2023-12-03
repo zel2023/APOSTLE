@@ -1,0 +1,12 @@
+--- /Users/haoye.tian/Downloads/ODS/data/human_patches/Time_3/MutableDateTime/Time_3_MutableDateTime_s.java	2020-08-13 10:38:58.000000000 +0200
++++ /Users/haoye.tian/Downloads/ODS/data/human_patches/Time_3/MutableDateTime/Time_3_MutableDateTime_t.java	2020-08-13 10:38:58.000000000 +0200
+@@ -678,7 +682,9 @@
+      * @throws IllegalArgumentException if the value is invalid
+      */
+     public void addWeekyears(final int weekyears) {
++        if (weekyears != 0) {
+             setMillis(getChronology().weekyears().add(getMillis(), weekyears));
++        }
+     }
+ 
+     //-----------------------------------------------------------------------
