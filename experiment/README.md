@@ -8,7 +8,7 @@ Attention: Preferably use CPU to run the code.
 Command:  python main.py apostle
 
 OUTPUT: 
-* **performance:** The results of the APOSTLE.(You can change the parameters under *config.py* to run the code)
+* **performance:** The results of the APOSTLE. (You can change the parameters under *config.py* to run the code)
 
 Attention:
 * **Some parameter Settings** You should set threshold1 to 700, threshold2 to 0.2, coefficient1 to 0.55 and coefficient2 to 0.95 under *config.py.
