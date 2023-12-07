@@ -14,7 +14,7 @@ APOSTLE,  a learning-based unsupervised classification model for predicting the 
 * **CodeBERT/UniXcoder/GraphCodeBERT representation model.**
   1. When the code runs, these models (except for codebert) can be automatically redirected to the huggingface website for download.
   2. You will need to download codebert's pre-trained model files from https://huggingface.co/microsoft/codebert-base and place them in the codebert folder under the representation folder(you need to create a new folder called codebert).
-  3. If the If the code makes an error when downloading the pre-trained model, you can manually download the pre-trained model file on huggingface and modify the parameters of the auto-extract model parameter function in [./representation/word2vector.py] to the folder path after the manual drop. For an example of how to get a manually downloaded file, see Point 2 for the codebert model.
+  3. If the If the code makes an error when downloading the pre-trained model, you can manually download the pre-trained model files on huggingface and update the variable `MODEL_CODEBERT` in [./representation/word2vector.py] according to destination folder of trained model. For an example of how to get a manually downloaded file, see Point 2 for the codebert model.
 
 ## II) Reproduction
   Follow the [experiment/README.md] to obtain the experimental results in the paper.
