@@ -2,7 +2,7 @@
 
 
 # APOSTLE
-APOSTLE,  a learning-based unsupervised classification model for predicting the correctness of patches based on multiple perspectives.
+APOSTLE, a learning-based unsupervised classification model for predicting the correctness of patches based on multiple perspectives.
 
 ## I) Requirements
 
@@ -20,7 +20,7 @@ APOSTLE,  a learning-based unsupervised classification model for predicting the 
   Follow the [experiment/README.md] to obtain the experimental results in the paper.
 
 ## III) File Orginization
-  There are three folders.Every folder make a special part.
+  There are three folders. Every folder make a special part.
 
   * **data**
   It is used to store some data files, including intermediate result files, final result files, test case data files.
