@@ -21,7 +21,7 @@ Command:  python main.py RQ2
 Compare the state of the art approaches.
 
 * **Static approach:** ML-based approach.
-* **Dynamic approach:** Patch-Sim. Please run `python evaluate_patchsim.py`
+* **Dynamic approach:** Patch-Sim. Please run `python evaluate_patchsim.py`.
 
 OUTPUT:
 * **performance:** The results of the state-of-the-art.
