@@ -1,5 +1,5 @@
 # Experimental Reproduction
-Run `main.py` following one of the arguments ('apostle', 'RQ2','method1','method2','method3')
+Run `main.py` following one of the arguments ('apostle', 'RQ2', 'method1', 'method2', 'method3')
 
 Attention: Preferably use CPU to run the code.
 
