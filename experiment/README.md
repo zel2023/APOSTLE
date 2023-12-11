@@ -79,3 +79,22 @@ Customize: Choose different thresholds and cofficients by different argument
 OUTPUT:
 * **performance:** the results of APOSTLE with different patch similarity calculation methods.
 
+## Ablation Study
+
+Command: python main.py apostle
+
+Customize: By setting coefficients under *config.py*, we can get the results.
+
+* **M1:** The complete APOSTLE method.(set coefficient1 to 0.55 and coefficient2 to 0.95)
+* **M2:** The APOSTLE without the help of indicator of the degree of code semantic change.(set coefficient1 to 0.55 and coefficient2 to 1)
+* **M3:** The APOSTLE without the help of indicator of the amount of code change.(set coefficient1 to 1 and coefficient2 to 0.95)
+
+OUTPUT:
+* **performance:** the results of APOSTLE or APOSTLE without someone component.
+
+## Parameter tuning experiments on a small dataset
+
+Command: python main.py apostle
+
+
+
