@@ -66,6 +66,9 @@ Customize: Choose different thresholds and cofficients under *config.py*
 OUTPUT:
 * **performance:** the results of APOSTLE with different thresholds and cofficients.
 
+Attention:
+Parameter tuning experiments on a small dataset can be done just by modifying line 511 in the evaluatie.py file to 'projects = {'Chart': 26}'.
+
 ## RQ3.3
 
 Command:  python main.py method1/method2/method3
@@ -91,10 +94,3 @@ Customize: By setting coefficients under *config.py*, we can get the results.
 
 OUTPUT:
 * **performance:** the results of APOSTLE or APOSTLE without someone component.
-
-## Parameter tuning experiments on a small dataset
-
-Command: python main.py apostle
-
-
-
