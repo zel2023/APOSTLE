@@ -13,7 +13,7 @@ OUTPUT:
 Attention:
 * **Some parameter Settings:** You should set threshold1 to 700, threshold2 to 0.2, coefficient1 to 0.55 and coefficient2 to 0.95 under *config.py*.
 * **BATS:** Because of the dataset APOSTLE uses is equal to the dataset BATS uses, so you can get the results of the BATS by the code at https://github.com/HaoyeTianCoder/BATS.
-* **Qualitative analysis result:** You can obtain the qualitative analysis result of APOSTLE by observing the variables 'y_true' and 'y_pred', which represent the predicted result and the reference result, respectively.
+* **Qualitative analysis result:** You can obtain the qualitative analysis result of APOSTLE by observing the variables 'y_true' and 'y_pred' in the 'predict_collected_projects' function of *evaluate.py*, which represent the predicted result and the reference result, respectively.
 
 ## RQ2
 
