@@ -12,7 +12,7 @@ OUTPUT:
 
 Attention:
 * **Some parameter Settings** You should set threshold1 to 700, threshold2 to 0.2, coefficient1 to 0.55 and coefficient2 to 0.95 under *config.py.
-* **BATS:** Becase of the dataset APOSTLE uses is equal to the dataset BATS uses, so you can get the results of the BATS by the code at https://github.com/HaoyeTianCoder/BATS.
+* **BATS:** Because of the dataset APOSTLE uses is equal to the dataset BATS uses, so you can get the results of the BATS by the code at https://github.com/HaoyeTianCoder/BATS.
 
 ## RQ2
 
