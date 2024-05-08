@@ -4,7 +4,7 @@ os.path.abspath(os.path.join('..', './representation'))
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 import torch
 import pickle
-from representation.CC2Vec import lmg_cc2ftr_interface
+#from representation.CC2Vec import lmg_cc2ftr_interface
 from bert_serving.client import BertClient
 # from gensim.models import word2vec, Doc2Vec
 from nltk.tokenize import word_tokenize
